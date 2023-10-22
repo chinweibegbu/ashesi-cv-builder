@@ -1,0 +1,14 @@
+.landing-page-text {
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 110%;
+}
+
+.landing-page-subtext {
+    font-size: 24px;
+}
+
+.landing-page-button {
+    width: 250px;
+    font-weight: 600;
+}

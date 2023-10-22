@@ -1,1 +1,19 @@
+.App {
+    height: 100vh;
+}
 
+.bordered {
+    border: solid 1px white;
+}
+
+.button {
+    border: solid 1px #8A3D40;
+    background-color: #8A3D40;
+    color: #FFFFFF;
+}
+
+.button:hover {
+    border: solid 1px #8A3D40;
+    background-color: transparent;
+    color: #8A3D40;
+}
