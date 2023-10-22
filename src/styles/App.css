@@ -13,7 +13,10 @@
 }
 
 .button:hover {
-    border: solid 1px #8A3D40;
+    /* border: solid 1px #8A3D40;
     background-color: transparent;
-    color: #8A3D40;
+    color: #8A3D40; */
+    border: solid 1px #aa4d50;
+    background-color: #aa4d50;
+    color: #FFFFFF;
 }

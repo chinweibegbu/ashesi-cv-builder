@@ -1,0 +1,25 @@
+.sign-in-form {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.sign-in-form>.form-title {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.sign-in-form label {
+    font-size: 20px;
+}
+
+.sign-in-form input[type=text],
+.sign-in-form input[type=password] {
+    width: 650px;
+    height: 60px;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 5px 10px;
+
+    font-size: 20px;
+}
