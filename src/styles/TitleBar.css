@@ -1,9 +1,20 @@
 .logo-img {
-    width: 85px;
+    width: 75px;
 }
 
 .logo-txt {
     font-size: 20px;
     font-weight: 600;
     margin: 0 10px 0;
+}
+
+.title-bar-landing {
+    align-items: center;
+    background-color: #FFFFFF;
+}
+
+.title-bar-main {
+    align-items: center;
+    background-color: #8A3D40;
+    padding: 10px 20px;
 }

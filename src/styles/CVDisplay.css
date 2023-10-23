@@ -1,0 +1,35 @@
+.cv-display > * {
+    width: 90%
+}
+
+.cv-display-img-preview {
+    /* max-width: 376px; */
+    height: 207px;
+    border: solid 1px black;
+    border-radius: 10px;
+}
+
+.cv-display-details * {
+    margin: 0;
+}
+
+.cv-display-details .details-text {
+    display: block;
+    width: 90%
+}
+
+.cv-display-details .details-name {
+    font-size: 16px;
+}
+
+.cv-display-details .details-time {
+    font-size: 13px;
+}
+
+.cv-display-details .details-interact-btn {
+    font-size: larger;
+}
+
+.cv-display-details .details-interact-btn:hover {
+    cursor: pointer;
+}
