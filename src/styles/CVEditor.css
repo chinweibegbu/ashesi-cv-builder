@@ -1,0 +1,81 @@
+.cv-editor>* {
+    min-height: 90vh;
+}
+
+.cv-editor-details {
+    max-height: 80vh;
+    overflow-y: scroll;
+}
+
+.cv-editor-details .title {
+    font-size: 20px;
+}
+
+.cv-editor-details .accordion-button {
+    background: none;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.cv-editor-details .accordion-button[aria-expanded=false] {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.cv-editor-details .accordion-button:focus {
+    box-shadow: none;
+}
+
+.cv-editor-details input[type=text] {
+    padding: 5px 10px;
+    height: 50px;
+    border-radius: 5px;
+    border: solid 1px black;
+}
+
+.cv-editor-details input[type=text]:focus {
+    outline-color: #8A3D40;
+}
+
+.cv-editor-details label {
+    font-size: 14px;
+}
+
+.cv-editor-details *::placeholder {
+    color: #00000050;
+}
+
+.cv-editor-details::-webkit-scrollbar {
+    width: 10px;
+}
+
+.cv-editor-details::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+.cv-editor-details::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #8A3D40;
+}
+
+.cv-editor-preview {
+    background-color: #EAECEF;
+}
+
+.cv-editor-preview .title {
+    margin: 5px 0;
+    color: #00000030;
+    font-size: 20px;
+}
+
+.cv-editor-preview .pdf {
+    width: 496px;
+    height: 702px;
+    background-color: white;
+}
+
+.cv-editor-preview .button-icon {
+    color: #8A3D40;
+    border: solid 2px #8A3D40;
+}
