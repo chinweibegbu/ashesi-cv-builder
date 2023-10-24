@@ -15,6 +15,7 @@
     background: none;
     font-size: 20px;
     font-weight: 600;
+    height: 50px;
 }
 
 .cv-editor-details .accordion-button[aria-expanded=false] {
