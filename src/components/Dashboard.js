@@ -2,7 +2,7 @@ import React from "react";
 import '../styles/Dashboard.css';
 import TitleBar from "./TitleBar";
 import CVGroupDisplay from "./CVGroupDisplay";
-import { cvData } from "../cv-data";
+import { cvData } from "../data/cv-data";
 
 function Dashboard({ name }) {
     const CVs = cvData;
