@@ -1,0 +1,67 @@
+.cv-editor-preview {
+    background-color: #EAECEF;
+}
+
+.cv-editor-preview .title {
+    margin: 5px 0;
+    color: #00000030;
+    font-size: 20px;
+}
+
+.cv-editor-preview .button-icon {
+    color: #8A3D40;
+    border: solid 2px #8A3D40;
+}
+
+.cv-pdf {
+    font-family: "Verdana";
+    width: 496px;
+    height: 702px;
+    background-color: white;
+}
+
+.cv-pdf * {
+    margin: 0;
+}
+
+.cv-pdf p,
+.cv-pdf a,
+.cv-pdf i,
+.cv-pdf li {
+    font-size: 8.5px;
+}
+
+.cv-pdf ul {
+    padding-left: 14px;
+}
+
+.cv-pdf .cv-name {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.cv-pdf .section-header {
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: solid 1px #000000;
+}
+
+.cv-pdf .entry p,
+.cv-pdf .entry li {
+    line-height: 120%;
+}
+
+.cv-pdf i.bi-circle {
+    color: #8A3D40;
+    margin-right: 1px;
+}
+
+.cv-pdf i.bi-circle-fill {
+    color: #8A3D40;
+    margin-right: 1px;
+}
+
+.cv-pdf .align-right * {
+    text-align: end;
+}
