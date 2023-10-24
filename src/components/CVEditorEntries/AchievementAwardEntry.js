@@ -13,7 +13,7 @@ function AchievementAwardEntry({ sectionTag, handleEntryAddition }) {
                     <input type="text" id={sectionTag + "-lname"} placeholder="e.g. Ibegbu"></input>
                 </div>
             </form>
-            <div className="add-entry d-flex align-content-center mt-1" onClick={(key) => {handleEntryAddition(key)}}>
+            <div className="add-entry d-flex align-content-center mt-1" onClick={handleEntryAddition}>
                 <i className="bi-plus-circle me-1" />
                 <p>Add achievement/award</p>
             </div>
