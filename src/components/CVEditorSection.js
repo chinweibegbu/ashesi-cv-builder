@@ -55,7 +55,11 @@ function CVEditorSection({ sectionName, isExpanded }) {
                 <div className="accordion-body">
                     {
                         entryComponents.map((SingleEntryComponent, key) => {
-                            return <SingleEntryComponent key={key} sectionTag={sectionTag} handleEntryAddition={handleEntryAddition} />
+                            if (key === (entryComponents.length-1)) {
+                                return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryAddition={handleEntryAddition} />
+                            } else {
+                                return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryAddition={null} />
+                            }
                         })
                     }
                 </div>
