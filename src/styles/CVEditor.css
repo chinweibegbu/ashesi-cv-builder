@@ -59,6 +59,10 @@
     background-color: #8A3D40;
 }
 
+.cv-editor-details .add-entry {
+    cursor: pointer;
+}
+
 .cv-editor-preview {
     background-color: #EAECEF;
 }

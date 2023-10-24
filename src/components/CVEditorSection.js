@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PersonalDetailsEntry from "./CVEditorEntries/PersonalDetailsEntry";
 import EducationEntry from "./CVEditorEntries/EducationEntry";
 import AchievementAwardEntry from "./CVEditorEntries/AchievementAwardEntry";
@@ -36,18 +36,30 @@ function CVEditorSection({ sectionName, isExpanded }) {
 
     const EntryComponent = entryDetails[sectionName]['component'];
     const id = entryDetails[sectionName]['id'];
-    const sectionTag =  entryDetails[sectionName]['sectionTag'];
-    
+    const sectionTag = entryDetails[sectionName]['sectionTag'];
+
+    // Handle entry addition
+    const [entryComponents, setEntryComponents] = useState([EntryComponent]);
+    const handleEntryAddition = () => {
+        setEntryComponents([...entryComponents, EntryComponent]);
+    }
+
     return (
         <div className="accordion-item">
             <h2 className="accordion-header" id={id}>
-                <button className={isExpanded ? "accordion-button" : "accordion-button collapsed"} type="button" data-bs-toggle="collapse" data-bs-target={"#"+sectionTag+"-section"} aria-expanded={isExpanded} aria-controls={sectionTag+"-section"}>
+                <button className={isExpanded ? "accordion-button" : "accordion-button collapsed"} type="button" data-bs-toggle="collapse" data-bs-target={"#" + sectionTag + "-section"} aria-expanded={isExpanded} aria-controls={sectionTag + "-section"}>
                     {sectionName}
                 </button>
             </h2>
-            { 
-                <EntryComponent sectionId={id} sectionTag={sectionTag} />
-            }
+            <div id={sectionTag + "-section"} className={isExpanded ? "accordion-collapse collapse show" : "accordion-collapse collapse"} aria-labelledby={id} data-bs-parent="#detail-sections">
+                <div className="accordion-body">
+                    {
+                        entryComponents.map((SingleEntryComponent, key) => {
+                            return <SingleEntryComponent key={key} sectionTag={sectionTag} handleEntryAddition={handleEntryAddition} />
+                        })
+                    }
+                </div>
+            </div>
         </div>
     );
 }
