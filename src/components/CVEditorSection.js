@@ -44,6 +44,13 @@ function CVEditorSection({ sectionName, isExpanded }) {
         setEntryComponents([...entryComponents, EntryComponent]);
     }
 
+    // Handle entry clear
+
+    // Handle entry deletion
+    const handleEntryDeletion = () => {
+        // code
+    }
+
     return (
         <div className="accordion-item">
             <h2 className="accordion-header" id={id}>
@@ -56,9 +63,9 @@ function CVEditorSection({ sectionName, isExpanded }) {
                     {
                         entryComponents.map((SingleEntryComponent, key) => {
                             if (key === (entryComponents.length-1)) {
-                                return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryAddition={handleEntryAddition} />
+                                return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={handleEntryAddition} />
                             } else {
-                                return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryAddition={null} />
+                                return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={null} />
                             }
                         })
                     }

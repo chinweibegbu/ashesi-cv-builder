@@ -26,24 +26,44 @@
     box-shadow: none;
 }
 
-.cv-editor-details input[type=text] {
+.cv-editor-details label {
+    font-size: 14px;
+}
+
+.cv-editor-details select,
+.cv-editor-details input[type=text],
+.cv-editor-details input[type=date] {
     padding: 5px 10px;
     height: 50px;
     border-radius: 5px;
-    border: solid 1px black;
+    border: solid 1px #000000;
 }
 
 .cv-editor-details input[type=text]:focus {
     outline-color: #8A3D40;
 }
 
-.cv-editor-details label {
-    font-size: 14px;
+.cv-editor-details select:focus,
+.cv-editor-details select:active {
+    box-shadow: none;
+    border-color: #8A3D40;
+    outline: solid 1px #8A3D40;
 }
 
 .cv-editor-details *::placeholder {
     color: #00000050;
 }
+
+.cv-editor-details button {
+    height: 35px;
+    font-size: smaller;
+} 
+
+.cv-editor-details button.clear-button {
+    background-color: transparent;
+    border-color: #000000;
+    color: #000000;
+} 
 
 .cv-editor-details::-webkit-scrollbar {
     width: 10px;

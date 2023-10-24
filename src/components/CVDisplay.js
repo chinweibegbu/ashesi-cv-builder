@@ -11,7 +11,7 @@ function CVDisplay({ cvDetails }) {
             </div>
             <div className="cv-display-details d-flex justify-content-between">
                 <div className="details-text">
-                    <p className="details-name text-truncate">{name}</p>
+                    <p className="details-name">{name}</p>
                     <p className="details-time">Last Edited: {lastEdited}</p>
                 </div>
                 <div className="details-interact-btn d-flex align-items-center">
