@@ -15,7 +15,7 @@ function SkillEntry({ sectionTag, handleEntryAddition }) {
             </form>
             <div className="add-entry d-flex align-content-center mt-1" onClick={handleEntryAddition}>
                 <i className="bi-plus-circle me-1" />
-                <p>Add educational experience</p>
+                <p>Add skill</p>
             </div>
         </>
     );
