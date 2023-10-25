@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { majors } from '../../data/majors';
 import { educationLevels } from '../../data/educationLevels';
 import { countryNames } from '../../data/countryNames';
 
 function EducationEntry({ id, sectionTag, handleEntryDeletion, handleEntryAddition }) {
+    const [ongoing, setOngoing] = useState(false);
+    const handleClick = (event) => {
+        setOngoing(prevState => !prevState);
+    }
+
     const makeInvisible = (handleEntryAddition) ? "" : " invisible";
 
     return (
@@ -49,7 +54,11 @@ function EducationEntry({ id, sectionTag, handleEntryDeletion, handleEntryAdditi
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-end-date"}>End Date</label>
-                    <input type="date" id={sectionTag + "-end-date"}></input>
+                    <input type="date" id={sectionTag + "-end-date"} disabled={ongoing}></input>
+                </div>
+                <div className="form-group col-6 offset-6 d-flex mb-2">
+                    <input type="checkbox" id="education-ongoing" name="education-ongoing" value="education-ongoing" checked={ongoing} onClick={handleClick}></input>
+                    <label htmlFor="education-ongoing" className='ms-1'>Still attending this institution</label>
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-gpa"}>Cumulative GPA (out of 4.0)</label>
