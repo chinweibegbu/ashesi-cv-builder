@@ -4,7 +4,7 @@ function CVpdf({ cvPreviewDetails }) {
     const { header, education, achievementsAwards, workExperience, skills } = cvPreviewDetails;
 
     // Handle the different sections' data
-    const { fullName, address, phone, nationality, email, linkedinLink, linkedinUsername } = header;
+    const { firstName, lastName, city, country, phone, nationality, email, linkedinLink, linkedinUsername } = header;
     const achievementsAwardsEntryDateGenerator = (entry) => {
         if (entry.durationType === "One-time") {
             return entry.dateAwarded;
@@ -59,14 +59,14 @@ function CVpdf({ cvPreviewDetails }) {
     return (
         <div className="cv-pdf container-fluid bordered p-2">
             <div className="row cv-pdf-header entry text-center bordered">
-                <p className="cv-name">{fullName}</p>
-                <p>{address}</p>
-                <p>{phone} | {nationality}</p>
-                <p>{email}</p>
+                <p className="cv-name">{firstName ? firstName : "FirstName"} {lastName ? lastName : "LastName"}</p>
+                <p>{city ? city : "City"}, {country ? country : "Country"}</p>
+                <p>{phone ? phone : "000 000 000"} | {nationality ? nationality : "Nationality"}</p>
+                <p>{email ? email : "email@address.com"}</p>
                 <div>
                     <div className="d-flex justify-content-center">
                         <i className="bi-linkedin me-1" />
-                        <a href={linkedinLink}>{linkedinUsername}</a>
+                        <a href={linkedinLink}>{linkedinUsername ? linkedinUsername : "linkedin-username"}</a>
                     </div>
                 </div>
             </div>

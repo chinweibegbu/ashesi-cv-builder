@@ -5,7 +5,7 @@ import AchievementAwardEntry from "./CVEditorEntries/AchievementAwardEntry";
 import WorkExperienceEntry from "./CVEditorEntries/WorkExperienceEntry";
 import SkillEntry from "./CVEditorEntries/SkillEntry";
 
-function CVEditorSection({ sectionName, isExpanded }) {
+function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
     const entryDetails = {
         "Personal Details": {
             component: PersonalDetailsEntry,
@@ -63,9 +63,9 @@ function CVEditorSection({ sectionName, isExpanded }) {
                     {
                         entryComponents.map((SingleEntryComponent, key) => {
                             if (key === (entryComponents.length-1)) {
-                                return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={handleEntryAddition} />
+                                return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={handleEntryAddition} cvDetails={cvDetails} setCvDetails={setCvDetails} />
                             } else {
-                                return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={null} />
+                                return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={null} cvDetails={cvDetails} setCvDetails={setCvDetails} />
                             }
                         })
                     }
