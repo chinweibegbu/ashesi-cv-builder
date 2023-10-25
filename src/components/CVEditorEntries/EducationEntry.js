@@ -64,7 +64,7 @@ function EducationEntry({ id, sectionTag, handleEntryDeletion, handleEntryAdditi
                     <label htmlFor={sectionTag + "-gpa"}>Cumulative GPA (out of 4.0)</label>
                     <input type="text" id={sectionTag + "-gpa"} placeholder="e.g. 2.35"></input>
                 </div>
-                <div className="form-group col-md-6 d-flex justify-content-end align-items-end mb-2">
+                <div className="form-group col-12 d-flex justify-content-end align-items-end mb-2">
                     <button className='button clear-button btn me-1'>Clear Entry</button>
                     <button className='button delete-button btn' onClick={() => handleEntryDeletion(id)}>Delete Entry</button>
                 </div>
