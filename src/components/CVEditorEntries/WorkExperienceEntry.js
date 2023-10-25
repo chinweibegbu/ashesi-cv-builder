@@ -43,7 +43,7 @@ function WorkExperienceEntry({ id, sectionTag, handleEntryAddition }) {
                     <input type="date" id={sectionTag + "-end-date"} disabled={ongoing}></input>
                 </div>
                 <div className="form-group col-6 offset-6 d-flex mb-2">
-                    <input type="checkbox" id="work-ongoing" name="work-ongoing" value="work-ongoing" checked={ongoing} onClick={handleClick}></input>
+                    <input type="checkbox" id="work-ongoing" name="work-ongoing" value="work-ongoing" checked={ongoing} onChange={handleClick}></input>
                     <label htmlFor="work-ongoing" className='ms-1'>Still working at this company</label>
                 </div>
             </form>

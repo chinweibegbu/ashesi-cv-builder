@@ -39,7 +39,7 @@ function AchievementAwardEntry({ id, sectionTag, handleEntryDeletion, handleEntr
                     <input type="date" id={sectionTag + "-date-expired"} disabled={ongoing || (durationType==="One-time")}></input>
                 </div>
                 <div className="form-group col-12 d-flex mb-2">
-                    <input type="checkbox" id="achievement-ongoing" name="achievement-ongoing" value="achievement-ongoing" checked={ongoing} onClick={handleClick}></input>
+                    <input type="checkbox" id="achievement-ongoing" name="achievement-ongoing" value="achievement-ongoing" checked={ongoing} onChange={handleClick}></input>
                     <label htmlFor="achievement-ongoing" className='ms-1'>Accomplishment/award yet to expire</label>
                 </div>
                 <div className="form-group col-12 d-flex justify-content-end align-items-end mb-2">
