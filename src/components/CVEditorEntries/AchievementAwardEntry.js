@@ -25,7 +25,7 @@ function AchievementAwardEntry({ id, sectionTag, handleEntryDeletion, handleEntr
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-duration-type"}>Duration Type</label>
-                    <select className="form-select" id={sectionTag + "-duration-type"} aria-label="One-time" defaultValue="One-time" value={durationType} onChange={handleSelect}>
+                    <select className="form-select" id={sectionTag + "-duration-type"} aria-label="One-time" value={durationType} onChange={handleSelect}>
                         <option value="One-time">One-time</option>
                         <option value="Continuous">Continuous</option>
                     </select>

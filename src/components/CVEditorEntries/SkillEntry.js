@@ -28,7 +28,7 @@ function SkillEntry({ id, sectionTag, handleEntryAddition }) {
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-skill-type"}>Skill Type</label>
-                    <select className="form-select" id={sectionTag + "-skill-type"} aria-label="Hard Skill" defaultValue="Hard Skill" value={skillType} onChange={handleSelect}>
+                    <select className="form-select" id={sectionTag + "-skill-type"} aria-label="Hard Skill" value={skillType} onChange={handleSelect}>
                         <option value="Hard Skill">Hard Skill</option>
                         <option value="Soft Skill">Soft Skill</option>
                     </select>
