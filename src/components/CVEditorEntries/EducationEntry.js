@@ -1,26 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { majors } from '../../data/majors';
 import { educationLevels } from '../../data/educationLevels';
 import { countryNames } from '../../data/countryNames';
 
-function EducationEntry({ id, sectionTag, handleEntryDeletion, handleEntryAddition }) {
+function EducationEntry({ id, sectionTag, handleEntryDeletion, handleEntryAddition, cvDetails, setCvDetails }) {
     const [ongoing, setOngoing] = useState(false);
-    const handleClick = (event) => {
+    const handleClick = () => {
         setOngoing(prevState => !prevState);
+        setCvDetails({
+            ...cvDetails,
+            education: [
+                ...cvDetails.education.slice(0, id),
+                {
+                    ...cvDetails.education[id],
+                    ongoing: !(cvDetails.education[id].ongoing),
+                },
+                ...cvDetails.education.slice(id+1)
+            ]
+        });
+    }
+    const handleChange = (event, field) => {
+        setCvDetails({
+            ...cvDetails,
+            education: [
+                ...cvDetails.education.slice(0, id),
+                {
+                    ...cvDetails.education[id],
+                    [field]: event.target.value,
+                },
+                ...cvDetails.education.slice(id+1)
+            ]
+        });
+    }
+    // const [country, setCountry] = useState(countryNames[0]);
+    const handleSelect = (event, field) => {
+        // setCountry(event.target.value);
+        setCvDetails({
+            ...cvDetails,
+            education: [
+                ...cvDetails.education.slice(0, id),
+                {
+                    ...cvDetails.education[id],
+                    [field]: event.target.value,
+                },
+                ...cvDetails.education.slice(id+1)
+            ]
+        });
     }
 
     const makeInvisible = (handleEntryAddition) ? "" : " invisible";
+
+    useEffect(() => {
+        console.log(cvDetails);
+    }, []);
 
     return (
         <div id={id}>
             <form className="bordered row">
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-institution-name"}>Institution Name</label>
-                    <input type="text" id={sectionTag + "-institution-name"} placeholder="e.g. Loyola Jesuit College"></input>
+                    <input type="text" id={sectionTag + "-institution-name"} placeholder="e.g. Loyola Jesuit College" value={cvDetails.education[Number(id)].name} onChange={(e) => handleChange(e, "name")}></input>
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-education-level"}>Education Level</label>
-                    <select className="form-select" id={sectionTag + "-education-level"} aria-label={educationLevels[0]} defaultValue={educationLevels[0]}>
+                    <select className="form-select" id={sectionTag + "-education-level"} aria-label={educationLevels[0]} value={cvDetails.education[Number(id)].degree} onChange={(e) => handleSelect(e, "degree")}>
                         {
                             educationLevels.map((educationLevel, key) => {
                                 return <option key={key} value={educationLevel}>{educationLevel}</option>;
@@ -30,7 +73,7 @@ function EducationEntry({ id, sectionTag, handleEntryDeletion, handleEntryAdditi
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-major"}>Major</label>
-                    <select className="form-select" id={sectionTag + "-major"} aria-label={majors[0]} defaultValue={majors[0]}>
+                    <select className="form-select" id={sectionTag + "-major"} aria-label={majors[0]}  value={cvDetails.education[Number(id)].major} onChange={(e) => handleSelect(e, "major")}>
                         {
                             majors.map((major, key) => {
                                 return <option key={key} value={major}>{major}</option>;
@@ -39,8 +82,16 @@ function EducationEntry({ id, sectionTag, handleEntryDeletion, handleEntryAdditi
                     </select>
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
-                    <label htmlFor={sectionTag + "-location"}>Location</label>
-                    <select className="form-select" id={sectionTag + "-location"} aria-label={countryNames[0]} defaultValue={countryNames[0]}>
+                    <label htmlFor={sectionTag + "-gpa"}>Cumulative GPA (out of 4.0)</label>
+                    <input type="text" id={sectionTag + "-gpa"} placeholder="e.g. 2.35" value={cvDetails.education[Number(id)].cgpa} onChange={(e) => handleChange(e, "cgpa")}></input>
+                </div>
+                <div className="form-group col-md-6 d-flex flex-column mb-2">
+                    <label htmlFor={sectionTag + "-city"}>State/Region/City</label>
+                    <input type="text" id={sectionTag + "-city"} placeholder="e.g. Lagos" value={cvDetails.education[Number(id)].city} onChange={(e) => handleChange(e, "city")}></input>
+                </div>
+                <div className="form-group col-md-6 d-flex flex-column mb-2">
+                    <label htmlFor={sectionTag + "-country"}>Country</label>
+                    <select className="form-select" id={sectionTag + "-country"} aria-label={countryNames[0]} value={cvDetails.education[Number(id)].country} onChange={(e) => handleSelect(e, "country")}>
                         {
                             countryNames.map((countryName, key) => {
                                 return <option key={key} value={countryName}>{countryName}</option>;
@@ -50,26 +101,23 @@ function EducationEntry({ id, sectionTag, handleEntryDeletion, handleEntryAdditi
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-start-date"}>Start Date</label>
-                    <input type="date" id={sectionTag + "-start-date"}></input>
+                    <input type="date" id={sectionTag + "-start-date"} value={cvDetails.education[Number(id)].startDate} onChange={(e) => handleChange(e, "startDate")}></input>
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-end-date"}>End Date</label>
-                    <input type="date" id={sectionTag + "-end-date"} disabled={ongoing}></input>
+                    <input type="date" id={sectionTag + "-end-date"} disabled={ongoing} value={cvDetails.education[Number(id)].endDate} onChange={(e) => handleChange(e, "endDate")}></input>
                 </div>
                 <div className="form-group col-6 offset-6 d-flex mb-2">
                     <input type="checkbox" id="education-ongoing" name="education-ongoing" value="education-ongoing" checked={ongoing} onChange={handleClick}></input>
                     <label htmlFor="education-ongoing" className='ms-1'>Still attending this institution</label>
                 </div>
-                <div className="form-group col-md-6 d-flex flex-column mb-2">
-                    <label htmlFor={sectionTag + "-gpa"}>Cumulative GPA (out of 4.0)</label>
-                    <input type="text" id={sectionTag + "-gpa"} placeholder="e.g. 2.35"></input>
-                </div>
+                
                 <div className="form-group col-12 d-flex justify-content-end align-items-end mb-2">
                     <button className='button clear-button btn me-1'>Clear Entry</button>
                     <button className='button delete-button btn' onClick={() => handleEntryDeletion(id)}>Delete Entry</button>
                 </div>
             </form>
-            <div className={"add-entry d-flex align-content-center mt-1" + makeInvisible} onClick={handleEntryAddition}>
+            <div className={"add-entry d-flex align-content-center mt-1" + makeInvisible} onClick={() => handleEntryAddition(sectionTag)}>
                 <i className="bi-plus-circle me-1" />
                 <p>Add educational experience</p>
             </div>

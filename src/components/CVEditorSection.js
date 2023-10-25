@@ -4,6 +4,7 @@ import EducationEntry from "./CVEditorEntries/EducationEntry";
 import AchievementAwardEntry from "./CVEditorEntries/AchievementAwardEntry";
 import WorkExperienceEntry from "./CVEditorEntries/WorkExperienceEntry";
 import SkillEntry from "./CVEditorEntries/SkillEntry";
+import { educationEntryTemplate } from "../data/entryTemplates";
 
 function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
     const entryDetails = {
@@ -40,8 +41,21 @@ function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
 
     // Handle entry addition
     const [entryComponents, setEntryComponents] = useState([EntryComponent]);
-    const handleEntryAddition = () => {
+    const handleEntryAddition = (sectionTag) => {
+        // Add entry to array of entries for section
         setEntryComponents([...entryComponents, EntryComponent]);
+
+        // Add entry to array of entries in state in CVEditor
+        const entryTemplateDictionary = {
+            "ED": educationEntryTemplate            
+        }
+        setCvDetails({
+            ...cvDetails,
+            education: [
+                ...cvDetails.education,
+                {...entryTemplateDictionary[sectionTag]}
+            ]
+        });
     }
 
     // Handle entry clear
@@ -62,7 +76,7 @@ function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
                 <div className="accordion-body">
                     {
                         entryComponents.map((SingleEntryComponent, key) => {
-                            if (key === (entryComponents.length-1)) {
+                            if (key === (entryComponents.length - 1)) {
                                 return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={handleEntryAddition} cvDetails={cvDetails} setCvDetails={setCvDetails} />
                             } else {
                                 return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={null} cvDetails={cvDetails} setCvDetails={setCvDetails} />

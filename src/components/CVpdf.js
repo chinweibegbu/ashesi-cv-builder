@@ -1,10 +1,29 @@
 import React, { cloneElement } from "react";
+import { months } from "../data/months";
 
 function CVpdf({ cvPreviewDetails }) {
     const { header, education, achievementsAwards, workExperience, skills } = cvPreviewDetails;
 
     // Handle the different sections' data
     const { firstName, lastName, city, country, phone, nationality, email, linkedinLink, linkedinUsername } = header;
+    const educationEntryDateGenerator = (entry) => {
+        const start = new Date(entry.startDate);
+
+        if (!(entry.startDate)) {
+            return "";
+        } else {
+            if (entry.ongoing === true) {
+                return months[start.getMonth()] + " " + start.getFullYear() + " - Present";
+            } else {
+                if (entry.endDate) {
+                    const end = new Date(entry.endDate);
+                    return months[start.getMonth()] + " " + start.getFullYear() + " - " + months[end.getMonth()] + " " + end.getFullYear();
+                } else {
+                    return months[start.getMonth()] + " " + start.getFullYear() + " - END DATE";
+                }
+            }
+        }
+    }
     const achievementsAwardsEntryDateGenerator = (entry) => {
         if (entry.durationType === "One-time") {
             return entry.dateAwarded;
@@ -79,11 +98,11 @@ function CVpdf({ cvPreviewDetails }) {
                                 <div>
                                     <p><b>{entry.name}</b></p>
                                     <p>{entry.degree} {entry.major}</p>
-                                    <p>Cumulative GPA: {entry.cgpa}/4.00</p>
+                                    <p>{entry.cgpa ? "Cumulative GPA: " + entry.cgpa + "/4.00" : ""}</p>
                                 </div>
                                 <div className="align-right">
-                                    <p><b>{entry.location}</b></p>
-                                    <p>{entry.startDate} - {entry.endDate}</p>
+                                    <p><b>{entry.city ? entry.city : "-"}, {entry.country ? entry.country : "-"}</b></p>
+                                    <p>{educationEntryDateGenerator(entry)}</p>
                                 </div>
                             </div>
                         )

@@ -3,9 +3,11 @@ import '../styles/CVEditor.css';
 import TitleBar from './TitleBar';
 import CVEditorSection from "./CVEditorSection";
 import CVPreview from "./CVPreview";
+import { educationEntryTemplate } from "../data/entryTemplates";
 
 function CVEditorTrial({ cvName }) {
     // Handle state + Connect editor and preview
+    
     const [cvDetails, setCvDetails] = useState({
         header: {
             firstName: "",
@@ -18,7 +20,9 @@ function CVEditorTrial({ cvName }) {
             linkedinLink: "",
             linkedinUsername: ""
         },
-        education: [],
+        education: [
+            {...educationEntryTemplate}
+        ],
         achievementsAwards: [],
         workExperience: [],
         skills: {
@@ -26,10 +30,10 @@ function CVEditorTrial({ cvName }) {
             softSkills: []
         }
     })
-    
+
     // For debugging
     useEffect(() => {
-        console.log(cvDetails.header);
+        // console.log(cvDetails.header);
     }, [cvDetails]);
 
     return (
@@ -40,10 +44,10 @@ function CVEditorTrial({ cvName }) {
                     <p className="title text-center mt-3">{cvName}</p>
                     <div className="accordion" id="detail-sections">
                         <CVEditorSection sectionName={"Personal Details"} isExpanded={true} cvDetails={cvDetails} setCvDetails={setCvDetails} />
-                        <CVEditorSection sectionName={"Education"} isExpanded={false} />
-                        <CVEditorSection sectionName={"Achievements & Awards"} isExpanded={false} />
-                        <CVEditorSection sectionName={"Work Experience"} isExpanded={false} />
-                        <CVEditorSection sectionName={"Skills"} isExpanded={false} />
+                        <CVEditorSection sectionName={"Education"} isExpanded={false} cvDetails={cvDetails} setCvDetails={setCvDetails} />
+                        <CVEditorSection sectionName={"Achievements & Awards"} isExpanded={false} cvDetails={cvDetails} setCvDetails={setCvDetails} />
+                        <CVEditorSection sectionName={"Work Experience"} isExpanded={false} cvDetails={cvDetails} setCvDetails={setCvDetails} />
+                        <CVEditorSection sectionName={"Skills"} isExpanded={false} cvDetails={cvDetails} setCvDetails={setCvDetails} />
                     </div>
                 </div>
                 <CVPreview cvDetails={cvDetails} />
