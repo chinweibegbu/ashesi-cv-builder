@@ -9,7 +9,7 @@ function CVEditorTrial({ cvName }) {
         <>
             <TitleBar location="main-body" />
             <div className="cv-editor row bordered">
-                <div className="cv-editor-details px-5 pb-2 col-xl-6 bordered">
+                <div className="cv-editor-details px-5 pb-3 col-xl-6 bordered">
                     <p className="title text-center mt-3">{cvName}</p>
                     <div className="accordion" id="detail-sections">
                         <CVEditorSection sectionName={"Personal Details"} isExpanded={true} />
