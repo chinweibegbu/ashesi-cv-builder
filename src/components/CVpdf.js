@@ -1,4 +1,4 @@
-import React from "react";
+import React, { cloneElement } from "react";
 
 function CVpdf({ cvPreviewDetails }) {
     const { header, education, achievementsAwards, workExperience, skills } = cvPreviewDetails;
@@ -38,14 +38,17 @@ function CVpdf({ cvPreviewDetails }) {
         for (let i = 0; i < numFilled[level]; i++) {
             display.push(circleFilled);
         }
-        for (let i = 0; i < (5-numFilled[level]); i++) {
+        for (let i = 0; i < (5 - numFilled[level]); i++) {
             display.push(circleEmpty);
         }
-        
+
         const compositeDisplay = <div className="d-flex">
             {
-                display.map(circle => {
-                    return circle;
+                display.map((circle, key) => {
+                    return React.cloneElement(
+                        circle,
+                        { key: key }
+                    );
                 })
             }
         </div>;
@@ -70,9 +73,9 @@ function CVpdf({ cvPreviewDetails }) {
             <div className="row cv-pdf-education bordered">
                 <p className="section-header">Education</p>
                 {
-                    education.map(entry => {
+                    education.map((entry, key) => {
                         return (
-                            <div className=" entry d-flex justify-content-between mb-1">
+                            <div key={key} className=" entry d-flex justify-content-between mb-1">
                                 <div>
                                     <p><b>{entry.name}</b></p>
                                     <p>{entry.degree} {entry.major}</p>
@@ -90,9 +93,9 @@ function CVpdf({ cvPreviewDetails }) {
             <div className="row cv-pdf-achievementsawards pb-1 bordered">
                 <p className="section-header">Achievements/Awards</p>
                 {
-                    achievementsAwards.map(entry => {
+                    achievementsAwards.map((entry, key) => {
                         return (
-                            <div className="entry d-flex justify-content-between">
+                            <div key={key} className="entry d-flex justify-content-between">
                                 <div>
                                     <p><b>{entry.name}</b>, <i>{entry.awarder}</i></p>
                                 </div>
@@ -107,9 +110,9 @@ function CVpdf({ cvPreviewDetails }) {
             <div className="row cv-pdf-workexpreience bordered">
                 <p className="section-header">Work Experience</p>
                 {
-                    workExperience.map(entry => {
+                    workExperience.map((entry, key) => {
                         return (
-                            <div className=" entry mb-1">
+                            <div key={key} className=" entry mb-1">
                                 <div className="d-flex justify-content-between">
                                     <p><b>{entry.companyName}</b> - {entry.companyLocation}</p>
                                     <div className="align-right">
@@ -119,8 +122,8 @@ function CVpdf({ cvPreviewDetails }) {
                                 <p>{entry.title}</p>
                                 <ul>
                                     {
-                                        entry.descriptors.map((descriptor) => {
-                                            return <li>{descriptor}</li>
+                                        entry.descriptors.map((descriptor, key) => {
+                                            return <li key={key}>{descriptor}</li>
                                         })
                                     }
                                 </ul>
@@ -136,8 +139,8 @@ function CVpdf({ cvPreviewDetails }) {
                         <p>Hard Skills</p>
                         <ul>
                             {
-                                hardSkills.map(skill => {
-                                    return <li>
+                                hardSkills.map((skill, key) => {
+                                    return <li key={key}>
                                         <div className="d-flex">
                                             <p className="col-5">{skill.name}</p>
                                             <div className="col-7 d-flex">
@@ -153,12 +156,13 @@ function CVpdf({ cvPreviewDetails }) {
                         <p>Soft Skills</p>
                         <ul>
                             {
-                                softSkills.map(skill => {
-                                    return <li>
+                                softSkills.map((skill, key) => {
+                                    return <li key={key}>
                                         <div className="d-flex">
                                             <p className="col-5">{skill.name}</p>
                                             <div className="col-7 d-flex">
-                                                {skillLevelDisplayGenerator(skill.level)} <p className="ms-1">({skill.level})</p>
+                                                {skillLevelDisplayGenerator(skill.level)}
+                                                <p className="ms-1">({skill.level})</p>
                                             </div>
                                         </div>
                                     </li>
