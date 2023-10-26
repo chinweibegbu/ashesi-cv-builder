@@ -61,6 +61,19 @@ function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
             id: "WorkExperience",
             cvDetailsKey: "workExperience",
             sectionTag: "WK",
+            deactivate: (id) => {
+                setCvDetails({
+                    ...cvDetails,
+                    workExperience: [
+                        ...cvDetails.workExperience.slice(0, id),
+                        {
+                            ...cvDetails.workExperience[id],
+                            active: false,
+                        },
+                        ...cvDetails.workExperience.slice(id + 1)
+                    ]
+                });
+            },
             addEntryText: "Add work experience",
             template: workExperienceEntryTemplate
         },

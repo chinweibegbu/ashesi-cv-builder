@@ -45,15 +45,25 @@ function CVpdf({ cvPreviewDetails }) {
         }
     }
     const workExperienceEntryDateGenerator = (entry) => {
-        if (entry.ongoing === true) {
-            return entry.startDate + " - Present";
+        const start = new Date(entry.startDate);
+
+        if (!(entry.startDate)) {
+            return "";
         } else {
-            return entry.startDate + " - " + entry.endDate;
+            if (entry.ongoing === true) {
+                return months[start.getMonth()] + " " + start.getFullYear() + " - Present";
+            } else {
+                if (entry.endDate) {
+                    const end = new Date(entry.endDate);
+                    return months[start.getMonth()] + " " + start.getFullYear() + " - " + months[end.getMonth()] + " " + end.getFullYear();
+                } else {
+                    return months[start.getMonth()] + " " + start.getFullYear() + " - END DATE";
+                }
+            }
         }
     }
     const hardSkills = skills.filter(skill => skill.type === "Hard Skill");
     const softSkills = skills.filter(skill => skill.type === "Soft Skill");
-
     const skillLevelDisplayGenerator = (level) => {
         let display = [];
         let numFilled = {
@@ -153,24 +163,28 @@ function CVpdf({ cvPreviewDetails }) {
                 <p className="section-header">Work Experience</p>
                 {
                     workExperience.map((entry, key) => {
-                        return (
-                            <div key={key} className=" entry mb-1">
-                                <div className="d-flex justify-content-between">
-                                    <p><b>{entry.companyName}</b> - {entry.companyLocation}</p>
-                                    <div className="align-right">
-                                        <p><b>{workExperienceEntryDateGenerator(entry)}</b></p>
+                        if (entry.active === true) {
+                            return (
+                                <div key={key} className=" entry mb-1">
+                                    <div className="d-flex justify-content-between">
+                                        <p><b>{entry.companyName}</b> {(!(entry.companyCity) || !(entry.companyCountry)) ? "" : " - " + entry.companyCity + ", " + entry.companyCountry}</p>
+                                        <div className="align-right">
+                                            <p><b>{workExperienceEntryDateGenerator(entry)}</b></p>
+                                        </div>
                                     </div>
+                                    <p>{entry.title}</p>
+                                    <ul>
+                                        {
+                                            entry.descriptions.map((description, key) => {
+                                                return <li key={key}>{description}</li>
+                                            })
+                                        }
+                                    </ul>
                                 </div>
-                                <p>{entry.title}</p>
-                                <ul>
-                                    {
-                                        entry.descriptors.map((descriptor, key) => {
-                                            return <li key={key}>{descriptor}</li>
-                                        })
-                                    }
-                                </ul>
-                            </div>
-                        )
+                            )
+                        } else {
+                            return (<div key={key}></div>)
+                        }
                     })
                 }
                 {workExperience.length === 0 ? <div className="pb-1"></div> : <></>}

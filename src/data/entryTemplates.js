@@ -24,10 +24,12 @@ export const achievementAwardEntryTemplate = {
 export const workExperienceEntryTemplate = {
     title: "",
     companyName: "",
-    companyLocation: "",
+    companyCity: "",
+    companyCountry: "",
     startDate: "",
     ongoing: false,
-    descriptors: [],
+    endDate: "",
+    descriptions: [],
     active: true
 }
 
