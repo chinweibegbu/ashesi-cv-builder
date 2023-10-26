@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { skillLevels } from "../../data/skillLevels";
 
-function SkillEntry({ id, sectionTag, handleEntryAddition }) {
+function SkillEntry({ id, sectionTag }) {
     const [skillType, setSkillType] = useState(false);
     const handleSelect = (event) => {
         setSkillType(event.target.value);
     }
-
-    const makeInvisible = (handleEntryAddition) ? "" : " invisible";
 
     return (
         <div id={id}>
@@ -34,10 +32,6 @@ function SkillEntry({ id, sectionTag, handleEntryAddition }) {
                     </select>
                 </div>
             </form>
-            <div className={"add-entry d-flex align-content-center mt-1" + makeInvisible} onClick={handleEntryAddition}>
-                <i className="bi-plus-circle me-1" />
-                <p>Add skill</p>
-            </div>
         </div>
     );
 }

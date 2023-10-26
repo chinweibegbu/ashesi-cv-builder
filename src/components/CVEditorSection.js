@@ -32,28 +32,36 @@ function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
                         ...cvDetails.education.slice(id + 1)
                     ]
                 });
-            }
+            },
+            addEntryText: "Add educational experience"
         },
         "Achievements & Awards": {
             component: AchievementAwardEntry,
             id: "AchievementsAwards",
-            sectionTag: "AA"
+            sectionTag: "AA",
+            addEntryText: "Add achievement/award"
         },
         "Work Experience": {
             component: WorkExperienceEntry,
             id: "WorkExperience",
-            sectionTag: "WK"
+            sectionTag: "WK",
+            addEntryText: "Add work experience"
         },
         "Skills": {
             component: SkillEntry,
             id: "Skills",
-            sectionTag: "SK"
+            sectionTag: "SK",
+            addEntryText: "Add skill"
         }
     }
 
     const EntryComponent = entryDetails[sectionName]['component'];
     const id = entryDetails[sectionName]['id'];
     const sectionTag = entryDetails[sectionName]['sectionTag'];
+    const addEntryButton = (sectionTag !== "PD") ? ( <div className={"add-entry d-flex align-content-center"} onClick={() => handleEntryAddition(sectionTag)}>
+        <i className="bi-plus-circle me-1" />
+        <p>{entryDetails[sectionName]['addEntryText']}</p>
+    </div> ) : <></>
 
     // Handle entry addition
     const [entryComponents, setEntryComponents] = useState([EntryComponent]);
@@ -98,16 +106,13 @@ function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
                         entryComponents.map((SingleEntryComponent, key) => {
                             // Only render active entries
                             if ((cvDetails.education[key].active) === true) {
-                                if (key === (entryComponents.length - 1)) {
-                                    return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryClear={handleEntryClear} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={handleEntryAddition} cvDetails={cvDetails} setCvDetails={setCvDetails} />
-                                } else {
-                                    return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryClear={handleEntryClear} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={null} cvDetails={cvDetails} setCvDetails={setCvDetails} />
-                                }
+                                return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryClear={handleEntryClear} handleEntryDeletion={handleEntryDeletion} cvDetails={cvDetails} setCvDetails={setCvDetails} />
                             } else {
                                 return <div key={key}></div>
                             }
                         })
                     }
+                    { addEntryButton }
                 </div>
             </div>
         </div>

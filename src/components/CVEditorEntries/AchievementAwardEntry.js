@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function AchievementAwardEntry({ id, sectionTag, handleEntryDeletion, handleEntryAddition }) {
+function AchievementAwardEntry({ id, sectionTag, handleEntryDeletion }) {
     const [ongoing, setOngoing] = useState(false);
     const handleClick = (event) => {
         setOngoing(prevState => !prevState);
@@ -9,8 +9,6 @@ function AchievementAwardEntry({ id, sectionTag, handleEntryDeletion, handleEntr
     const handleSelect = (event) => {
         setDurationType(event.target.value);
     }
-
-    const makeInvisible = (handleEntryAddition) ? "" : " invisible";
 
     return (
         <div id={id}>
@@ -47,10 +45,6 @@ function AchievementAwardEntry({ id, sectionTag, handleEntryDeletion, handleEntr
                     <button className='button delete-button btn' onClick={() => handleEntryDeletion(id)}>Delete Entry</button>
                 </div>
             </form>
-            <div className={"add-entry d-flex align-content-center mt-1"+makeInvisible} onClick={handleEntryAddition}>
-                <i className="bi-plus-circle me-1" />
-                <p>Add achievement/award</p>
-            </div>
         </div>
     );
 }

@@ -3,7 +3,7 @@ import { majors } from '../../data/majors';
 import { educationLevels } from '../../data/educationLevels';
 import { countryNames } from '../../data/countryNames';
 
-function EducationEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, handleEntryAddition, cvDetails, setCvDetails }) {
+function EducationEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
     const [ongoing, setOngoing] = useState(false);
     const handleClick = () => {
         setOngoing(prevState => !prevState);
@@ -48,10 +48,8 @@ function EducationEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion,
         });
     }
 
-    const makeInvisible = (handleEntryAddition) ? "" : " invisible";
-
     return (
-        <div id={id}>
+        <div id={id} className='mt-1'>
             <form className="bordered row">
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-institution-name"}>Institution Name</label>
@@ -113,10 +111,6 @@ function EducationEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion,
                     <button className='button delete-button btn' onClick={(event) => handleEntryDeletion(event, id, "Education")}>Delete Entry</button>
                 </div>
             </form>
-            <div className={"add-entry d-flex align-content-center mt-1" + makeInvisible} onClick={() => handleEntryAddition(sectionTag)}>
-                <i className="bi-plus-circle me-1" />
-                <p>Add educational experience</p>
-            </div>
         </div>
     );
 }

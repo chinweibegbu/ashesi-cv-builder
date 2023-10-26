@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { countryNames } from "../../data/countryNames";
 
-function WorkExperienceEntry({ id, sectionTag, handleEntryAddition }) {
+function WorkExperienceEntry({ id, sectionTag }) {
     const [ongoing, setOngoing] = useState(false);
     const handleClick = (event) => {
         setOngoing(prevState => !prevState);
     }
-
-    const makeInvisible = (handleEntryAddition) ? "" : " invisible";
 
     return (
         <div id={id}>
@@ -47,10 +45,6 @@ function WorkExperienceEntry({ id, sectionTag, handleEntryAddition }) {
                     <label htmlFor="work-ongoing" className='ms-1'>Still working at this company</label>
                 </div>
             </form>
-            <div className={"add-entry d-flex align-content-center mt-1"+makeInvisible} onClick={handleEntryAddition}>
-                <i className="bi-plus-circle me-1" />
-                <p>Add work experience</p>
-            </div>
         </div>
     );
 }
