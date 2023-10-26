@@ -25,12 +25,23 @@ function CVpdf({ cvPreviewDetails }) {
         }
     }
     const achievementsAwardsEntryDateGenerator = (entry) => {
-        if (entry.durationType === "One-time") {
-            return entry.dateAwarded;
-        } else if ((entry.durationType === "Continuous") && (entry.ongoing === true)) {
-            return entry.dateAwarded + " - Present";
-        } else if ((entry.durationType === "Continuous") && (entry.ongoing === false)) {
-            return entry.dateAwarded + " - " + entry.dateExpired;
+        const start = new Date(entry.dateAwarded);
+
+        if (!(entry.dateAwarded)) {
+            return "";
+        } else {
+            if (entry.durationType === "One-time") {
+                return months[start.getMonth()] + " " + start.getFullYear();
+            } else if ((entry.durationType === "Continuous") && (entry.ongoing === true)) {
+                return months[start.getMonth()] + " " + start.getFullYear() + " - Present";
+            } else if ((entry.durationType === "Continuous") && (entry.ongoing === false)) {
+                if (entry.dateExpired) {
+                    const end = new Date(entry.dateExpired);
+                    return months[start.getMonth()] + " " + start.getFullYear() + " - " + months[end.getMonth()] + " " + end.getFullYear();
+                } else {
+                    return months[start.getMonth()] + " " + start.getFullYear() + " - END DATE";
+                }
+            }
         }
     }
     const workExperienceEntryDateGenerator = (entry) => {
@@ -40,7 +51,9 @@ function CVpdf({ cvPreviewDetails }) {
             return entry.startDate + " - " + entry.endDate;
         }
     }
-    const { hardSkills, softSkills } = skills;
+    const hardSkills = skills.filter(skill => skill.type === "Hard Skill");
+    const softSkills = skills.filter(skill => skill.type === "Soft Skill");
+
     const skillLevelDisplayGenerator = (level) => {
         let display = [];
         let numFilled = {
@@ -118,16 +131,21 @@ function CVpdf({ cvPreviewDetails }) {
                 <p className="section-header">Achievements/Awards</p>
                 {
                     achievementsAwards.map((entry, key) => {
-                        return (
-                            <div key={key} className="entry d-flex justify-content-between">
-                                <div>
-                                    <p><b>{entry.name}</b>, <i>{entry.awarder}</i></p>
+                        // Only display active entries
+                        if (entry.active === true) {
+                            return (
+                                <div key={key} className="entry d-flex justify-content-between">
+                                    <div>
+                                        <p><b>{entry.name ? entry.name + "," : ""}</b> <i>{entry.awarder ? entry.awarder : ""}</i></p>
+                                    </div>
+                                    <div className="align-right">
+                                        <p>{achievementsAwardsEntryDateGenerator(entry)}</p>
+                                    </div>
                                 </div>
-                                <div className="align-right">
-                                    <p>{achievementsAwardsEntryDateGenerator(entry)}</p>
-                                </div>
-                            </div>
-                        )
+                            )
+                        } else {
+                            return (<div key={key}></div>)
+                        }
                     })
                 }
             </div>
@@ -186,8 +204,7 @@ function CVpdf({ cvPreviewDetails }) {
                                         <div className="d-flex">
                                             <p className="col-5">{skill.name}</p>
                                             <div className="col-7 d-flex">
-                                                {skillLevelDisplayGenerator(skill.level)}
-                                                <p className="ms-1">({skill.level})</p>
+                                                {skillLevelDisplayGenerator(skill.level)} <p className="ms-1">({skill.level})</p>
                                             </div>
                                         </div>
                                     </li>

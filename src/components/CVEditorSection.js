@@ -4,22 +4,21 @@ import EducationEntry from "./CVEditorEntries/EducationEntry";
 import AchievementAwardEntry from "./CVEditorEntries/AchievementAwardEntry";
 import WorkExperienceEntry from "./CVEditorEntries/WorkExperienceEntry";
 import SkillEntry from "./CVEditorEntries/SkillEntry";
-import { educationEntryTemplate } from "../data/entryTemplates";
+import { educationEntryTemplate, achievementAwardEntryTemplate, workExperienceEntryTemplate, skillEntryTemplate } from "../data/entryTemplates";
 
 function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
     const entryDetails = {
         "Personal Details": {
             component: PersonalDetailsEntry,
             id: "PersonalDetails",
+            cvDetailsKey: "header",
             sectionTag: "PD"
         },
         "Education": {
             component: EducationEntry,
             id: "Education",
+            cvDetailsKey: "education",
             sectionTag: "ED",
-            clear: (id) => {
-                // code
-            },
             deactivate: (id) => {
                 setCvDetails({
                     ...cvDetails,
@@ -33,51 +32,71 @@ function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
                     ]
                 });
             },
-            addEntryText: "Add educational experience"
+            addEntryText: "Add educational experience",
+            template: educationEntryTemplate
         },
         "Achievements & Awards": {
             component: AchievementAwardEntry,
             id: "AchievementsAwards",
+            cvDetailsKey: "achievementsAwards",
             sectionTag: "AA",
-            addEntryText: "Add achievement/award"
+            deactivate: (id) => {
+                setCvDetails({
+                    ...cvDetails,
+                    achievementsAwards: [
+                        ...cvDetails.achievementsAwards.slice(0, id),
+                        {
+                            ...cvDetails.achievementsAwards[id],
+                            active: false,
+                        },
+                        ...cvDetails.achievementsAwards.slice(id + 1)
+                    ]
+                });
+            },
+            addEntryText: "Add achievement/award",
+            template: achievementAwardEntryTemplate
         },
         "Work Experience": {
             component: WorkExperienceEntry,
             id: "WorkExperience",
+            cvDetailsKey: "workExperience",
             sectionTag: "WK",
-            addEntryText: "Add work experience"
+            addEntryText: "Add work experience",
+            template: workExperienceEntryTemplate
         },
         "Skills": {
             component: SkillEntry,
             id: "Skills",
+            cvDetailsKey: "skills",
             sectionTag: "SK",
-            addEntryText: "Add skill"
+            addEntryText: "Add skill",
+            template: skillEntryTemplate
         }
     }
 
     const EntryComponent = entryDetails[sectionName]['component'];
     const id = entryDetails[sectionName]['id'];
     const sectionTag = entryDetails[sectionName]['sectionTag'];
-    const addEntryButton = (sectionTag !== "PD") ? ( <div className={"add-entry d-flex align-content-center"} onClick={() => handleEntryAddition(sectionTag)}>
-        <i className="bi-plus-circle me-1" />
-        <p>{entryDetails[sectionName]['addEntryText']}</p>
-    </div> ) : <></>
+    const addEntryButton = (sectionTag !== "PD") ?
+        (<div className={"add-entry d-flex align-content-center"} onClick={() => handleEntryAddition(sectionName)}>
+            <i className="bi-plus-circle me-1" />
+            <p>{entryDetails[sectionName]['addEntryText']}</p>
+        </div>) : <></>
 
     // Handle entry addition
     const [entryComponents, setEntryComponents] = useState([EntryComponent]);
-    const handleEntryAddition = (sectionTag) => {
+    const handleEntryAddition = (sectionName) => {
         // Add entry to array of entries for section
         setEntryComponents([...entryComponents, EntryComponent]);
 
-        // Add entry to array of entries in state in CVEditor
-        const entryTemplateDictionary = {
-            "ED": educationEntryTemplate
-        }
+        // Update cvDetails state manager
+        const cvDetailsKey = entryDetails[sectionName].cvDetailsKey;
+        const template = entryDetails[sectionName].template;
         setCvDetails({
             ...cvDetails,
-            education: [
-                ...cvDetails.education,
-                { ...entryTemplateDictionary[sectionTag] }
+            [cvDetailsKey]: [
+                ...cvDetails[cvDetailsKey],
+                { ...template }
             ]
         });
     }
@@ -104,15 +123,22 @@ function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
                 <div className="accordion-body">
                     {
                         entryComponents.map((SingleEntryComponent, key) => {
-                            // Only render active entries
-                            if ((cvDetails.education[key].active) === true) {
+                            const cvDetailsKey = entryDetails[sectionName].cvDetailsKey;
+                            const entry = cvDetails[cvDetailsKey][key];
+                            // Render header as provided
+                            if (sectionTag === "PD") {
                                 return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryClear={handleEntryClear} handleEntryDeletion={handleEntryDeletion} cvDetails={cvDetails} setCvDetails={setCvDetails} />
                             } else {
-                                return <div key={key}></div>
+                                // Only render active entries
+                                if (entry.active) {
+                                    return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryClear={handleEntryClear} handleEntryDeletion={handleEntryDeletion} cvDetails={cvDetails} setCvDetails={setCvDetails} />
+                                } else {
+                                    return <div key={key}></div>
+                                }
                             }
                         })
                     }
-                    { addEntryButton }
+                    {addEntryButton}
                 </div>
             </div>
         </div>

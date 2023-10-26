@@ -3,7 +3,7 @@ import '../styles/CVEditor.css';
 import TitleBar from './TitleBar';
 import CVEditorSection from "./CVEditorSection";
 import CVPreview from "./CVPreview";
-import { educationEntryTemplate } from "../data/entryTemplates";
+import { educationEntryTemplate, achievementAwardEntryTemplate, workExperienceEntryTemplate, skillEntryTemplate } from "../data/entryTemplates";
 
 function CVEditorTrial({ cvName }) {
     // Handle state + Connect editor and preview
@@ -23,17 +23,20 @@ function CVEditorTrial({ cvName }) {
         education: [
             {...educationEntryTemplate}
         ],
-        achievementsAwards: [],
-        workExperience: [],
-        skills: {
-            hardSkills: [],
-            softSkills: []
-        }
+        achievementsAwards: [
+            {...achievementAwardEntryTemplate}
+        ],
+        workExperience: [
+            {...workExperienceEntryTemplate}
+        ],
+        skills: [
+            {...skillEntryTemplate}
+        ]
     })
 
     // For debugging
     useEffect(() => {
-        // console.log(cvDetails.header);
+        console.log(cvDetails);
     }, [cvDetails]);
 
     return (

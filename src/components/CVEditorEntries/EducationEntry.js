@@ -32,9 +32,7 @@ function EducationEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion,
             ]
         });
     }
-    // const [country, setCountry] = useState(countryNames[0]);
     const handleSelect = (event, field) => {
-        // setCountry(event.target.value);
         setCvDetails({
             ...cvDetails,
             education: [
