@@ -5,7 +5,7 @@ function CVpdf({ cvPreviewDetails }) {
     const { header, education, achievementsAwards, workExperience, skills } = cvPreviewDetails;
 
     // Handle the different sections' data
-    const { firstName, lastName, city, country, phone, nationality, email, linkedinLink, linkedinUsername } = header;
+    const { firstName, lastName, city, country, phone, nationality, email, linkedinUsername } = header;
     const educationEntryDateGenerator = (entry) => {
         const start = new Date(entry.startDate);
 
@@ -85,7 +85,7 @@ function CVpdf({ cvPreviewDetails }) {
                 <div>
                     <div className="d-flex justify-content-center">
                         <i className="bi-linkedin me-1" />
-                        <a href={linkedinLink}>{linkedinUsername ? linkedinUsername : "linkedin-username"}</a>
+                        <a href={"https://www.linkedin.com/in/"+linkedinUsername} target="_blank" rel="noopener noreferrer">{linkedinUsername ? linkedinUsername : "linkedin-username"}</a>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@ function CVpdf({ cvPreviewDetails }) {
                                     <p>{entry.cgpa ? "Cumulative GPA: " + entry.cgpa + "/4.00" : ""}</p>
                                 </div>
                                 <div className="align-right">
-                                    <p><b>{entry.city ? entry.city : "-"}, {entry.country ? entry.country : "-"}</b></p>
+                                    <p><b>{(!(entry.city) || !(entry.country)) ? "" :  entry.city + "," + entry.country}</b></p>
                                     <p>{educationEntryDateGenerator(entry)}</p>
                                 </div>
                             </div>
@@ -150,6 +150,7 @@ function CVpdf({ cvPreviewDetails }) {
                         )
                     })
                 }
+                { workExperience.length===0 ? <div className="pb-1"></div> : <></> }
             </div>
             <div className="row cv-pdf-skills pb-1 bordered">
                 <p className="section-header">Skills</p>
