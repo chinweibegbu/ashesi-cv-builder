@@ -10,7 +10,7 @@ function App() {
       {/* <LandingPage/> */}
       {/* <SignIn/> */}
       {/* <Dashboard name="Chinwe Ibegbu" /> */}
-      <CVEditor cvName="Untitled-5" />
+      <CVEditor />
     </div>
   );
 }
