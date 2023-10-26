@@ -82,6 +82,19 @@ function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
             id: "Skills",
             cvDetailsKey: "skills",
             sectionTag: "SK",
+            deactivate: (id) => {
+                setCvDetails({
+                    ...cvDetails,
+                    skills: [
+                        ...cvDetails.skills.slice(0, id),
+                        {
+                            ...cvDetails.skills[id],
+                            active: false,
+                        },
+                        ...cvDetails.skills.slice(id + 1)
+                    ]
+                });
+            },
             addEntryText: "Add skill",
             template: skillEntryTemplate
         }

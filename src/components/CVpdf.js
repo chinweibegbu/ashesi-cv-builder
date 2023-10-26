@@ -197,14 +197,18 @@ function CVpdf({ cvPreviewDetails }) {
                         <ul>
                             {
                                 hardSkills.map((skill, key) => {
-                                    return <li key={key}>
-                                        <div className="d-flex">
-                                            <p className="col-5">{skill.name}</p>
-                                            <div className="col-7 d-flex">
-                                                {skillLevelDisplayGenerator(skill.level)} <p className="ms-1">({skill.level})</p>
+                                    if (skill.active && skill.name) {
+                                        return <li key={key}>
+                                            <div className="d-flex">
+                                                <p className="col-5">{skill.name}</p>
+                                                <div className="col-7 d-flex">
+                                                    {skillLevelDisplayGenerator(skill.level)} <p className="ms-1">({skill.level})</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    } else {
+                                        return (<div key={key}></div>)
+                                    }
                                 })
                             }
                         </ul>
@@ -214,14 +218,18 @@ function CVpdf({ cvPreviewDetails }) {
                         <ul>
                             {
                                 softSkills.map((skill, key) => {
-                                    return <li key={key}>
-                                        <div className="d-flex">
-                                            <p className="col-5">{skill.name}</p>
-                                            <div className="col-7 d-flex">
-                                                {skillLevelDisplayGenerator(skill.level)} <p className="ms-1">({skill.level})</p>
+                                    if (skill.active && skill.name) {
+                                        return <li key={key}>
+                                            <div className="d-flex">
+                                                <p className="col-5">{skill.name}</p>
+                                                <div className="col-7 d-flex">
+                                                    {skillLevelDisplayGenerator(skill.level)} <p className="ms-1">({skill.level})</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    } else {
+                                        return (<div key={key}></div>)
+                                    }
                                 })
                             }
                         </ul>
