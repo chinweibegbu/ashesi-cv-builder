@@ -1,4 +1,4 @@
-import React, { cloneElement } from "react";
+import React from "react";
 import { months } from "../data/months";
 
 function CVpdf({ cvPreviewDetails }) {
@@ -85,7 +85,7 @@ function CVpdf({ cvPreviewDetails }) {
                 <div>
                     <div className="d-flex justify-content-center">
                         <i className="bi-linkedin me-1" />
-                        <a href={"https://www.linkedin.com/in/"+linkedinUsername} target="_blank" rel="noopener noreferrer">{linkedinUsername ? linkedinUsername : "linkedin-username"}</a>
+                        <a href={"https://www.linkedin.com/in/" + linkedinUsername} target="_blank" rel="noopener noreferrer">{linkedinUsername ? linkedinUsername : "linkedin-username"}</a>
                     </div>
                 </div>
             </div>
@@ -93,19 +93,24 @@ function CVpdf({ cvPreviewDetails }) {
                 <p className="section-header">Education</p>
                 {
                     education.map((entry, key) => {
-                        return (
-                            <div key={key} className=" entry d-flex justify-content-between mb-1">
-                                <div>
-                                    <p><b>{entry.name}</b></p>
-                                    <p>{entry.degree} {entry.major}</p>
-                                    <p>{entry.cgpa ? "Cumulative GPA: " + entry.cgpa + "/4.00" : ""}</p>
+                        // Only display active entries
+                        if (entry.active === true) {
+                            return (
+                                <div key={key} className=" entry d-flex justify-content-between mb-1">
+                                    <div>
+                                        <p><b>{entry.name}</b></p>
+                                        <p>{entry.degree} {entry.major}</p>
+                                        <p>{entry.cgpa ? "Cumulative GPA: " + entry.cgpa + "/4.00" : ""}</p>
+                                    </div>
+                                    <div className="align-right">
+                                        <p><b>{(!(entry.city) || !(entry.country)) ? "" : entry.city + "," + entry.country}</b></p>
+                                        <p>{educationEntryDateGenerator(entry)}</p>
+                                    </div>
                                 </div>
-                                <div className="align-right">
-                                    <p><b>{(!(entry.city) || !(entry.country)) ? "" :  entry.city + "," + entry.country}</b></p>
-                                    <p>{educationEntryDateGenerator(entry)}</p>
-                                </div>
-                            </div>
-                        )
+                            )
+                        } else {
+                            return (<div key={key}></div>)
+                        }
                     })
                 }
             </div>
@@ -150,7 +155,7 @@ function CVpdf({ cvPreviewDetails }) {
                         )
                     })
                 }
-                { workExperience.length===0 ? <div className="pb-1"></div> : <></> }
+                {workExperience.length === 0 ? <div className="pb-1"></div> : <></>}
             </div>
             <div className="row cv-pdf-skills pb-1 bordered">
                 <p className="section-header">Skills</p>

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { majors } from '../../data/majors';
 import { educationLevels } from '../../data/educationLevels';
 import { countryNames } from '../../data/countryNames';
 
-function EducationEntry({ id, sectionTag, handleEntryDeletion, handleEntryAddition, cvDetails, setCvDetails }) {
+function EducationEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, handleEntryAddition, cvDetails, setCvDetails }) {
     const [ongoing, setOngoing] = useState(false);
     const handleClick = () => {
         setOngoing(prevState => !prevState);
@@ -49,10 +49,6 @@ function EducationEntry({ id, sectionTag, handleEntryDeletion, handleEntryAdditi
     }
 
     const makeInvisible = (handleEntryAddition) ? "" : " invisible";
-
-    useEffect(() => {
-        console.log(cvDetails);
-    }, []);
 
     return (
         <div id={id}>
@@ -113,8 +109,8 @@ function EducationEntry({ id, sectionTag, handleEntryDeletion, handleEntryAdditi
                 </div>
                 
                 <div className="form-group col-12 d-flex justify-content-end align-items-end mb-2">
-                    <button className='button clear-button btn me-1'>Clear Entry</button>
-                    <button className='button delete-button btn' onClick={() => handleEntryDeletion(id)}>Delete Entry</button>
+                    {/* <button className='button clear-button btn me-1' onClick={(event) => handleEntryClear(event, id, "Education")}>Clear Entry</button> */}
+                    <button className='button delete-button btn' onClick={(event) => handleEntryDeletion(event, id, "Education")}>Delete Entry</button>
                 </div>
             </form>
             <div className={"add-entry d-flex align-content-center mt-1" + makeInvisible} onClick={() => handleEntryAddition(sectionTag)}>

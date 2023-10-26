@@ -2,10 +2,11 @@ export const educationEntryTemplate = {
     name: "",
     degree: "",
     major: "",
-    cgpa: null,
+    cgpa: "",
     city: "",
     country: "Afghanistan",
     startDate: "",
     ongoing: false,
-    endDate: ""
+    endDate: "",
+    active: true
 }

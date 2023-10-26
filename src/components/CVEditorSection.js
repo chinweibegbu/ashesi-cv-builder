@@ -16,7 +16,23 @@ function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
         "Education": {
             component: EducationEntry,
             id: "Education",
-            sectionTag: "ED"
+            sectionTag: "ED",
+            clear: (id) => {
+                // code
+            },
+            deactivate: (id) => {
+                setCvDetails({
+                    ...cvDetails,
+                    education: [
+                        ...cvDetails.education.slice(0, id),
+                        {
+                            ...cvDetails.education[id],
+                            active: false,
+                        },
+                        ...cvDetails.education.slice(id + 1)
+                    ]
+                });
+            }
         },
         "Achievements & Awards": {
             component: AchievementAwardEntry,
@@ -47,22 +63,26 @@ function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
 
         // Add entry to array of entries in state in CVEditor
         const entryTemplateDictionary = {
-            "ED": educationEntryTemplate            
+            "ED": educationEntryTemplate
         }
         setCvDetails({
             ...cvDetails,
             education: [
                 ...cvDetails.education,
-                {...entryTemplateDictionary[sectionTag]}
+                { ...entryTemplateDictionary[sectionTag] }
             ]
         });
     }
 
     // Handle entry clear
+    const handleEntryClear = (event) => {
+        // code
+    }
 
     // Handle entry deletion
-    const handleEntryDeletion = () => {
-        // code
+    const handleEntryDeletion = (event, id, sectionName) => {
+        event.preventDefault();
+        entryDetails[sectionName].deactivate(id);
     }
 
     return (
@@ -76,10 +96,15 @@ function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
                 <div className="accordion-body">
                     {
                         entryComponents.map((SingleEntryComponent, key) => {
-                            if (key === (entryComponents.length - 1)) {
-                                return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={handleEntryAddition} cvDetails={cvDetails} setCvDetails={setCvDetails} />
+                            // Only render active entries
+                            if ((cvDetails.education[key].active) === true) {
+                                if (key === (entryComponents.length - 1)) {
+                                    return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryClear={handleEntryClear} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={handleEntryAddition} cvDetails={cvDetails} setCvDetails={setCvDetails} />
+                                } else {
+                                    return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryClear={handleEntryClear} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={null} cvDetails={cvDetails} setCvDetails={setCvDetails} />
+                                }
                             } else {
-                                return <SingleEntryComponent key={key} id={key} sectionTag={sectionTag} handleEntryDeletion={handleEntryDeletion} handleEntryAddition={null} cvDetails={cvDetails} setCvDetails={setCvDetails} />
+                                return <div key={key}></div>
                             }
                         })
                     }
