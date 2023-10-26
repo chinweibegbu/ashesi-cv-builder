@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { skillLevels } from "../../data/skillLevels";
 
 function SkillEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
