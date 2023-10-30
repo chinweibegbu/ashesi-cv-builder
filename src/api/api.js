@@ -1,25 +1,26 @@
 import express from 'express';
+
+// Import middleware libraries
 import bodyParser from 'body-parser';
+import cors from 'cors';
+import errorHandler from 'errorhandler';
+import morgan from 'morgan';
 
-// Initialising Express router
-const router = express.Router();
-
-// Creating app routes
-// router.get('/', getCVs);
-// router.get('/:id', getCVById);
-// router.post('/', createCV);
-// router.patch('/:id', updateCVById);
-// router.delete('/:id', deleteCVById);
+// Import app routers
+import userRouter from './routers/user-router.js';
 
 // Create Express app
 const app = express();
 const PORT = process.env.PORT || 3005;
 
-// Middleware set
+// Setup middleware
 app.use(bodyParser.json());
+app.use(cors());
+app.use(errorHandler());
+app.use(morgan('tiny'));
 
-// Connect main application router
-app.use('/api', router);
+// Connect app routers
+app.use('/api/users', userRouter);
 
 // Running the Express server
 const appLink = PORT === 10000 ? "https://zuri-chinwe-stage2.onrender.com" : "http://localhost" ;

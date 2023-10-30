@@ -12,7 +12,7 @@ const updateCVByIdQueries = {
 
 const deleteCVByIdQuery = "DELETE FROM persons WHERE id = $1;"
 
-export const setupQueries = {
+export const CVQueries = {
     getCVsQuery,
     getCVByIdQuery,
     createCVQuery,
