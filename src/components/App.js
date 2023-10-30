@@ -1,10 +1,10 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import '../styles/App.css';
-import LandingPage from './LandingPage';
-import SignIn from './SignIn';
-import Dashboard from './Dashboard';
-import CVEditor from './CVEditor';
+import LandingPage from './LandingPage.js';
+import SignIn from './SignIn.js';
+import Dashboard from './Dashboard.js';
+import CVEditor from './CVEditor.js';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" action={async ({ request }) => {
-          const formData = await request.formData();
+          // const formData = await request.formData();
           // return updateTeam(formData);
         }} element={<SignIn />} />
         <Route path="/dashboard" element={<Dashboard name={"Chinwe Ibegbu"} />} />

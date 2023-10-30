@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import PersonalDetailsEntry from "./CVEditorEntries/PersonalDetailsEntry";
-import EducationEntry from "./CVEditorEntries/EducationEntry";
-import AchievementAwardEntry from "./CVEditorEntries/AchievementAwardEntry";
-import WorkExperienceEntry from "./CVEditorEntries/WorkExperienceEntry";
-import SkillEntry from "./CVEditorEntries/SkillEntry";
-import { educationEntryTemplate, achievementAwardEntryTemplate, workExperienceEntryTemplate, skillEntryTemplate } from "../data/entryTemplates";
+import PersonalDetailsEntry from "./CVEditorEntries/PersonalDetailsEntry.js";
+import EducationEntry from "./CVEditorEntries/EducationEntry.js";
+import AchievementAwardEntry from "./CVEditorEntries/AchievementAwardEntry.js";
+import WorkExperienceEntry from "./CVEditorEntries/WorkExperienceEntry.js";
+import SkillEntry from "./CVEditorEntries/SkillEntry.js";
+import { educationEntryTemplate, achievementAwardEntryTemplate, workExperienceEntryTemplate, skillEntryTemplate } from "../data/entryTemplates.js";
 
 function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails }) {
     const entryDetails = {

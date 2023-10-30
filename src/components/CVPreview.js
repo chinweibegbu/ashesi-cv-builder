@@ -1,7 +1,6 @@
 import React from "react";
 import '../styles/CVPreview.css';
-import CVpdf from "./CVpdf";
-import { cvStubData } from '../data/cvStubData';
+import CVpdf from "./CVpdf.js";
 
 function CVPreview({ cvDetails }) {
     return (

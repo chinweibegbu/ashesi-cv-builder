@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { countryNames } from '../../data/countryNames';
+import { countryNames } from '../../data/countryNames.js';
 
 function PersonalDetailsEntry({ sectionTag, cvDetails, setCvDetails }) {
     const handleChange = (event, field) => {

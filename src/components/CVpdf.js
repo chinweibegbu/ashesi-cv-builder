@@ -1,5 +1,5 @@
 import React from "react";
-import { months } from "../data/months";
+import { months } from "../data/months.js";
 
 function CVpdf({ cvPreviewDetails }) {
     const { header, education, achievementsAwards, workExperience, skills } = cvPreviewDetails;

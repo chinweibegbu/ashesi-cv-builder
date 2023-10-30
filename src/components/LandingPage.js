@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../styles/LandingPage.css';
-import TitleBar from "./TitleBar";
+import TitleBar from "./TitleBar.js";
 
 function LandingPage() {
     return (

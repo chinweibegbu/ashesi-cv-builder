@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import '../styles/SignIn.css';
-import TitleBar from "./TitleBar";
+import TitleBar from "./TitleBar.js";
 
 function SignIn() {
     const [emailAddress, setEmailAddress] = useState("");

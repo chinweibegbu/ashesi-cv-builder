@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import '../styles/CVEditor.css';
-import TitleBar from './TitleBar';
-import CVEditorSection from "./CVEditorSection";
-import CVPreview from "./CVPreview";
-import { educationEntryTemplate, achievementAwardEntryTemplate, workExperienceEntryTemplate, skillEntryTemplate } from "../data/entryTemplates";
+import TitleBar from './TitleBar.js';
+import CVEditorSection from "./CVEditorSection.js";
+import CVPreview from "./CVPreview.js";
+import { educationEntryTemplate, achievementAwardEntryTemplate, workExperienceEntryTemplate, skillEntryTemplate } from "../data/entryTemplates.js";
 
 function CVEditor() {
     // Handle state + Connect editor and preview

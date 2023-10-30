@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { countryNames } from "../../data/countryNames";
+import { countryNames } from "../../data/countryNames.js";
 
 function WorkExperienceEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
     const [ongoing, setOngoing] = useState(false);

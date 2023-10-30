@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../styles/Dashboard.css';
-import TitleBar from "./TitleBar";
-import CVGroupDisplay from "./CVGroupDisplay";
-import { cvData } from "../data/cv-data";
+import TitleBar from "./TitleBar.js";
+import CVGroupDisplay from "./CVGroupDisplay.js";
+import { cvData } from "../data/cv-data.js";
 
 function Dashboard({ name }) {
     const CVs = cvData;

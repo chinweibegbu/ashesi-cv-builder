@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { majors } from '../../data/majors';
-import { educationLevels } from '../../data/educationLevels';
-import { countryNames } from '../../data/countryNames';
+import { majors } from '../../data/majors.js';
+import { educationLevels } from '../../data/educationLevels.js';
+import { countryNames } from '../../data/countryNames.js';
 
 function EducationEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
     const [ongoing, setOngoing] = useState(false);

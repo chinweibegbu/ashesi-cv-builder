@@ -1,6 +1,6 @@
 import React from "react";
 import '../styles/CVGroupDisplay.css';
-import CVDisplay from "./CVDisplay";
+import CVDisplay from "./CVDisplay.js";
 
 function CVGroupDisplay({ subHeadingText, allCVDetails }) {
 
