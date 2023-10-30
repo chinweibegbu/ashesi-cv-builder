@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import '../styles/SignIn.css';
 import TitleBar from "./TitleBar";
 
@@ -34,7 +35,9 @@ function SignIn() {
                         <label>Password:</label>
                         <input type="password" id="login-password" value={password} onChange={handlePasswordChange}></input>
                     </div>
-                    <input className="button btn btn-lg mt-3" type="submit" value={"Log In"}/>
+                    <Link to="../dashboard">
+                        <input className="button btn btn-lg mt-3" type="submit" value={"Log In"} />
+                    </Link>
                 </form>
             </div>
         </>

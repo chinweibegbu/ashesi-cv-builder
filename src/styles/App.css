@@ -12,6 +12,11 @@
     color: #FFFFFF;
 }
 
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
 .button:hover {
     /* border: solid 1px #8A3D40;
     background-color: transparent;

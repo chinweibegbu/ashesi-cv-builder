@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import '../styles/LandingPage.css';
 import TitleBar from "./TitleBar";
 
@@ -14,9 +15,9 @@ function LandingPage() {
                     <p className="landing-page-subtext mt-1">
                         With a bunch more features and a lot less hassle!
                     </p>
-                    <button className="landing-page-button button btn btn-lg">
+                    <Link to="./signin" className="landing-page-button button btn btn-lg">
                         Log In
-                    </button>
+                    </Link>
                 </div>
                 <div className="col-4 d-flex justify-content-center bordered">
                     <img src="images/landing-page-avatar-darker-tone.png" alt="the company logo" />

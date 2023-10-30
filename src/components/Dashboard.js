@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import '../styles/Dashboard.css';
 import TitleBar from "./TitleBar";
 import CVGroupDisplay from "./CVGroupDisplay";
@@ -16,7 +17,7 @@ function Dashboard({ name }) {
                 {/* Tool Bar */}
                 <div className="tool-bar d-flex justify-content-between">
                     <p>Welcome, <span><b>{name}</b></span></p>
-                    <button className="button btn">Create New CV</button>
+                    <Link to="../create-new-cv" className="button btn">Create New CV</Link>
                 </div>
 
                 {/* Recent CVs */}
