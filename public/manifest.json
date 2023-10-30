@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Ashesi CV Builder",
+  "name": "Ashesi CV Builder",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "images/ashesi-logo-white.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
