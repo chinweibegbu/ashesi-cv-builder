@@ -15,8 +15,9 @@ function CVDisplay({ cvDetails }) {
         } else {
             hour = date.getHours()-12;
         }
+        const minutes = (date.getMinutes()/10 < 1) ? "0"+date.getMinutes() : date.getMinutes();
         const period = (date.getHours() <= 11) ? "AM": "PM";
-        const timeText = hour + ":" + date.getMinutes() + " " + period;
+        const timeText = hour + ":" + minutes + " " + period;
 
 
         return dateText + " @ " + timeText;
