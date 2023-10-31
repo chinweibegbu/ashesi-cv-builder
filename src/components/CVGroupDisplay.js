@@ -1,19 +1,22 @@
 import React from "react";
+import ReactLoading from "react-loading";
 import '../styles/CVGroupDisplay.css';
 import CVDisplay from "./CVDisplay.js";
 
-function CVGroupDisplay({ subHeadingText, allCVDetails }) {
+function CVGroupDisplay({ isLoading, subHeadingText, allCVDetails }) {
 
-    const placeholder = (allCVDetails.length===0) ? <p>No CVs yet</p> : <></>;
+    const placeholder = (!isLoading && allCVDetails.length === 0) ? <p>No CVs yet</p> : <></>;
     return (
         <div className="cv-display-group mt-2 row-flex bordered">
             <p className="row-flex sub-heading">{subHeadingText}</p>
             {placeholder}
             <div className="row-flex d-flex flex-wrap">
-                {   
-                    allCVDetails.map((cvDetails, key) => {
-                        return <CVDisplay key={key} cvDetails={cvDetails} />
-                    })
+                {
+                    isLoading ?
+                        "Loading..." :
+                        allCVDetails.map((cvDetails, key) => {
+                            return <CVDisplay key={key} cvDetails={cvDetails} />
+                        })
                 }
             </div>
         </div>

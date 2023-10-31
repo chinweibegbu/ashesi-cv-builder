@@ -9,6 +9,8 @@ function Dashboard() {
     const [CVs, setCVs] = useState([]);
     const recentCVs = CVs.slice(0, 4);
 
+    const [isLoading, setIsLoading] = useState(true);
+
     const { state } = useLocation();
     const { userId, fullName } = state;
 
@@ -18,6 +20,7 @@ function Dashboard() {
             await axios.get(`http://localhost:3005/api/${userId}/cv`)
                 .then((response) => {
                     setCVs(response.data);
+                    setIsLoading(false);
                 }).catch((err) => {
                     console.log(err);
                 });
@@ -44,12 +47,11 @@ function Dashboard() {
                         className="button btn">
                         Create New CV</Link>
                 </div>
-
                 {/* Recent CVs */}
-                <CVGroupDisplay subHeadingText="Recently Viewed CVs" allCVDetails={recentCVs} />
+                <CVGroupDisplay isLoading={isLoading} subHeadingText="Recently Viewed CVs" allCVDetails={recentCVs} />
 
                 {/* All CVs */}
-                <CVGroupDisplay subHeadingText="All CVs" allCVDetails={CVs} />
+                <CVGroupDisplay isLoading={isLoading} subHeadingText="All CVs" allCVDetails={CVs} />
             </div>
         </>
     );
