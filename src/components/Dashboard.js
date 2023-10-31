@@ -28,7 +28,7 @@ function Dashboard() {
 
         getUsersCVs();
 
-    }, []);
+    });
 
     return (
         <>

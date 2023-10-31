@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import '../styles/CVDisplay.css';
-import { months } from "../data/months.js";
 
 function CVDisplay({ cvDetails }) {
     const getLastEditedText = (timestamp) => {

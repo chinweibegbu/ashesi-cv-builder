@@ -1,5 +1,4 @@
 import React from "react";
-import ReactLoading from "react-loading";
 import '../styles/CVGroupDisplay.css';
 import CVDisplay from "./CVDisplay.js";
 
