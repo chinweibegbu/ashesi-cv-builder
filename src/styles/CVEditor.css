@@ -64,7 +64,7 @@
     color: #00000050;
 }
 
-.cv-editor-details button {
+.cv-editor-details .section-button {
     height: 35px;
     font-size: smaller;
 } 

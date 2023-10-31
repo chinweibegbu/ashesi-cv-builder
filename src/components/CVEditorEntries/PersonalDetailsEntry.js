@@ -39,8 +39,8 @@ function PersonalDetailsEntry({ sectionTag, cvDetails, setCvDetails }) {
                     <input type="text" id={sectionTag + "-email"} placeholder="e.g. chinwe.ibegbu@gmail.com" value={cvDetails.header.email} onChange={(e) => handleChange(e, "email")}></input>
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column">
-                    <label htmlFor={sectionTag + "-phone"}>Phone</label>
-                    <input type="text" id={sectionTag + "-phone"} placeholder="e.g. +234 706 056 0968" value={cvDetails.header.phone} onChange={(e) => handleChange(e, "phone")}></input>
+                    <label htmlFor={sectionTag + "-phoneNumber"}>Phone</label>
+                    <input type="text" id={sectionTag + "-phoneNumber"} placeholder="e.g. +234 706 056 0968" value={cvDetails.header.phoneNumber} onChange={(e) => handleChange(e, "phoneNumber")}></input>
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-city"}>City</label>

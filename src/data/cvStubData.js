@@ -2,7 +2,7 @@ export const cvStubData = {
     header: {
         fullName: "Chinwe Ibegbu",
         address: "19 Alhaja Kofoworola Crescent, Ikeja, Lagos, Nigeria",
-        phone: "+234 706 056 0968",
+        phoneNumber: "+234 706 056 0968",
         nationality: "Nigerian",
         email: "chinwe.ibegbu@gmail.com",
         linkedinLink: "https://www.linkedin.com/in/chinwe-ibegbu/",

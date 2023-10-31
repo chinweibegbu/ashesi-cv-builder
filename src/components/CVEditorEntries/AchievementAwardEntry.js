@@ -74,8 +74,8 @@ function AchievementAwardEntry({ id, sectionTag, handleEntryClear, handleEntryDe
                     <label htmlFor="achievement-ongoing" className='ms-1'>Accomplishment/award yet to expire</label>
                 </div>
                 <div className="form-group col-12 d-flex justify-content-end align-items-end mb-2">
-                    {/* <button className='button clear-button btn me-1' onClick={(event) => handleEntryClear(event, id, "Achievements & Awards")}>Clear Entry</button> */}
-                    <button className='button delete-button btn' onClick={(event) => handleEntryDeletion(event, id, "Achievements & Awards")}>Delete Entry</button>
+                    {/* <button className='button section-button clear-button btn me-1' onClick={(event) => handleEntryClear(event, id, "Achievements & Awards")}>Clear Entry</button> */}
+                    <button className='button section-button delete-button btn' onClick={(event) => handleEntryDeletion(event, id, "Achievements & Awards")}>Delete Entry</button>
                 </div>
             </form>
         </div>

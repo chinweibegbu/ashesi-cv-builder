@@ -55,8 +55,8 @@ function SkillEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvD
                 </div>
 
                 <div className="form-group col-12 d-flex justify-content-end align-items-end mb-2">
-                    {/* <button className='button clear-button btn me-1' onClick={(event) => handleEntryClear(event, id, "Skills")}>Clear Entry</button> */}
-                    <button className='button delete-button btn' onClick={(event) => handleEntryDeletion(event, id, "Skills")}>Delete Entry</button>
+                    {/* <button className='button section-button clear-button btn me-1' onClick={(event) => handleEntryClear(event, id, "Skills")}>Clear Entry</button> */}
+                    <button className='button section-button delete-button btn' onClick={(event) => handleEntryDeletion(event, id, "Skills")}>Delete Entry</button>
                 </div>
             </form>
         </div>

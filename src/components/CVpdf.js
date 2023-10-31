@@ -5,7 +5,7 @@ function CVpdf({ cvPreviewDetails }) {
     const { header, education, achievementsAwards, workExperience, skills } = cvPreviewDetails;
 
     // Handle the different sections' data
-    const { firstName, lastName, city, country, phone, nationality, email, linkedinUsername } = header;
+    const { firstName, lastName, city, country, phoneNumber, nationality, email, linkedinUsername } = header;
     const educationEntryDateGenerator = (entry) => {
         const start = new Date(entry.startDate);
 
@@ -103,7 +103,7 @@ function CVpdf({ cvPreviewDetails }) {
             <div className="row cv-pdf-header entry text-center bordered">
                 <p className="cv-name">{firstName ? firstName : "FirstName"} {lastName ? lastName : "LastName"}</p>
                 <p>{city ? city : "City"}, {country ? country : "Country"}</p>
-                <p>{phone ? phone : "000 000 000"} | {nationality ? nationality : "Nationality"}</p>
+                <p>{phoneNumber ? phoneNumber : "000 000 000"} | {nationality ? nationality : "Nationality"}</p>
                 <p>{email ? email : "email@address.com"}</p>
                 <div>
                     <div className="d-flex justify-content-center">

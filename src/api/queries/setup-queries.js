@@ -9,6 +9,7 @@ const createUserTableQuery = `CREATE TABLE IF NOT EXISTS "User" (
 const createCVTableQuery = `CREATE TABLE IF NOT EXISTS CV (
  id SERIAL PRIMARY KEY,
  name TEXT NOT NULL,
+ lastEdited TIMESTAMP NOT NULL,
  linkToCV TEXT,
  userId INTEGER NOT NULL,
  firstName TEXT NOT NULL,

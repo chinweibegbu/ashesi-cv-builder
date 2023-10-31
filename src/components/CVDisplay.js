@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import '../styles/CVDisplay.css';
+import { months } from "../data/months.js";
 
 function CVDisplay({ cvDetails }) {
-    const name = cvDetails.name,
-        lastEdited = "3 hours ago";
+    const getLastEditedText = (timestamp) => {
+        const date = new Date(timestamp);
+
+        const dateText = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+
+        let hour = "";
+        if (date.getHours() === 0) {
+            hour = "12";
+        } else if (date.getHours() <= 12) {
+            hour = date.getHours();
+        } else {
+            hour = date.getHours()-12;
+        }
+        const period = (date.getHours() <= 11) ? "AM": "PM";
+        const timeText = hour + ":" + date.getMinutes() + " " + period;
+
+
+        return dateText + " @ " + timeText;
+    }
+
+    const name = cvDetails.name;
+    const lastEdited = getLastEditedText(cvDetails.lastedited);
+    
     return (
         <div className="cv-display col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-3 bordered">
             <div className="cv-display-img-preview">

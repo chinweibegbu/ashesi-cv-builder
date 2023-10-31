@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 import '../styles/Dashboard.css';
 import TitleBar from "./TitleBar.js";
 import CVGroupDisplay from "./CVGroupDisplay.js";
-import { cvData } from "../data/cv-data.js";
 
 function Dashboard() {
+    const [CVs, setCVs] = useState([]);
+    const recentCVs = CVs.slice(0, 4);
+
     const { state } = useLocation();
-    const CVs = cvData;
-    const recentCVs = cvData.slice(0, 4);
+    const { userId, fullName } = state;
+
+    useEffect(() => {
+
+        const getUsersCVs = async () => {
+            await axios.get(`http://localhost:3005/api/${userId}/cv`)
+                .then((response) => {
+                    setCVs(response.data);
+                }).catch((err) => {
+                    console.log(err);
+                });
+        }
+
+        getUsersCVs();
+
+    }, []);
 
     return (
         <>
@@ -17,8 +34,15 @@ function Dashboard() {
             <div className="mx-5 my-4">
                 {/* Tool Bar */}
                 <div className="tool-bar d-flex justify-content-between">
-                    <p>Welcome, <span><b>{state.fullName}</b></span></p>
-                    <Link to="../create-new-cv" className="button btn">Create New CV</Link>
+                    <p>Welcome, <span><b>{fullName}</b></span></p>
+                    <Link
+                        to="../create-new-cv"
+                        state={{ 
+                            userId: userId,
+                            fullName: fullName
+                        }}
+                        className="button btn">
+                        Create New CV</Link>
                 </div>
 
                 {/* Recent CVs */}

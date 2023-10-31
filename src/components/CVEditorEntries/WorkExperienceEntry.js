@@ -82,8 +82,8 @@ function WorkExperienceEntry({ id, sectionTag, handleEntryClear, handleEntryDele
                     <label htmlFor="work-ongoing" className='ms-1'>Still working at this company</label>
                 </div>
                 <div className="form-group col-12 d-flex justify-content-end align-items-end mb-2">
-                    {/* <button className='button clear-button btn me-1' onClick={(event) => handleEntryClear(event, id, "Work Experience")}>Clear Entry</button> */}
-                    <button className='button delete-button btn' onClick={(event) => handleEntryDeletion(event, id, "Work Experience")}>Delete Entry</button>
+                    {/* <button className='button section-button clear-button btn me-1' onClick={(event) => handleEntryClear(event, id, "Work Experience")}>Clear Entry</button> */}
+                    <button className='button section-button delete-button btn' onClick={(event) => handleEntryDeletion(event, id, "Work Experience")}>Delete Entry</button>
                 </div>
             </form>
         </div>
