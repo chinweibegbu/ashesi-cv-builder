@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import '../styles/CVEditor.css';
@@ -7,12 +7,12 @@ import CVEditorSection from "./CVEditorSection.js";
 import CVPreview from "./CVPreview.js";
 import { educationEntryTemplate, achievementAwardEntryTemplate, workExperienceEntryTemplate, skillEntryTemplate } from "../data/entryTemplates.js";
 
-function CVEditor() {
+function CVEditorExisting() {
     const navigate = useNavigate();
 
     // Get userId
     const { state } = useLocation();
-    const { userId, fullName } = state;
+    const { userId, fullName, cvId } = state;
 
     // Handle state + Connect editor and preview
     const [cvDetails, setCvDetails] = useState({
@@ -42,8 +42,8 @@ function CVEditor() {
         ]
     })
 
-    const handleSave = async () => {
-        await axios.post(`http://localhost:3005/api/${userId}/cv`, {
+    const handleUpdate = async () => {
+        await axios.patch(`http://localhost:3005/api/${userId}/cv/${cvId}`, {
             name: cvDetails.cvName,
             lastEdited: new Date(),
             linkToCV: "https://www.google.com",
@@ -59,6 +59,34 @@ function CVEditor() {
             console.log(err);
         });
     }
+
+    useEffect(() => {
+        const getCVData = async () => {
+            await axios.get(`http://localhost:3005/api/${userId}/cv/${cvId}`)
+                .then((response) => {
+                    console.log(response);
+                    setCvDetails({
+                        ...cvDetails,
+                        cvName: response.data.name,
+                        header: {
+                            ...cvDetails.header,
+                            firstName: response.data.firstname,
+                            lastName: response.data.lastname,
+                            city: response.data.city,
+                            country: response.data.country,
+                            phoneNumber: response.data.phonenumber,
+                            nationality: response.data.nationality,
+                            email: response.data.email,
+                            linkedinUsername: response.data.linkedinusername
+                        }
+                    });
+                }).catch((err) => {
+                    console.log(err);
+                });
+        }
+
+        getCVData();
+    }, []);
 
     return (
         <>
@@ -76,7 +104,7 @@ function CVEditor() {
                         <CVEditorSection sectionName={"Skills"} isExpanded={false} cvDetails={cvDetails} setCvDetails={setCvDetails} />
                     </div>
                     <div className="d-flex justify-content-center">
-                        <button className="button btn my-2" onClick={handleSave}>Save CV</button>
+                        <button className="button btn my-2" onClick={handleUpdate}>Update CV</button>
                     </div>
                 </div>
                 <CVPreview cvDetails={cvDetails} />
@@ -85,4 +113,4 @@ function CVEditor() {
     );
 }
 
-export default CVEditor;
+export default CVEditorExisting;

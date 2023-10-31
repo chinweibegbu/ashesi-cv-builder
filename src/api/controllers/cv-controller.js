@@ -20,7 +20,7 @@ export const getCVById = (req, res) => {
         [idToGet],
         (error, results) => {
             if (error) throw error;
-            res.status(200).send(results.rows);
+            res.status(200).send(results.rows[0]);
         }
     );
 }

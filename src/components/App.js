@@ -4,7 +4,8 @@ import '../styles/App.css';
 import LandingPage from './LandingPage.js';
 import SignIn from './SignIn.js';
 import Dashboard from './Dashboard.js';
-import CVEditor from './CVEditor.js';
+import CVEditorNew from './CVEditorNew.js';
+import CVEditorExisting from './CVEditorExisting.js';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/create-new-cv" element={<CVEditor />} />
+        <Route path="/create-new-cv" element={<CVEditorNew />} />
+        <Route path="/edit-cv" element={<CVEditorExisting />} />
       </Routes>
     </div>
   );

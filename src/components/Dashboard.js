@@ -28,7 +28,7 @@ function Dashboard() {
 
         getUsersCVs();
 
-    });
+    }, []);
 
     return (
         <>
@@ -48,10 +48,10 @@ function Dashboard() {
                         Create New CV</Link>
                 </div>
                 {/* Recent CVs */}
-                <CVGroupDisplay isLoading={isLoading} subHeadingText="Recently Viewed CVs" allCVDetails={recentCVs} />
+                <CVGroupDisplay userId={userId} fullName={fullName} isLoading={isLoading} subHeadingText="Recently Viewed CVs" allCVDetails={recentCVs} />
 
                 {/* All CVs */}
-                <CVGroupDisplay isLoading={isLoading} subHeadingText="All CVs" allCVDetails={CVs} />
+                <CVGroupDisplay userId={userId} fullName={fullName} isLoading={isLoading} subHeadingText="All CVs" allCVDetails={CVs} />
             </div>
         </>
     );

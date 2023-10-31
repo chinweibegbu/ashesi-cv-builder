@@ -1,3 +1,12 @@
+.cv-display {
+    cursor: pointer;
+}
+
+.cv-display:hover .cv-display-img-preview {
+    border-color: #8A3D40;
+    border-width: 2px;
+}
+
 .cv-display > * {
     width: 90%
 }

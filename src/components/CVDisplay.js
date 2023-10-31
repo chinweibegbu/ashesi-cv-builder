@@ -1,7 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import '../styles/CVDisplay.css';
 
-function CVDisplay({ cvDetails }) {
+function CVDisplay({ userId, fullName, cvDetails }) {
     const getLastEditedText = (timestamp) => {
         const date = new Date(timestamp);
 
@@ -13,10 +14,10 @@ function CVDisplay({ cvDetails }) {
         } else if (date.getHours() <= 12) {
             hour = date.getHours();
         } else {
-            hour = date.getHours()-12;
+            hour = date.getHours() - 12;
         }
-        const minutes = (date.getMinutes()/10 < 1) ? "0"+date.getMinutes() : date.getMinutes();
-        const period = (date.getHours() <= 11) ? "AM": "PM";
+        const minutes = (date.getMinutes() / 10 < 1) ? "0" + date.getMinutes() : date.getMinutes();
+        const period = (date.getHours() <= 11) ? "AM" : "PM";
         const timeText = hour + ":" + minutes + " " + period;
 
 
@@ -25,9 +26,20 @@ function CVDisplay({ cvDetails }) {
 
     const name = cvDetails.name;
     const lastEdited = getLastEditedText(cvDetails.lastedited);
-    
+
+    const navigate = useNavigate();
+    const handleExistingCVClick = () => {
+        navigate("/edit-cv", {
+            state: {
+                userId: userId,
+                fullName: fullName,
+                cvId: cvDetails.id
+            }
+        });
+    }
+
     return (
-        <div className="cv-display col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-3 bordered">
+        <div className="cv-display col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-3 bordered" onClick={handleExistingCVClick}>
             <div className="cv-display-img-preview">
                 {/* Will hold an image preview of the CV */}
             </div>

@@ -2,7 +2,7 @@ import React from "react";
 import '../styles/CVGroupDisplay.css';
 import CVDisplay from "./CVDisplay.js";
 
-function CVGroupDisplay({ isLoading, subHeadingText, allCVDetails }) {
+function CVGroupDisplay({ userId, fullName, isLoading, subHeadingText, allCVDetails }) {
 
     const placeholder = (!isLoading && allCVDetails.length === 0) ? <p>No CVs yet</p> : <></>;
     return (
@@ -14,7 +14,7 @@ function CVGroupDisplay({ isLoading, subHeadingText, allCVDetails }) {
                     isLoading ?
                         "Loading..." :
                         allCVDetails.map((cvDetails, key) => {
-                            return <CVDisplay key={key} cvDetails={cvDetails} />
+                            return <CVDisplay userId={userId} fullName={fullName} key={key} cvDetails={cvDetails} />
                         })
                 }
             </div>
