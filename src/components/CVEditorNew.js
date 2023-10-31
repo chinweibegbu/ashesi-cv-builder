@@ -25,7 +25,6 @@ function CVEditorNew() {
             phoneNumber: "",
             nationality: "",
             email: "",
-            linkedinLink: "",
             linkedinUsername: ""
         },
         education: [

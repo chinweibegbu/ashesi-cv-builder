@@ -25,7 +25,6 @@ function CVEditorExisting() {
             phoneNumber: "",
             nationality: "",
             email: "",
-            linkedinLink: "",
             linkedinUsername: ""
         },
         education: [
@@ -46,7 +45,6 @@ function CVEditorExisting() {
         await axios.patch(`http://localhost:3005/api/${userId}/cv/${cvId}`, {
             name: cvDetails.cvName,
             lastEdited: new Date(),
-            linkToCV: "https://www.google.com",
             ...cvDetails.header
         }).then((response) => {
             navigate("/dashboard", {
