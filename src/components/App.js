@@ -11,10 +11,7 @@ function App() {
     <div className='App container-fluid no-gutters'>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/signin" action={async ({ request }) => {
-          // const formData = await request.formData();
-          // return updateTeam(formData);
-        }} element={<SignIn />} />
+        <Route path="/signin" element={<SignIn />} />
         <Route path="/dashboard" element={<Dashboard name={"Chinwe Ibegbu"} />} />
         <Route path="/create-new-cv" element={<CVEditor />} />
       </Routes>

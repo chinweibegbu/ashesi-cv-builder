@@ -6,8 +6,8 @@ const userRouter = express.Router();
 
 // Creating routes
 userRouter.get('/', getUsers);
-userRouter.get('/validate', checkIfUserExists);
 userRouter.get('/:id', getUserById);
 userRouter.post('/', createUser);
+userRouter.post('/validate', checkIfUserExists);
 
 export default userRouter;
