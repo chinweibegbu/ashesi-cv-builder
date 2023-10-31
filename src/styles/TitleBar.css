@@ -14,7 +14,10 @@
 }
 
 .title-bar-main {
-    align-items: center;
     background-color: #8A3D40;
     padding: 10px 20px;
+}
+
+.logout-link {
+    cursor: pointer;
 }
