@@ -19,7 +19,12 @@ function SignIn() {
         }).then((response) => {
             console.log(response);
             if (response.status === 200) {
-                navigate("/dashboard");
+                navigate("/dashboard", { 
+                    state: { 
+                        userId: response.data.id, 
+                        fullName: response.data.fullname
+                    } 
+                });
             }
         }).catch((err) => {
             if (err.response.status === 401) {

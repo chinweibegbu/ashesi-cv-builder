@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/dashboard" element={<Dashboard name={"Chinwe Ibegbu"} />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create-new-cv" element={<CVEditor />} />
       </Routes>
     </div>

@@ -44,7 +44,7 @@ export const checkIfUserExists = (req, res) => {
         (error, results) => {
             if (error) throw error;
             if (results.rows.length === 1) {
-                res.status(200).send("SUCCESS: User validated");
+                res.status(200).send(results.rows[0]);
             } else {
                 res.status(401).send("ERROR: Username or password is incorrect");
             }

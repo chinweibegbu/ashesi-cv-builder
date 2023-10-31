@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import '../styles/Dashboard.css';
 import TitleBar from "./TitleBar.js";
 import CVGroupDisplay from "./CVGroupDisplay.js";
 import { cvData } from "../data/cv-data.js";
 
-function Dashboard({ name }) {
+function Dashboard() {
+    const { state } = useLocation();
     const CVs = cvData;
     const recentCVs = cvData.slice(0, 4);
 
@@ -16,7 +17,7 @@ function Dashboard({ name }) {
             <div className="mx-5 my-4">
                 {/* Tool Bar */}
                 <div className="tool-bar d-flex justify-content-between">
-                    <p>Welcome, <span><b>{name}</b></span></p>
+                    <p>Welcome, <span><b>{state.fullName}</b></span></p>
                     <Link to="../create-new-cv" className="button btn">Create New CV</Link>
                 </div>
 
