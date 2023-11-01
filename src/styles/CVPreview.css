@@ -32,6 +32,10 @@
     font-size: 8.5px;
 }
 
+.cv-pdf a {
+    color: #000000;
+}
+
 .cv-pdf ul {
     padding-left: 14px;
 }
