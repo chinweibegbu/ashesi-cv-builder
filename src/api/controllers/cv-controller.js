@@ -37,50 +37,51 @@ export const getCVById = (req, res) => {
                         throw error;
                     } else {
                         cv.education = educationResults.rows;
+
+                        // Add achievement entries
+                        pool.query(
+                            achievementAwardEntryQueries.getAchievementAwardEntrysQuery,
+                            [idToGet],
+                            (error, achievementAwardResults) => {
+                                if (error) {
+                                    throw error;
+                                } else {
+                                    cv.achievementAwards = achievementAwardResults.rows;
+
+                                    // Add work entries
+                                    pool.query(
+                                        workExperienceEntryQueries.getWorkExperienceEntrysQuery,
+                                        [idToGet],
+                                        (error, workExperienceResults) => {
+                                            if (error) {
+                                                throw error;
+                                            } else {
+                                                cv.workExperience = workExperienceResults.rows;
+
+                                                // Add skill entries
+                                                pool.query(
+                                                    skillEntryQueries.getSkillEntrysQuery,
+                                                    [idToGet],
+                                                    (error, skillResults) => {
+                                                        if (error) {
+                                                            throw error;
+                                                        } else {
+                                                            cv.skills = skillResults.rows;
+
+                                                            // Return completely loaded CV
+                                                            res.status(200).send(cv);
+                                                        }
+                                                    }
+                                                );
+                                            }
+                                        }
+                                    );
+                                }
+                            }
+                        );
                     }
                 }
             );
-
-            // Add achievement entries
-            pool.query(
-                achievementAwardEntryQueries.getAchievementAwardEntrysQuery,
-                [idToGet],
-                (error, achievementAwardResults) => {
-                    if (error) {
-                        throw error;
-                    } else {
-                        cv.achivementAwards = achievementAwardResults.rows;
-                    }
-                }
-            );
-
-            // Add work entries
-            pool.query(
-                workExperienceEntryQueries.getWorkExperienceEntrysQuery,
-                [idToGet],
-                (error, workExperienceResults) => {
-                    if (error) {
-                        throw error;
-                    } else {
-                        cv.workExperience = workExperienceResults.rows;
-                    }
-                }
-            );
-
-            // Add skill entries
-            pool.query(
-                skillEntryQueries.getSkillEntrysQuery,
-                [idToGet],
-                (error, skillResults) => {
-                    if (error) {
-                        throw error;
-                    } else {
-                        cv.skills = skillResults.rows;
-                    }
-                }
-            );
-
-            res.status(200).send(cv);
         }
     );
 }
