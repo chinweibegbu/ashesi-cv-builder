@@ -2,7 +2,7 @@ const getCVsQuery = "SELECT * FROM CV WHERE userId = $1";
 
 const getCVByIdQuery = "SELECT * FROM CV WHERE id = $1";
 
-const createCVQuery = "INSERT INTO CV(name, lastEdited, linkToCV, userId, firstName, lastName, email, phoneNumber, city, country, nationality, linkedinUsername) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);"
+const createCVQuery = "INSERT INTO CV(name, lastEdited, linkToCV, userId, firstName, lastName, email, phoneNumber, city, country, nationality, linkedinUsername) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING id;"
 
 const updateCVByIdQueries = {
     name: "UPDATE CV SET name = $1 WHERE id = $2;",

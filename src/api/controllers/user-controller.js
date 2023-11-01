@@ -30,7 +30,6 @@ export const createUser = (req, res) => {
         [newUser.fullName, newUser.email, newUser.password],
         (error, results) => {
             if (error) throw error;
-            console.log(results);
             res.status(201).send(`User named '${newUser.fullName}' successfully created!`);
         }
     );

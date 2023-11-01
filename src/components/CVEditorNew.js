@@ -46,7 +46,11 @@ function CVEditorNew() {
             name: cvDetails.cvName,
             lastEdited: new Date(),
             linkToCV: "https://www.google.com",
-            ...cvDetails.header
+            ...cvDetails.header,
+            education: cvDetails.education,
+            achievementAwards: cvDetails.achievementsAwards,
+            workExperience: cvDetails.workExperience,
+            skills: cvDetails.skills,
         }).then((response) => {
             navigate("/dashboard", {
                 state: {

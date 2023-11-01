@@ -30,7 +30,6 @@ export const createPerson = (req, res) => {
         [newPerson.fullname, newPerson.age, newPerson.address],
         (error, results) => {
             if (error) throw error;
-            console.log(results);
             res.status(201).send(`Person named '${newPerson.fullname}' successfully created!`);
         }
     );

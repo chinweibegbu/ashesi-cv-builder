@@ -31,8 +31,8 @@ const createEducationEntryTableQuery = `CREATE TABLE IF NOT EXISTS EducationEntr
  cgpa DECIMAL NOT NULL ,
  city TEXT NOT NULL ,
  country TEXT NOT NULL ,
- startDate TIMESTAMP NOT NULL ,
- endDate TIMESTAMP ,
+ startDate DATE  ,
+ endDate DATE ,
  ongoing BOOLEAN NOT NULL ,
  FOREIGN KEY (cvId) REFERENCES CV(id)
 )`;
@@ -42,8 +42,8 @@ const createAchievementAwardEntryTableQuery = `CREATE TABLE IF NOT EXISTS Achiev
  cvId INTEGER NOT NULL ,
  name TEXT NOT NULL ,
  awarder TEXT NOT NULL ,
- dateAwarded TIMESTAMP NOT NULL ,
- dateExpired TIMESTAMP ,
+ dateAwarded DATE  ,
+ dateExpired DATE ,
  ongoing BOOLEAN NOT NULL ,
  FOREIGN KEY (cvId) REFERENCES CV(id)
 )`;
@@ -54,9 +54,9 @@ const createWorkExperienceEntryTableQuery = `CREATE TABLE IF NOT EXISTS WorkExpe
  companyName TEXT NOT NULL ,
  title TEXT NOT NULL ,
  companyCity TEXT NOT NULL ,
- companyCountry DECIMAL NOT NULL ,
- startDate TIMESTAMP NOT NULL ,
- endDate TIMESTAMP ,
+ companyCountry TEXT NOT NULL ,
+ startDate DATE  ,
+ endDate DATE ,
  ongoing BOOLEAN NOT NULL ,
  FOREIGN KEY (cvId) REFERENCES CV(id)
 )`;
@@ -66,7 +66,7 @@ const createSkillEntryTableQuery = `CREATE TABLE IF NOT EXISTS SkillEntry (
  cvId INTEGER NOT NULL ,
  name TEXT NOT NULL ,
  level TEXT NOT NULL ,
- type TIMESTAMP NOT NULL ,
+ type TEXT NOT NULL ,
  FOREIGN KEY (cvId) REFERENCES CV(id)
 )`;
 

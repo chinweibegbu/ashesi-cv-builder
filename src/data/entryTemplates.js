@@ -1,13 +1,13 @@
 export const educationEntryTemplate = {
-    name: "",
+    institutionName: "",
     degree: "",
     major: "",
-    cgpa: "",
+    cgpa: 0.0,
     city: "",
     country: "Afghanistan",
-    startDate: "",
+    startDate: null,
     ongoing: false,
-    endDate: "",
+    endDate: null,
     active: true
 }
 
@@ -15,9 +15,9 @@ export const achievementAwardEntryTemplate = {
     name: "",
     awarder: "",
     durationType: "One-time",
-    dateAwarded: "",
+    dateAwarded: null,
     ongoing: false,
-    dateExpired: "",
+    dateExpired: null,
     active: true
 }
 
@@ -26,9 +26,9 @@ export const workExperienceEntryTemplate = {
     companyName: "",
     companyCity: "",
     companyCountry: "",
-    startDate: "",
+    startDate: null,
     ongoing: false,
-    endDate: "",
+    endDate: null,
     descriptions: [],
     active: true
 }
