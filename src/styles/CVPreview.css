@@ -15,9 +15,10 @@
 
 .cv-pdf {
     font-family: "Verdana";
+    /* 595 x 842 pixels */
     width: 496px;
     height: 702px;
-    background-color: white;
+    background-color: #FFFFFF;
 }
 
 .cv-pdf * {

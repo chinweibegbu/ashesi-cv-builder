@@ -1,105 +1,19 @@
 import React from "react";
-import { months } from "../data/months.js";
+import { pdfUtils } from "../utils/pdf-utils.js";
 
-function CVpdf({ cvPreviewDetails }) {
+function CVpdf({ cvPreviewDetails, targetRef }) {
     const { header, education, achievementsAwards, workExperience, skills } = cvPreviewDetails;
-
-    // Handle the different sections' data
     const { firstName, lastName, city, country, phoneNumber, nationality, email, linkedinUsername } = header;
-    const educationEntryDateGenerator = (entry) => {
-        const start = new Date(entry.startDate);
-
-        if (!(entry.startDate)) {
-            return "";
-        } else {
-            if (entry.ongoing === true) {
-                return months[start.getMonth()] + " " + start.getFullYear() + " - Present";
-            } else {
-                if (entry.endDate) {
-                    const end = new Date(entry.endDate);
-                    return months[start.getMonth()] + " " + start.getFullYear() + " - " + months[end.getMonth()] + " " + end.getFullYear();
-                } else {
-                    return months[start.getMonth()] + " " + start.getFullYear() + " - END DATE";
-                }
-            }
-        }
-    }
-    const achievementsAwardsEntryDateGenerator = (entry) => {
-        const start = new Date(entry.dateAwarded);
-
-        if (!(entry.dateAwarded)) {
-            return "";
-        } else {
-            if (entry.durationType === "One-time") {
-                return months[start.getMonth()] + " " + start.getFullYear();
-            } else if ((entry.durationType === "Continuous") && (entry.ongoing === true)) {
-                return months[start.getMonth()] + " " + start.getFullYear() + " - Present";
-            } else if ((entry.durationType === "Continuous") && (entry.ongoing === false)) {
-                if (entry.dateExpired) {
-                    const end = new Date(entry.dateExpired);
-                    return months[start.getMonth()] + " " + start.getFullYear() + " - " + months[end.getMonth()] + " " + end.getFullYear();
-                } else {
-                    return months[start.getMonth()] + " " + start.getFullYear() + " - END DATE";
-                }
-            }
-        }
-    }
-    const workExperienceEntryDateGenerator = (entry) => {
-        const start = new Date(entry.startDate);
-
-        if (!(entry.startDate)) {
-            return "";
-        } else {
-            if (entry.ongoing === true) {
-                return months[start.getMonth()] + " " + start.getFullYear() + " - Present";
-            } else {
-                if (entry.endDate) {
-                    const end = new Date(entry.endDate);
-                    return months[start.getMonth()] + " " + start.getFullYear() + " - " + months[end.getMonth()] + " " + end.getFullYear();
-                } else {
-                    return months[start.getMonth()] + " " + start.getFullYear() + " - END DATE";
-                }
-            }
-        }
-    }
     const hardSkills = skills.filter(skill => skill.type === "Hard Skill");
     const softSkills = skills.filter(skill => skill.type === "Soft Skill");
-    const skillLevelDisplayGenerator = (level) => {
-        let display = [];
-        let numFilled = {
-            'Novice': 1,
-            'Intermediate': 2,
-            'Advanced': 3,
-            'Proficient': 4,
-            'Expert': 5
-        };
 
-        const circleFilled = <i className="bi-circle-fill" />,
-            circleEmpty = <i className="bi-circle" />;
-
-        for (let i = 0; i < numFilled[level]; i++) {
-            display.push(circleFilled);
-        }
-        for (let i = 0; i < (5 - numFilled[level]); i++) {
-            display.push(circleEmpty);
-        }
-
-        const compositeDisplay = <div className="d-flex">
-            {
-                display.map((circle, key) => {
-                    return React.cloneElement(
-                        circle,
-                        { key: key }
-                    );
-                })
-            }
-        </div>;
-
-        return compositeDisplay;
-    }
+    const { educationEntryDateGenerator,
+        achievementsAwardsEntryDateGenerator,
+        workExperienceEntryDateGenerator,
+        skillLevelDisplayGenerator } = pdfUtils;
 
     return (
-        <div className="cv-pdf container-fluid bordered p-2">
+        <div id="cv-pdf-reference" className="cv-pdf container-fluid bordered p-2" ref={targetRef}>
             <div className="row cv-pdf-header entry text-center bordered">
                 <p className="cv-name">{firstName ? firstName : "FirstName"} {lastName ? lastName : "LastName"}</p>
                 <p>{city ? city : "City"}, {country ? country : "Country"}</p>
