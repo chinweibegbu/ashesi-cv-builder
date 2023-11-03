@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function AchievementAwardEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
+function AchievementAwardEntry({ id, sectionTag, databaseId, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
     const [ongoing, setOngoing] = useState(false);
     const handleClick = () => {
         setOngoing(prevState => !prevState);
@@ -63,11 +63,11 @@ function AchievementAwardEntry({ id, sectionTag, handleEntryClear, handleEntryDe
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-date-awarded"}>Date Awarded</label>
-                    <input type="date" id={sectionTag + "-date-awarded"} value={cvDetails.achievementsAwards[Number(id)].dateAwarded} onChange={(e) => handleChange(e, "dateAwarded")}></input>
+                    <input type="date" id={sectionTag + "-date-awarded"} value={cvDetails.achievementsAwards[Number(id)].date_awarded} onChange={(e) => handleChange(e, "date_awarded")}></input>
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-date-expired"}>Date Expired</label>
-                    <input type="date" id={sectionTag + "-date-expired"} disabled={ongoing || (cvDetails.achievementsAwards[Number(id)].durationType==="One-time")} value={cvDetails.achievementsAwards[Number(id)].dateExpired} onChange={(e) => handleChange(e, "dateExpired")}></input>
+                    <input type="date" id={sectionTag + "-date-expired"} disabled={ongoing || (cvDetails.achievementsAwards[Number(id)].durationType==="One-time")} value={cvDetails.achievementsAwards[Number(id)].date_expired} onChange={(e) => handleChange(e, "date_expired")}></input>
                 </div>
                 <div className="form-group col-12 d-flex mb-2">
                     <input type="checkbox" id="achievement-ongoing" name="achievement-ongoing" value="achievement-ongoing" checked={ongoing} onChange={handleClick}></input>

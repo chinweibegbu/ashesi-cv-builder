@@ -2,16 +2,16 @@ import React from "react";
 import { months } from "../data/months.js";
 
 const educationEntryDateGenerator = (entry) => {
-    const start = new Date(entry.startDate);
+    const start = new Date(entry.start_date);
 
-    if (!(entry.startDate)) {
+    if (!(entry.start_date)) {
         return "";
     } else {
         if (entry.ongoing === true) {
             return months[start.getMonth()] + " " + start.getFullYear() + " - Present";
         } else {
-            if (entry.endDate) {
-                const end = new Date(entry.endDate);
+            if (entry.end_date) {
+                const end = new Date(entry.end_date);
                 return months[start.getMonth()] + " " + start.getFullYear() + " - " + months[end.getMonth()] + " " + end.getFullYear();
             } else {
                 return months[start.getMonth()] + " " + start.getFullYear() + " - END DATE";
@@ -20,9 +20,9 @@ const educationEntryDateGenerator = (entry) => {
     }
 }
 const achievementsAwardsEntryDateGenerator = (entry) => {
-    const start = new Date(entry.dateAwarded);
+    const start = new Date(entry.date_awarded);
 
-    if (!(entry.dateAwarded)) {
+    if (!(entry.date_awarded)) {
         return "";
     } else {
         if (entry.durationType === "One-time") {
@@ -30,8 +30,8 @@ const achievementsAwardsEntryDateGenerator = (entry) => {
         } else if ((entry.durationType === "Continuous") && (entry.ongoing === true)) {
             return months[start.getMonth()] + " " + start.getFullYear() + " - Present";
         } else if ((entry.durationType === "Continuous") && (entry.ongoing === false)) {
-            if (entry.dateExpired) {
-                const end = new Date(entry.dateExpired);
+            if (entry.date_expired) {
+                const end = new Date(entry.date_expired);
                 return months[start.getMonth()] + " " + start.getFullYear() + " - " + months[end.getMonth()] + " " + end.getFullYear();
             } else {
                 return months[start.getMonth()] + " " + start.getFullYear() + " - END DATE";
@@ -40,16 +40,16 @@ const achievementsAwardsEntryDateGenerator = (entry) => {
     }
 }
 const workExperienceEntryDateGenerator = (entry) => {
-    const start = new Date(entry.startDate);
+    const start = new Date(entry.start_date);
 
-    if (!(entry.startDate)) {
+    if (!(entry.start_date)) {
         return "";
     } else {
         if (entry.ongoing === true) {
             return months[start.getMonth()] + " " + start.getFullYear() + " - Present";
         } else {
-            if (entry.endDate) {
-                const end = new Date(entry.endDate);
+            if (entry.end_date) {
+                const end = new Date(entry.end_date);
                 return months[start.getMonth()] + " " + start.getFullYear() + " - " + months[end.getMonth()] + " " + end.getFullYear();
             } else {
                 return months[start.getMonth()] + " " + start.getFullYear() + " - END DATE";

@@ -51,7 +51,7 @@ function EducationEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion,
             <form className="bordered row">
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-institution-name"}>Institution Name</label>
-                    <input type="text" id={sectionTag + "-institution-name"} placeholder="e.g. Loyola Jesuit College" value={cvDetails.education[Number(id)].name} onChange={(e) => handleChange(e, "name")}></input>
+                    <input type="text" id={sectionTag + "-institution-name"} placeholder="e.g. Loyola Jesuit College" value={cvDetails.education[Number(id)].institution_name} onChange={(e) => handleChange(e, "institution_name")}></input>
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-education-level"}>Education Level</label>
@@ -65,7 +65,7 @@ function EducationEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion,
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-major"}>Major</label>
-                    <select className="form-select" id={sectionTag + "-major"} aria-label={majors[0]}  value={cvDetails.education[Number(id)].major} onChange={(e) => handleSelect(e, "major")}>
+                    <select className="form-select" id={sectionTag + "-major"} aria-label={majors[0]} value={cvDetails.education[Number(id)].major} onChange={(e) => handleSelect(e, "major")}>
                         {
                             majors.map((major, key) => {
                                 return <option key={key} value={major}>{major}</option>;
@@ -93,11 +93,11 @@ function EducationEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion,
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-start-date"}>Start Date</label>
-                    <input type="date" id={sectionTag + "-start-date"} value={cvDetails.education[Number(id)].startDate} onChange={(e) => handleChange(e, "startDate")}></input>
+                    <input type="date" id={sectionTag + "-start-date"} value={cvDetails.education[Number(id)].start_date} onChange={(e) => handleChange(e, "start_date")}></input>
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-end-date"}>End Date</label>
-                    <input type="date" id={sectionTag + "-end-date"} disabled={ongoing} value={cvDetails.education[Number(id)].endDate} onChange={(e) => handleChange(e, "endDate")}></input>
+                    <input type="date" id={sectionTag + "-end-date"} disabled={ongoing} value={cvDetails.education[Number(id)].end_date} onChange={(e) => handleChange(e, "end_date")}></input>
                 </div>
                 <div className="form-group col-6 offset-6 d-flex mb-2">
                     <input type="checkbox" id="education-ongoing" name="education-ongoing" value="education-ongoing" checked={ongoing} onChange={handleClick}></input>

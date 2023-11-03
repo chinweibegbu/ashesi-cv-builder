@@ -27,10 +27,10 @@ export const createUser = (req, res) => {
     const newUser = req.body;
     pool.query(
         userQueries.createUserQuery,
-        [newUser.fullName, newUser.email, newUser.password],
+        [newUser.full_name, newUser.email, newUser.password],
         (error, results) => {
             if (error) throw error;
-            res.status(201).send(`User named '${newUser.fullName}' successfully created!`);
+            res.status(201).send(`User named '${newUser.full_name}' successfully created!`);
         }
     );
 }

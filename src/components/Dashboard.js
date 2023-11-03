@@ -12,12 +12,12 @@ function Dashboard() {
     const [isLoading, setIsLoading] = useState(true);
 
     const { state } = useLocation();
-    const { userId, fullName } = state;
+    const { user_id, full_name } = state;
 
     useEffect(() => {
 
         const getUsersCVs = async () => {
-            await axios.get(`http://localhost:3005/api/${userId}/cv`)
+            await axios.get(`http://localhost:3005/api/${user_id}/cv`)
                 .then((response) => {
                     setCVs(response.data);
                     setIsLoading(false);
@@ -37,21 +37,21 @@ function Dashboard() {
             <div className="mx-5 my-4">
                 {/* Tool Bar */}
                 <div className="tool-bar d-flex justify-content-between">
-                    <p>Welcome, <span><b>{fullName}</b></span></p>
+                    <p>Welcome, <span><b>{full_name}</b></span></p>
                     <Link
                         to="../create-new-cv"
                         state={{ 
-                            userId: userId,
-                            fullName: fullName
+                            user_id: user_id,
+                            full_name: full_name
                         }}
                         className="button btn">
                         Create New CV</Link>
                 </div>
                 {/* Recent CVs */}
-                <CVGroupDisplay userId={userId} fullName={fullName} isLoading={isLoading} subHeadingText="Recently Viewed CVs" allCVDetails={recentCVs} />
+                <CVGroupDisplay user_id={user_id} full_name={full_name} isLoading={isLoading} subHeadingText="Recently Viewed CVs" allCVDetails={recentCVs} />
 
                 {/* All CVs */}
-                <CVGroupDisplay userId={userId} fullName={fullName} isLoading={isLoading} subHeadingText="All CVs" allCVDetails={CVs} />
+                <CVGroupDisplay user_id={user_id} full_name={full_name} isLoading={isLoading} subHeadingText="All CVs" allCVDetails={CVs} />
             </div>
         </>
     );

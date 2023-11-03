@@ -1,16 +1,16 @@
-const getWorkExperienceEntrysQuery = "SELECT * FROM WorkExperienceEntry WHERE cvId = $1";
+const getWorkExperienceEntrysQuery = "SELECT * FROM WorkExperienceEntry WHERE cv_id = $1";
 
 const getWorkExperienceEntryByIdQuery = "SELECT * FROM WorkExperienceEntry WHERE id = $1";
 
-const createWorkExperienceEntryQuery = "INSERT INTO WorkExperienceEntry(cvId, companyName, title, companyCity, companyCountry, startDate, endDate, ongoing) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);"
+const createWorkExperienceEntryQuery = "INSERT INTO WorkExperienceEntry(cv_id, company_name, title, company_city, company_country, start_date, end_date, ongoing) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);"
 
 const updateWorkExperienceEntryByIdQueries = {
-    companyName: "UPDATE WorkExperienceEntry SET institutionName = $1 WHERE id = $2;",
+    company_name: "UPDATE WorkExperienceEntry SET institution_name = $1 WHERE id = $2;",
     title: "UPDATE WorkExperienceEntry SET title = $1 WHERE id = $2;",
-    companyCity: "UPDATE WorkExperienceEntry SET companyCity = $1 WHERE id = $2;",
-    companyCountry: "UPDATE WorkExperienceEntry SET companyCountry = $1 WHERE id = $2;",
-    startDate: "UPDATE WorkExperienceEntry SET startDate = $1 WHERE id = $2;",
-    endDate: "UPDATE WorkExperienceEntry SET endDate = $1 WHERE id = $2;",
+    company_city: "UPDATE WorkExperienceEntry SET company_city = $1 WHERE id = $2;",
+    company_country: "UPDATE WorkExperienceEntry SET company_country = $1 WHERE id = $2;",
+    start_date: "UPDATE WorkExperienceEntry SET start_date = $1 WHERE id = $2;",
+    end_date: "UPDATE WorkExperienceEntry SET end_date = $1 WHERE id = $2;",
     ongoing: "UPDATE WorkExperienceEntry SET ongoing = $1 WHERE id = $2;"
 }
 

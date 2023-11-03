@@ -28,19 +28,19 @@ function PersonalDetailsEntry({ sectionTag, cvDetails, setCvDetails }) {
             <form className="bordered row">
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-first-name"}>First Name</label>
-                    <input type="text" id={sectionTag + "-first-name"} placeholder="e.g. Chinwe" value={cvDetails.header.firstName} onChange={(e) => handleChange(e, "firstName")}></input>
+                    <input type="text" id={sectionTag + "-first-name"} placeholder="e.g. Chinwe" value={cvDetails.header.first_name} onChange={(e) => handleChange(e, "first_name")}></input>
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column">
                     <label htmlFor={sectionTag + "-last-name"}>Last Name</label>
-                    <input type="text" id={sectionTag + "-last-name"} placeholder="e.g. Ibegbu" value={cvDetails.header.lastName} onChange={(e) => handleChange(e, "lastName")}></input>
+                    <input type="text" id={sectionTag + "-last-name"} placeholder="e.g. Ibegbu" value={cvDetails.header.last_name} onChange={(e) => handleChange(e, "last_name")}></input>
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-email"}>Email Address</label>
                     <input type="text" id={sectionTag + "-email"} placeholder="e.g. chinwe.ibegbu@gmail.com" value={cvDetails.header.email} onChange={(e) => handleChange(e, "email")}></input>
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column">
-                    <label htmlFor={sectionTag + "-phoneNumber"}>Phone</label>
-                    <input type="text" id={sectionTag + "-phoneNumber"} placeholder="e.g. +234 706 056 0968" value={cvDetails.header.phoneNumber} onChange={(e) => handleChange(e, "phoneNumber")}></input>
+                    <label htmlFor={sectionTag + "-phone_number"}>Phone</label>
+                    <input type="text" id={sectionTag + "-phone_number"} placeholder="e.g. +234 706 056 0968" value={cvDetails.header.phone_number} onChange={(e) => handleChange(e, "phone_number")}></input>
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-city"}>City</label>
@@ -63,7 +63,7 @@ function PersonalDetailsEntry({ sectionTag, cvDetails, setCvDetails }) {
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column">
                     <label htmlFor={sectionTag + "-linkedin"}>LinkedIn Username</label>
-                    <input type="text" id={sectionTag + "-linkedin"} placeholder="e.g. chinwe-ibegbu" value={cvDetails.header.linkedinUsername} onChange={(e) => handleChange(e, "linkedinUsername")}></input>
+                    <input type="text" id={sectionTag + "-linkedin"} placeholder="e.g. chinwe-ibegbu" value={cvDetails.header.linkedin_username} onChange={(e) => handleChange(e, "linkedin_username")}></input>
                 </div>
             </form>
         </>

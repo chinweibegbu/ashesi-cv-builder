@@ -10,22 +10,22 @@ import { educationEntryTemplate, achievementAwardEntryTemplate, workExperienceEn
 function CVEditorNew() {
     const navigate = useNavigate();
 
-    // Get userId
+    // Get user_id
     const { state } = useLocation();
-    const { userId, fullName } = state;
+    const { user_id, full_name } = state;
 
     // Handle state + Connect editor and preview
     const [cvDetails, setCvDetails] = useState({
         cvName: "Untitled",
         header: {
-            firstName: "",
-            lastName: "",
+            first_name: "",
+            last_name: "",
             city: "",
             country: "",
-            phoneNumber: "",
+            phone_number: "",
             nationality: "",
             email: "",
-            linkedinUsername: ""
+            linkedin_username: ""
         },
         education: [
             { ...educationEntryTemplate }
@@ -42,20 +42,20 @@ function CVEditorNew() {
     })
 
     const handleSave = async () => {
-        await axios.post(`http://localhost:3005/api/${userId}/cv`, {
+        await axios.post(`http://localhost:3005/api/${user_id}/cv`, {
             name: cvDetails.cvName,
-            lastEdited: new Date(),
-            linkToCV: "https://www.google.com",
+            last_edited: new Date(),
+            link_to_cv: "https://www.google.com",
             ...cvDetails.header,
             education: cvDetails.education,
-            achievementAwards: cvDetails.achievementsAwards,
+            achievementsAwards: cvDetails.achievementsAwards,
             workExperience: cvDetails.workExperience,
             skills: cvDetails.skills,
         }).then((response) => {
             navigate("/dashboard", {
                 state: {
-                    userId: userId,
-                    fullName: fullName
+                    user_id: user_id,
+                    full_name: full_name
                 }
             });
         }).catch((err) => {
@@ -72,11 +72,11 @@ function CVEditorNew() {
                         <input className="text-center" type="text" id="cv-name" value={cvDetails.cvName} onChange={(e) => setCvDetails({ ...cvDetails, cvName: e.target.value })}></input>
                     </form>
                     <div className="accordion" id="detail-sections">
-                        <CVEditorSection sectionName={"Personal Details"} isExpanded={true} cvDetails={cvDetails} setCvDetails={setCvDetails} />
-                        <CVEditorSection sectionName={"Education"} isExpanded={false} cvDetails={cvDetails} setCvDetails={setCvDetails} />
-                        <CVEditorSection sectionName={"Achievements & Awards"} isExpanded={false} cvDetails={cvDetails} setCvDetails={setCvDetails} />
-                        <CVEditorSection sectionName={"Work Experience"} isExpanded={false} cvDetails={cvDetails} setCvDetails={setCvDetails} />
-                        <CVEditorSection sectionName={"Skills"} isExpanded={false} cvDetails={cvDetails} setCvDetails={setCvDetails} />
+                        <CVEditorSection sectionName={"Personal Details"} isExpanded={true} cvDetails={cvDetails} setCvDetails={setCvDetails} newCV={true} />
+                        <CVEditorSection sectionName={"Education"} isExpanded={false} cvDetails={cvDetails} setCvDetails={setCvDetails} newCV={true} />
+                        <CVEditorSection sectionName={"Achievements & Awards"} isExpanded={false} cvDetails={cvDetails} setCvDetails={setCvDetails} newCV={true} />
+                        <CVEditorSection sectionName={"Work Experience"} isExpanded={false} cvDetails={cvDetails} setCvDetails={setCvDetails} newCV={true} />
+                        <CVEditorSection sectionName={"Skills"} isExpanded={false} cvDetails={cvDetails} setCvDetails={setCvDetails} newCV={true} />
                     </div>
                     <div className="d-flex justify-content-center">
                         <button className="button btn my-2" onClick={handleSave}>Save CV</button>

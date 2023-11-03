@@ -22,7 +22,7 @@ app.use(morgan('tiny'));
 
 // Connect app routers
 app.use('/api/users', userRouter);
-app.use('/api/:userId/cv', cvRouter);
+app.use('/api/:user_id/cv', cvRouter);
 
 // Running the Express server
 const appLink = PORT === 10000 ? "https://zuri-chinwe-stage2.onrender.com" : "http://localhost" ;

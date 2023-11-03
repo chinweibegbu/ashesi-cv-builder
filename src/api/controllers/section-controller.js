@@ -5,10 +5,10 @@ import { workExperienceEntryQueries } from '../queries/section-queries/work-expe
 import { skillEntryQueries } from '../queries/section-queries/skill-entry-queries.js';
 
 export const getCVEducation = (req, res) => {
-    const cvId = parseInt(req.params.id);
+    const cv_id = parseInt(req.params.id);
     pool.query(
         educationEntryQueries.getEducationEntrysQuery,
-        [cvId],
+        [cv_id],
         (error, results) => {
             if (error) throw error;
             res.status(200).send(results.rows);
@@ -17,10 +17,10 @@ export const getCVEducation = (req, res) => {
 }
 
 export const getCVAchievementAwards = (req, res) => {
-    const cvId = parseInt(req.params.id);
+    const cv_id = parseInt(req.params.id);
     pool.query(
         achievementAwardEntryQueries.getAchievementAwardEntrysQuery,
-        [cvId],
+        [cv_id],
         (error, results) => {
             if (error) throw error;
             res.status(200).send(results.rows);
@@ -29,10 +29,10 @@ export const getCVAchievementAwards = (req, res) => {
 }
 
 export const getCVWorkExperience = (req, res) => {
-    const cvId = parseInt(req.params.id);
+    const cv_id = parseInt(req.params.id);
     pool.query(
         workExperienceEntryQueries.getWorkExperienceEntrysQuery,
-        [cvId],
+        [cv_id],
         (error, results) => {
             if (error) throw error;
             res.status(200).send(results.rows);
@@ -41,10 +41,10 @@ export const getCVWorkExperience = (req, res) => {
 }
 
 export const getCVSkills = (req, res) => {
-    const cvId = parseInt(req.params.id);
+    const cv_id = parseInt(req.params.id);
     pool.query(
         skillEntryQueries.getSkillEntrysQuery,
-        [cvId],
+        [cv_id],
         (error, results) => {
             if (error) throw error;
             res.status(200).send(results.rows);

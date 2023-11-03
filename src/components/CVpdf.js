@@ -3,7 +3,7 @@ import { pdfUtils } from "../utils/pdf-utils.js";
 
 function CVpdf({ cvPreviewDetails, targetRef }) {
     const { header, education, achievementsAwards, workExperience, skills } = cvPreviewDetails;
-    const { firstName, lastName, city, country, phoneNumber, nationality, email, linkedinUsername } = header;
+    const { first_name, last_name, city, country, phone_number, nationality, email, linkedin_username } = header;
     const hardSkills = skills.filter(skill => skill.type === "Hard Skill");
     const softSkills = skills.filter(skill => skill.type === "Soft Skill");
 
@@ -15,14 +15,14 @@ function CVpdf({ cvPreviewDetails, targetRef }) {
     return (
         <div id="cv-pdf-reference" className="cv-pdf container-fluid bordered p-2" ref={targetRef}>
             <div className="row cv-pdf-header entry text-center bordered">
-                <p className="cv-name">{firstName ? firstName : "FirstName"} {lastName ? lastName : "LastName"}</p>
+                <p className="cv-name">{first_name ? first_name : "first_name"} {last_name ? last_name : "last_name"}</p>
                 <p>{city ? city : "City"}, {country ? country : "Country"}</p>
-                <p>{phoneNumber ? phoneNumber : "000 000 000"} | {nationality ? nationality : "Nationality"}</p>
+                <p>{phone_number ? phone_number : "000 000 000"} | {nationality ? nationality : "Nationality"}</p>
                 <p>{email ? email : "email@address.com"}</p>
                 <div>
                     <div className="d-flex justify-content-center">
                         <i className="bi-linkedin me-1" />
-                        <a href={"https://www.linkedin.com/in/" + linkedinUsername} target="_blank" rel="noopener noreferrer">{linkedinUsername ? linkedinUsername : "linkedin-username"}</a>
+                        <a href={"https://www.linkedin.com/in/" + linkedin_username} target="_blank" rel="noopener noreferrer">{linkedin_username ? linkedin_username : "linkedin-username"}</a>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@ function CVpdf({ cvPreviewDetails, targetRef }) {
                             return (
                                 <div key={key} className=" entry d-flex justify-content-between mb-1">
                                     <div>
-                                        <p><b>{entry.name}</b></p>
+                                        <p><b>{entry.institution_name}</b></p>
                                         <p>{entry.degree} {entry.major}</p>
                                         <p>{entry.cgpa ? "Cumulative GPA: " + entry.cgpa + "/4.00" : ""}</p>
                                     </div>
@@ -81,18 +81,18 @@ function CVpdf({ cvPreviewDetails, targetRef }) {
                             return (
                                 <div key={key} className=" entry mb-1">
                                     <div className="d-flex justify-content-between">
-                                        <p><b>{entry.companyName}</b> {(!(entry.companyCity) || !(entry.companyCountry)) ? "" : " - " + entry.companyCity + ", " + entry.companyCountry}</p>
+                                        <p><b>{entry.company_name}</b> {(!(entry.company_city) || !(entry.company_country)) ? "" : " - " + entry.company_city + ", " + entry.company_country}</p>
                                         <div className="align-right">
                                             <p><b>{workExperienceEntryDateGenerator(entry)}</b></p>
                                         </div>
                                     </div>
                                     <p>{entry.title}</p>
                                     <ul>
-                                        {
+                                        {/* {
                                             entry.descriptions.map((description, key) => {
                                                 return <li key={key}>{description}</li>
                                             })
-                                        }
+                                        } */}
                                     </ul>
                                 </div>
                             )

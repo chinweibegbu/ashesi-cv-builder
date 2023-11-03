@@ -27,10 +27,10 @@ export const createPerson = (req, res) => {
     const newPerson = req.body;
     pool.query(
         queries.createPersonQuery,
-        [newPerson.fullname, newPerson.age, newPerson.address],
+        [newPerson.full_name, newPerson.age, newPerson.address],
         (error, results) => {
             if (error) throw error;
-            res.status(201).send(`Person named '${newPerson.fullname}' successfully created!`);
+            res.status(201).send(`Person named '${newPerson.full_name}' successfully created!`);
         }
     );
 
@@ -40,12 +40,12 @@ export const createPerson = (req, res) => {
 
 export const updatePersonById = (req, res) => {
     const idToUpdate = parseInt(req.params.id);
-    const { fullname, age, address } = req.body;
+    const { full_name, age, address } = req.body;
 
-    if (fullname) {
+    if (full_name) {
         pool.query(
-            queries.updatePersonByIdQueries.fullname,
-            [fullname, idToUpdate],
+            queries.updatePersonByIdQueries.full_name,
+            [full_name, idToUpdate],
             (error, results) => {
                 if (error) throw error;
             }

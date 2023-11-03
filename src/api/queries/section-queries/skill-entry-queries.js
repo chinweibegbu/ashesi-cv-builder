@@ -1,8 +1,8 @@
-const getSkillEntrysQuery = "SELECT * FROM SkillEntry WHERE cvId = $1";
+const getSkillEntrysQuery = "SELECT * FROM SkillEntry WHERE cv_id = $1";
 
 const getSkillEntryByIdQuery = "SELECT * FROM SkillEntry WHERE id = $1";
 
-const createSkillEntryQuery = "INSERT INTO SkillEntry(cvId, name, level, type) VALUES ($1, $2, $3, $4);"
+const createSkillEntryQuery = "INSERT INTO SkillEntry(cv_id, name, level, type) VALUES ($1, $2, $3, $4);"
 
 const updateSkillEntryByIdQueries = {
     name: "UPDATE SkillEntry SET name = $1 WHERE id = $2;",

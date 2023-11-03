@@ -2,8 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import '../styles/CVDisplay.css';
 
-function CVDisplay({ userId, fullName, cvDetails }) {
-    const getLastEditedText = (timestamp) => {
+function CVDisplay({ user_id, full_name, cvDetails }) {
+    const getlast_editedText = (timestamp) => {
         const date = new Date(timestamp);
 
         const dateText = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
@@ -25,15 +25,15 @@ function CVDisplay({ userId, fullName, cvDetails }) {
     }
 
     const name = cvDetails.name;
-    const lastEdited = getLastEditedText(cvDetails.lastedited);
+    const last_edited = getlast_editedText(cvDetails.last_edited);
 
     const navigate = useNavigate();
     const handleExistingCVClick = () => {
         navigate("/edit-cv", {
             state: {
-                userId: userId,
-                fullName: fullName,
-                cvId: cvDetails.id
+                user_id: user_id,
+                full_name: full_name,
+                cv_id: cvDetails.id
             }
         });
     }
@@ -46,7 +46,7 @@ function CVDisplay({ userId, fullName, cvDetails }) {
             <div className="cv-display-details d-flex justify-content-between">
                 <div className="details-text">
                     <p className="details-name">{name}</p>
-                    <p className="details-time">Last Edited: {lastEdited}</p>
+                    <p className="details-time">Last Edited: {last_edited}</p>
                 </div>
                 <div className="details-interact-btn d-flex align-items-center">
                     <i className="bi-three-dots-vertical" />

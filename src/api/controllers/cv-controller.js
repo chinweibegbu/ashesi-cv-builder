@@ -7,10 +7,10 @@ import { skillEntryQueries } from '../queries/section-queries/skill-entry-querie
 
 
 export const getCVs = (req, res) => {
-    const userId = parseInt(req.params.userId);
+    const user_id = parseInt(req.params.user_id);
     pool.query(
         cvQueries.getCVsQuery,
-        [userId],
+        [user_id],
         (error, results) => {
             if (error) throw error;
             res.status(200).send(results.rows);
@@ -46,7 +46,7 @@ export const getCVById = (req, res) => {
                                 if (error) {
                                     throw error;
                                 } else {
-                                    cv.achievementAwards = achievementAwardResults.rows;
+                                    cv.achievementsAwards = achievementAwardResults.rows;
 
                                     // Add work entries
                                     pool.query(
@@ -87,11 +87,12 @@ export const getCVById = (req, res) => {
 }
 
 export const createCV = (req, res) => {
-    const userId = parseInt(req.params.userId);
+    const user_id = parseInt(req.params.user_id);
     const newCV = req.body;
+    console.log(newCV);
     pool.query(
         cvQueries.createCVQuery,
-        [newCV.name, newCV.lastEdited, newCV.linkToCV, userId, newCV.firstName, newCV.lastName, newCV.email, newCV.phoneNumber, newCV.city, newCV.country, newCV.nationality, newCV.linkedinUsername],
+        [newCV.name, newCV.last_edited, newCV.link_to_cv, user_id, newCV.first_name, newCV.last_name, newCV.email, newCV.phone_number, newCV.city, newCV.country, newCV.nationality, newCV.linkedin_username],
         (error, results) => {
             if (error) {
                 throw error;
@@ -101,58 +102,65 @@ export const createCV = (req, res) => {
                 // Add education entries
                 const educationEntries = newCV.education;
                 educationEntries.forEach((entry) => {
-                    console.log(entry.startDate);
-                    pool.query(
-                        educationEntryQueries.createEducationEntryQuery,
-                        [newCVId, entry.institutionName, entry.degree, entry.major, entry.cgpa, entry.city, entry.country, entry.startDate, entry.endDate, entry.ongoing],
-                        (error, results) => {
-                            if (error) {
-                                throw error;
+                    if (entry.active) {
+                        pool.query(
+                            educationEntryQueries.createEducationEntryQuery,
+                            [newCVId, entry.institution_name, entry.degree, entry.major, entry.cgpa, entry.city, entry.country, entry.start_date, entry.end_date, entry.ongoing],
+                            (error, results) => {
+                                if (error) {
+                                    throw error;
+                                }
                             }
-                        }
-                    );
+                        );
+                    }
                 });
 
                 // Add achievement entries
-                const achievementAwardEntries = newCV.achievementAwards;
+                const achievementAwardEntries = newCV.achievementsAwards;
                 achievementAwardEntries.forEach((entry) => {
-                    pool.query(
-                        achievementAwardEntryQueries.createAchievementAwardEntryQuery,
-                        [newCVId, entry.name, entry.awarder, entry.dateAwarded, entry.dateExpired, entry.ongoing],
-                        (error, results) => {
-                            if (error) {
-                                throw error;
+                    if (entry.active) {
+                        pool.query(
+                            achievementAwardEntryQueries.createAchievementAwardEntryQuery,
+                            [newCVId, entry.name, entry.awarder, entry.date_awarded, entry.date_expired, entry.ongoing],
+                            (error, results) => {
+                                if (error) {
+                                    throw error;
+                                }
                             }
-                        }
-                    );
+                        );
+                    }
                 });
 
                 // Add work entries
                 const workExperienceEntries = newCV.workExperience;
                 workExperienceEntries.forEach((entry) => {
-                    pool.query(
-                        workExperienceEntryQueries.createWorkExperienceEntryQuery,
-                        [newCVId, entry.companyName, entry.title, entry.companyCity, entry.companyCountry, entry.startDate, entry.endDate, entry.ongoing],
-                        (error, results) => {
-                            if (error) {
-                                throw error;
+                    if (entry.active) {
+                        pool.query(
+                            workExperienceEntryQueries.createWorkExperienceEntryQuery,
+                            [newCVId, entry.company_name, entry.title, entry.company_city, entry.company_country, entry.start_date, entry.end_date, entry.ongoing],
+                            (error, results) => {
+                                if (error) {
+                                    throw error;
+                                }
                             }
-                        }
-                    );
+                        );
+                    }
                 });
 
                 // Add skill entries
                 const skillEntries = newCV.skills;
                 skillEntries.forEach((entry) => {
-                    pool.query(
-                        skillEntryQueries.createSkillEntryQuery,
-                        [newCVId, entry.name, entry.level, entry.type],
-                        (error, results) => {
-                            if (error) {
-                                throw error;
+                    if (entry.active) {
+                        pool.query(
+                            skillEntryQueries.createSkillEntryQuery,
+                            [newCVId, entry.name, entry.level, entry.type],
+                            (error, results) => {
+                                if (error) {
+                                    throw error;
+                                }
                             }
-                        }
-                    );
+                        );
+                    }
                 });
 
                 res.status(201).send(`CV named '${newCV.name}' successfully created!`);

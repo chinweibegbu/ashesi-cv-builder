@@ -20,8 +20,8 @@ function SignIn() {
             if (response.status === 200) {
                 navigate("/dashboard", { 
                     state: { 
-                        userId: response.data.id, 
-                        fullName: response.data.fullname
+                        user_id: response.data.id, 
+                        full_name: response.data.full_name
                     } 
                 });
             }
