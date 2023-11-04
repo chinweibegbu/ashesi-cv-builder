@@ -6,18 +6,18 @@ function CVDisplay({ user_id, full_name, cvDetails }) {
     const getlast_editedText = (timestamp) => {
         const date = new Date(timestamp);
 
-        const dateText = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+        const dateText = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
 
         let hour = "";
         if (date.getHours() === 0) {
             hour = "12";
         } else if (date.getHours() <= 12) {
-            hour = date.getHours();
+            hour = date.getHours()+1;
         } else {
-            hour = date.getHours() - 12;
+            hour = (date.getHours() - 12)+1;
         }
-        const minutes = (date.getMinutes() / 10 < 1) ? "0" + date.getMinutes() : date.getMinutes();
-        const period = (date.getHours() <= 11) ? "AM" : "PM";
+        const minutes = (date.getMinutes() / 10 < 1) ? "0" + (date.getMinutes()+1) : date.getMinutes()+1;
+        const period = (hour <= 11) ? "AM" : "PM";
         const timeText = hour + ":" + minutes + " " + period;
 
 
