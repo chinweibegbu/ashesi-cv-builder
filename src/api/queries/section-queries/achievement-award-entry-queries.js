@@ -6,7 +6,7 @@ const createAchievementAwardEntryQuery = "INSERT INTO AchievementAwardEntry(cv_i
 
 const updateAchievementAwardEntryByIdQueries = {
     name: "UPDATE AchievementAwardEntry SET name = $1 WHERE id = $2;",
-    awarder: "UPDATE AchievementAwardEntry SET degree = $1 WHERE id = $2;",
+    awarder: "UPDATE AchievementAwardEntry SET awarder = $1 WHERE id = $2;",
     date_awarded: "UPDATE AchievementAwardEntry SET date_awarded = $1 WHERE id = $2;",
     date_expired: "UPDATE AchievementAwardEntry SET date_expired = $1 WHERE id = $2;",
     ongoing: "UPDATE AchievementAwardEntry SET ongoing = $1 WHERE id = $2;"

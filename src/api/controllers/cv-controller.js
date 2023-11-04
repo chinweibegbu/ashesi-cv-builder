@@ -173,15 +173,155 @@ export const createCV = (req, res) => {
 
 export const updateCVById = (req, res) => {
     const idToUpdate = parseInt(req.params.id);
+    const updatedCV = req.body;
 
-    Object.keys(req.body).forEach(attribute => {
-        pool.query(
-            cvQueries.updateCVByIdQueries[attribute],
-            [req.body[attribute], idToUpdate],
-            (error, results) => {
-                if (error) throw error;
+    Object.keys(updatedCV).forEach(attribute => {
+        if (typeof updatedCV[attribute] !== "object") {
+            pool.query(
+                cvQueries.updateCVByIdQueries[attribute],
+                [req.body[attribute], idToUpdate],
+                (error, results) => {
+                    if (error) throw error;
+                }
+            );
+        }
+    });
+
+    // Update active education entries
+    updatedCV.education.forEach(educationEntry => {
+        if (educationEntry.active) {
+            if (educationEntry.id) {
+                // If the entry has an ID, then it is already in the DB
+                // --> Use the UPDATE query
+                const entry_id = educationEntry.id;
+                Object.keys(educationEntry).forEach(attribute => {
+                    if (!(["id", "cv_id", "active"].includes(attribute))) {
+                        pool.query(
+                            educationEntryQueries.updateEducationEntryByIdQueries[attribute],
+                            [educationEntry[attribute], entry_id],
+                            (error, results) => {
+                                if (error) throw error;
+                            }
+                        );
+                    }
+                });
+            } else {
+                // If the entry has no ID, then it is NOT in the DB
+                // --> Use the INSERT query
+                pool.query(
+                    educationEntryQueries.createEducationEntryQuery,
+                    [idToUpdate, educationEntry.institution_name, educationEntry.degree, educationEntry.major, educationEntry.cgpa, educationEntry.city, educationEntry.country, educationEntry.start_date, educationEntry.end_date, educationEntry.ongoing],
+                    (error, results) => {
+                        if (error) {
+                            throw error;
+                        }
+                    }
+                );
             }
-        );
+        }
+    });
+
+
+    // Update active achievementsAwards entries
+    updatedCV.achievementsAwards.forEach(achievementAwardEntry => {
+        if (achievementAwardEntry.active) {
+            if (achievementAwardEntry.id) {
+                // If the entry has an ID, then it is already in the DB
+                // --> Use the UPDATE query
+                const entry_id = achievementAwardEntry.id;
+                Object.keys(achievementAwardEntry).forEach(attribute => {
+                    if (!(["id", "cv_id", "active"].includes(attribute))) {
+                        pool.query(
+                            achievementAwardEntryQueries.updateAchievementAwardEntryByIdQueries[attribute],
+                            [achievementAwardEntry[attribute], entry_id],
+                            (error, results) => {
+                                if (error) throw error;
+                            }
+                        );
+                    }
+                });
+            } else {
+                // If the entry has no ID, then it is NOT in the DB
+                // --> Use the INSERT query
+                pool.query(
+                    achievementAwardEntryQueries.createAchievementAwardEntryQuery,
+                    [idToUpdate, achievementAwardEntry.name, achievementAwardEntry.awarder, achievementAwardEntry.date_awarded, achievementAwardEntry.date_expired, achievementAwardEntry.ongoing],
+                    (error, results) => {
+                        if (error) {
+                            throw error;
+                        }
+                    }
+                );
+            }
+        }
+    });
+
+    // Update active workExperience entries
+    updatedCV.workExperience.forEach(workExperienceEntry => {
+        if (workExperienceEntry.active) {
+            if (workExperienceEntry.id) {
+                // If the entry has an ID, then it is already in the DB
+                // --> Use the UPDATE query
+                const entry_id = workExperienceEntry.id;
+                Object.keys(workExperienceEntry).forEach(attribute => {
+                    if (!(["id", "cv_id", "active"].includes(attribute))) {
+                        pool.query(
+                            workExperienceEntryQueries.updateWorkExperienceEntryByIdQueries[attribute],
+                            [workExperienceEntry[attribute], entry_id],
+                            (error, results) => {
+                                if (error) throw error;
+                            }
+                        );
+                    }
+                });
+            } else {
+                // If the entry has no ID, then it is NOT in the DB
+                // --> Use the INSERT query
+                pool.query(
+                    workExperienceEntryQueries.createWorkExperienceEntryQuery,
+                    [idToUpdate, workExperienceEntry.company_name, workExperienceEntry.title, workExperienceEntry.company_city, workExperienceEntry.company_country, workExperienceEntry.start_date, workExperienceEntry.end_date, workExperienceEntry.ongoing],
+                    (error, results) => {
+                        if (error) {
+                            throw error;
+                        }
+                    }
+                );
+            }
+        }
+    });
+    
+    // Update active skill entries
+    updatedCV.skills.forEach(skillEntry => {
+        if (skillEntry.active) {
+            if (skillEntry.id) {
+                // If the entry has an ID, then it is already in the DB
+                // --> Use the UPDATE query
+                const entry_id = skillEntry.id;
+                Object.keys(skillEntry).forEach(attribute => {
+                    if (!(["id", "cv_id", "active"].includes(attribute))) {
+                        pool.query(
+                            skillEntryQueries.updateSkillEntryByIdQueries[attribute],
+                            [skillEntry[attribute], entry_id],
+                            (error, results) => {
+                                if (error) throw error;
+                            }
+                        );
+                    }
+                });
+            } else {
+                // If the entry has no ID, then it is NOT in the DB
+                // --> Use the INSERT query
+                pool.query(
+                    skillEntryQueries.createSkillEntryQuery,
+                    [idToUpdate, skillEntry.name, skillEntry.level, skillEntry.type],
+                    (error, results) => {
+                        if (error) {
+                            throw error;
+                        }
+                    }
+                );
+            }
+        }
     });
 
     res.status(200).send(`CV with ID ${idToUpdate} successfully updated!`);

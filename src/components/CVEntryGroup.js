@@ -1,5 +1,5 @@
 import React from "react";
-import { useSectionDetails } from "../../utils/section-utils.js";
+import { useSectionDetails } from "../utils/section-utils.js";
 
 function CVEntryGroup({ componentsLoading, id, isExpanded, sectionName, sectionTag, cvDetails, setCvDetails, entryComponents, handleEntryAddition }) {
     const sectionDetails = useSectionDetails(cvDetails, setCvDetails);
@@ -33,7 +33,6 @@ function CVEntryGroup({ componentsLoading, id, isExpanded, sectionName, sectionT
                         } else {
                             const cvDetailsKey = sectionDetails[sectionName].cvDetailsKey;
                             const entry = cvDetails[cvDetailsKey][key];
-                            console.log(entry);
 
                             // Only render active entries
                             const databaseId = entry.id ? entry.id : null;

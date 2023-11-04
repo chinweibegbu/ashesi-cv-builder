@@ -5,8 +5,6 @@ import '../styles/CVEditor.css';
 import TitleBar from './TitleBar.js';
 import CVEditorSection from "./CVEditorSection.js";
 import CVPreview from "./CVPreview.js";
-import { achievementAwardEntryTemplate } from "../data/entryTemplates.js";
-// import Loader from "./Loader.js";
 
 function CVEditorExisting() {
     const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +37,11 @@ function CVEditorExisting() {
         await axios.patch(`http://localhost:3005/api/${user_id}/cv/${cv_id}`, {
             name: cvDetails.cvName,
             last_edited: new Date(),
-            ...cvDetails.header
+            ...cvDetails.header,
+            education: cvDetails.education,
+            achievementsAwards: cvDetails.achievementsAwards,
+            workExperience: cvDetails.workExperience,
+            skills: cvDetails.skills,
         }).then((response) => {
             navigate("/dashboard", {
                 state: {

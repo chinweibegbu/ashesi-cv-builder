@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function AchievementAwardEntry({ id, sectionTag, databaseId, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
     const [ongoing, setOngoing] = useState(false);

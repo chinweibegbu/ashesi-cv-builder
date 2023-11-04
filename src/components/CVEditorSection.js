@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSectionDetails } from "../utils/section-utils.js";
-import CVEntryGroup from "./CVEditorEntries/CVEntryGroup.js";
+import CVEntryGroup from "./CVEntryGroup.js";
 
 function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails, newCV }) {
     const sectionDetails = useSectionDetails(cvDetails, setCvDetails);
@@ -45,7 +45,6 @@ function CVEditorSection({ sectionName, isExpanded, cvDetails, setCvDetails, new
             setEntryComponents([EntryComponent]);
         }
         setComponentsLoading(false);
-        console.log(entryComponents);
     }, []);
 
     return (
