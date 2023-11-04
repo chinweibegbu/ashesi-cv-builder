@@ -23,55 +23,54 @@ const createCVTableQuery = `CREATE TABLE IF NOT EXISTS CV (
  FOREIGN KEY (user_id) REFERENCES "User"(id))`;
 
 const createEducationEntryTableQuery = `CREATE TABLE IF NOT EXISTS EducationEntry (
- id SERIAL PRIMARY KEY ,
- cv_id INTEGER NOT NULL ,
- institution_name TEXT NOT NULL ,
- degree TEXT NOT NULL ,
- major TEXT NOT NULL ,
- cgpa DECIMAL NOT NULL ,
- city TEXT NOT NULL ,
- country TEXT NOT NULL ,
- start_date DATE  ,
- end_date DATE ,
- ongoing BOOLEAN NOT NULL ,
+ id SERIAL PRIMARY KEY,
+ cv_id INTEGER NOT NULL,
+ institution_name TEXT NOT NULL,
+ degree TEXT NOT NULL,
+ major TEXT NOT NULL,
+ cgpa DECIMAL NOT NULL,
+ city TEXT NOT NULL,
+ country TEXT NOT NULL,
+ start_date DATE,
+ end_date DATE,
+ ongoing BOOLEAN NOT NULL,
  FOREIGN KEY (cv_id) REFERENCES CV(id)
 )`;
 
 const createAchievementAwardEntryTableQuery = `CREATE TABLE IF NOT EXISTS AchievementAwardEntry (
- id SERIAL PRIMARY KEY ,
- cv_id INTEGER NOT NULL ,
- name TEXT NOT NULL ,
- awarder TEXT NOT NULL ,
- date_awarded DATE  ,
- date_expired DATE ,
- ongoing BOOLEAN NOT NULL ,
+ id SERIAL PRIMARY KEY,
+ cv_id INTEGER NOT NULL,
+ name TEXT NOT NULL,
+ awarder TEXT NOT NULL,
+ date_awarded DATE,
+ date_expired DATE,
+ ongoing BOOLEAN NOT NULL,
  FOREIGN KEY (cv_id) REFERENCES CV(id)
 )`;
 
 const createWorkExperienceEntryTableQuery = `CREATE TABLE IF NOT EXISTS WorkExperienceEntry (
- id SERIAL PRIMARY KEY ,
- cv_id INTEGER NOT NULL ,
- company_name TEXT NOT NULL ,
- title TEXT NOT NULL ,
- company_city TEXT NOT NULL ,
- company_country TEXT NOT NULL ,
- start_date DATE  ,
- end_date DATE ,
- ongoing BOOLEAN NOT NULL ,
+ id SERIAL PRIMARY KEY,
+ cv_id INTEGER NOT NULL,
+ company_name TEXT NOT NULL,
+ title TEXT NOT NULL,
+ company_city TEXT NOT NULL,
+ company_country TEXT NOT NULL,
+ start_date DATE,
+ end_date DATE,
+ ongoing BOOLEAN NOT NULL,
  FOREIGN KEY (cv_id) REFERENCES CV(id)
 )`;
 
 const createSkillEntryTableQuery = `CREATE TABLE IF NOT EXISTS SkillEntry (
- id SERIAL PRIMARY KEY ,
- cv_id INTEGER NOT NULL ,
- name TEXT NOT NULL ,
- level TEXT NOT NULL ,
- type TEXT NOT NULL ,
+ id SERIAL PRIMARY KEY,
+ cv_id INTEGER NOT NULL,
+ name TEXT NOT NULL,
+ level TEXT NOT NULL,
+ type TEXT NOT NULL,
  FOREIGN KEY (cv_id) REFERENCES CV(id)
 )`;
 
-const createTestUserQuery = `INSERT INTO "User" (full_name, email, password) VALUES ('Chinwe Ibegbu', 'chinwe.ibegbu@ashesi.edu.gh', 'admin');
-`;
+const createTestUserQuery = `INSERT INTO "User" (full_name, email, password) VALUES ('Chinwe Ibegbu', 'chinwe.ibegbu@ashesi.edu.gh', 'admin')`;
 
 export const setupQueries = {
     dropAllTablesQuery,
