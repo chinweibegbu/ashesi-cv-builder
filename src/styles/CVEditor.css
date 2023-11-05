@@ -89,6 +89,10 @@
     background-color: #8A3D40;
 }
 
-.cv-editor-details .add-entry {
+.cv-editor-details i {
     cursor: pointer;
+}
+
+.cv-editor .back-button {
+    font-size: 30px;
 }

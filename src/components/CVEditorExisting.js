@@ -6,7 +6,7 @@ import TitleBar from './TitleBar.js';
 import CVEditorSection from "./CVEditorSection.js";
 import CVPreview from "./CVPreview.js";
 
-function CVEditorExisting() {
+function CVEditorExisting({ backHandler }) {
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
@@ -61,22 +61,22 @@ function CVEditorExisting() {
                 .then((response) => {
                     const educationEntries = response.data.education.map(
                         educationEntry => {
-                            return {...educationEntry, active:true}
+                            return { ...educationEntry, active: true }
                         }
                     );
                     const achievementsAwardsEntries = response.data.achievementsAwards.map(
                         achievementAwardEntry => {
-                            return {...achievementAwardEntry, active:true}
+                            return { ...achievementAwardEntry, active: true }
                         }
                     );
                     const workExperienceEntries = response.data.workExperience.map(
                         workExperienceEntry => {
-                            return {...workExperienceEntry, active:true}
+                            return { ...workExperienceEntry, active: true }
                         }
                     );
                     const skillEntries = response.data.skills.map(
                         skillEntry => {
-                            return {...skillEntry, active:true}
+                            return { ...skillEntry, active: true }
                         }
                     );
                     setCvDetails({
@@ -114,6 +114,7 @@ function CVEditorExisting() {
                 <TitleBar location="main-body" />
                 <div className="cv-editor row bordered">
                     <div className="cv-editor-details px-5 pb-3 col-xl-6 bordered">
+                        <i className="position-absolute mt-3 bi-arrow-left back-button" onClick={backHandler}></i>
                         <form className="text-center mt-3 mb-3">
                             <input className="text-center" type="text" id="cv-name" value={cvDetails.cvName} onChange={(e) => setCvDetails({ ...cvDetails, cvName: e.target.value })}></input>
                         </form>
