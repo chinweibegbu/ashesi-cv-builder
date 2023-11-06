@@ -3,7 +3,7 @@ import EducationEntry from "../components/CVEditorEntries/EducationEntry.js";
 import AchievementAwardEntry from "../components/CVEditorEntries/AchievementAwardEntry.js";
 import WorkExperienceEntry from "../components/CVEditorEntries/WorkExperienceEntry.js";
 import SkillEntry from "../components/CVEditorEntries/SkillEntry.js";
-import { educationEntryTemplate, achievementAwardEntryTemplate, workExperienceEntryTemplate, skillEntryTemplate } from "../data/entryTemplates.js";
+import { educationEntryTemplate, achievementAwardEntryTemplate, workExperienceEntryTemplate, skillEntryTemplate } from "./entryTemplates.js";
 
 export const useSectionDetails = (cvDetails, setCvDetails) => {
     return {

@@ -1,6 +1,6 @@
 import React, { useRef} from "react";
 // import WorkEntryDescription from "./WorkEntryDescription.js";
-import { countryNames } from "../../data/countryNames.js";
+import { countryNames } from "../../utils/countryNames.js";
 
 function WorkExperienceEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
     const handleClick = () => {
