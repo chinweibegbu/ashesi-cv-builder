@@ -114,7 +114,7 @@ function CVEditorExisting({ backHandler }) {
                 <TitleBar location="main-body" />
                 <div className="cv-editor row bordered">
                     <div className="cv-editor-details px-5 pb-3 col-xl-6 bordered">
-                        <i className="position-absolute mt-3 bi-arrow-left back-button" onClick={backHandler}></i>
+                        <i className="position-absolute mt-3 bi-arrow-left-circle-fill back-button" onClick={backHandler}></i>
                         <form className="text-center mt-3 mb-3">
                             <input className="text-center" type="text" id="cv-name" value={cvDetails.cvName} onChange={(e) => setCvDetails({ ...cvDetails, cvName: e.target.value })}></input>
                         </form>
