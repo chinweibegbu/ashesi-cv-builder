@@ -137,7 +137,7 @@ export const createCV = (req, res) => {
                     if (entry.active) {
                         pool.query(
                             workExperienceEntryQueries.createWorkExperienceEntryQuery,
-                            [newCVId, entry.company_name, entry.title, entry.company_city, entry.company_country, entry.start_date, entry.end_date, entry.ongoing],
+                            [newCVId, entry.company_name, entry.title, entry.company_city, entry.company_country, entry.start_date, entry.end_date, entry.ongoing, entry.description],
                             (error, results) => {
                                 if (error) {
                                     throw error;
@@ -279,7 +279,7 @@ export const updateCVById = (req, res) => {
                 // --> Use the INSERT query
                 pool.query(
                     workExperienceEntryQueries.createWorkExperienceEntryQuery,
-                    [idToUpdate, workExperienceEntry.company_name, workExperienceEntry.title, workExperienceEntry.company_city, workExperienceEntry.company_country, workExperienceEntry.start_date, workExperienceEntry.end_date, workExperienceEntry.ongoing],
+                    [idToUpdate, workExperienceEntry.company_name, workExperienceEntry.title, workExperienceEntry.company_city, workExperienceEntry.company_country, workExperienceEntry.start_date, workExperienceEntry.end_date, workExperienceEntry.ongoing, workExperienceEntry.description],
                     (error, results) => {
                         if (error) {
                             throw error;

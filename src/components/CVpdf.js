@@ -87,13 +87,21 @@ function CVpdf({ cvPreviewDetails, targetRef }) {
                                         </div>
                                     </div>
                                     <p>{entry.title}</p>
-                                    <ul>
-                                        {/* {
-                                            entry.descriptions.map((description, key) => {
-                                                return <li key={key}>{description}</li>
-                                            })
-                                        } */}
-                                    </ul>
+                                    {
+                                        (entry.description === "")
+                                            ? <></>
+                                            : <ul>
+                                                {
+                                                    entry.description.split(" • ").map(item => {
+                                                        if (item === "") {
+                                                            return; 
+                                                        } else {
+                                                            return <li>{item}</li>;
+                                                        }
+                                                    })
+                                                }
+                                            </ul>
+                                    }
                                 </div>
                             )
                         } else {

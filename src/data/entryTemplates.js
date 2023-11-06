@@ -25,11 +25,11 @@ export const workExperienceEntryTemplate = {
     title: "",
     company_name: "",
     company_city: "",
-    company_country: "",
+    company_country: "Afghanistan",
     start_date: null,
     ongoing: false,
     end_date: null,
-    descriptions: [],
+    description: "",
     active: true
 }
 

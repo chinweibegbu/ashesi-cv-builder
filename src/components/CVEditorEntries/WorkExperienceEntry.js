@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef} from "react";
+// import WorkEntryDescription from "./WorkEntryDescription.js";
 import { countryNames } from "../../data/countryNames.js";
 
 function WorkExperienceEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
@@ -42,6 +43,26 @@ function WorkExperienceEntry({ id, sectionTag, handleEntryClear, handleEntryDele
         });
     }
 
+    // SOURCE: https://jsfiddle.net/abhiagrawal87/m39xt/
+    const handleFocus = (event) => {
+        if (event.target.value === "") {
+            event.target.value += " • ";
+        }
+    }
+    const handleKeyUp = (event) => {
+        // If "Enter" key is pressed, add bullet point
+        let keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == "13") {
+            event.target.value += " • ";
+        }
+
+        // Get current textarea value
+        let descriptionText = event.target.value;
+        if (descriptionText.substr(descriptionText.length - 1) === "\n") {
+            event.target.value = descriptionText.substring(0, descriptionText.length - 1);
+        }
+    }
+
     return (
         <div id={id}>
             <form className="bordered row">
@@ -78,6 +99,20 @@ function WorkExperienceEntry({ id, sectionTag, handleEntryClear, handleEntryDele
                 <div className="form-group col-6 offset-6 d-flex mb-2">
                     <input type="checkbox" id="work-ongoing" name="work-ongoing" value="work-ongoing" checked={cvDetails.workExperience[Number(id)].ongoing} onChange={handleClick}></input>
                     <label htmlFor="work-ongoing" className='ms-1'>Still working at this company</label>
+                </div>
+                <div className="form-group col-12 d-flex flex-column mb-2">
+                    <label htmlFor={sectionTag + "-description"}>Description</label>
+                    <textarea
+                        className="w-100 p-2"
+                        id={sectionTag + "-description"}
+                        name={sectionTag + "-description"}
+                        rows="5"
+                        placeholder="Maintain your pending tasks"
+                        onFocus={(e) => handleFocus(e)}
+                        onKeyUp={(e) => handleKeyUp(e)}
+                        value={cvDetails.workExperience[Number(id)].description}
+                        onChange={(e) => handleChange(e, "description")}>
+                    </textarea>
                 </div>
                 <div className="form-group col-12 d-flex justify-content-end align-items-end mb-2">
                     {/* <button className='button section-button clear-button btn me-1' onClick={(event) => handleEntryClear(event, id, "Work Experience")}>Clear Entry</button> */}

@@ -59,6 +59,7 @@ const createWorkExperienceEntryTableQuery = `CREATE TABLE IF NOT EXISTS WorkExpe
  start_date DATE,
  end_date DATE,
  ongoing BOOLEAN NOT NULL,
+ description TEXT,
  FOREIGN KEY (cv_id) REFERENCES CV(id)
 )`;
 

@@ -37,7 +37,13 @@
     border: solid 1px #000000;
 }
 
-.cv-editor-details input[type=text]:focus {
+.cv-editor-details textarea {
+    border-radius: 5px;
+    border: solid 1px #000000;
+}
+
+.cv-editor-details input[type=text]:focus,
+.cv-editor-details textarea:focus {
     outline-color: #8A3D40;
 }
 
