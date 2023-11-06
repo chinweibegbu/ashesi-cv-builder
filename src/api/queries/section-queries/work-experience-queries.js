@@ -1,4 +1,4 @@
-const getWorkExperienceEntrysQuery = "SELECT * FROM WorkExperienceEntry WHERE cv_id = $1";
+const getWorkExperienceEntrysQuery = "SELECT id, cv_id, company_name, title, company_city, company_country, TO_CHAR(start_date, 'yyyy-MM-dd') as start_date, TO_CHAR(end_date, 'yyyy-MM-dd') as end_date, ongoing FROM WorkExperienceEntry WHERE cv_id = $1";
 
 const getWorkExperienceEntryByIdQuery = "SELECT * FROM WorkExperienceEntry WHERE id = $1";
 

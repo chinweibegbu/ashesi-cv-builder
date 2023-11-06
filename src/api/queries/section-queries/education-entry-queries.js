@@ -1,4 +1,4 @@
-const getEducationEntrysQuery = "SELECT * FROM EducationEntry WHERE cv_id = $1";
+const getEducationEntrysQuery = "SELECT id, cv_id, institution_name, degree, major, cgpa, city, country, TO_CHAR(start_date, 'yyyy-MM-dd') as start_date, TO_CHAR(end_date, 'yyyy-MM-dd') as end_date, ongoing FROM EducationEntry WHERE cv_id = $1";
 
 const getEducationEntryByIdQuery = "SELECT * FROM EducationEntry WHERE id = $1";
 

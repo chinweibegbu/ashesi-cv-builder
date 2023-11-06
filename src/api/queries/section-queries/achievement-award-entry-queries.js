@@ -1,4 +1,4 @@
-const getAchievementAwardEntrysQuery = "SELECT * FROM AchievementAwardEntry WHERE cv_id = $1";
+const getAchievementAwardEntrysQuery = "SELECT id, cv_id, name, awarder, TO_CHAR(date_awarded, 'yyyy-MM-dd') as date_awarded, TO_CHAR(date_expired, 'yyyy-MM-dd') as date_expired, ongoing FROM AchievementAwardEntry WHERE cv_id = $1";
 
 const getAchievementAwardEntryByIdQuery = "SELECT * FROM AchievementAwardEntry WHERE id = $1";
 
