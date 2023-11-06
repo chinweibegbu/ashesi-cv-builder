@@ -289,7 +289,7 @@ export const updateCVById = (req, res) => {
             }
         }
     });
-    
+
     // Update active skill entries
     updatedCV.skills.forEach(skillEntry => {
         if (skillEntry.active) {
@@ -327,14 +327,120 @@ export const updateCVById = (req, res) => {
     res.status(200).send(`CV with ID ${idToUpdate} successfully updated!`);
 };
 
-export const deleteCVById = (req, res) => {
-    const idToDelete = parseInt(req.params.id);
+const deleteRelatedCVEntries = (idToDelete) => {
+    // Delete related education entries
     pool.query(
-        cvQueries.deleteCVByIdQuery,
+        educationEntryQueries.getEducationEntrysQuery,
         [idToDelete],
-        (error, results) => {
-            if (error) throw error;
+        (error, educationResults) => {
+            if (error) {
+                throw error;
+            } else {
+                educationResults.rows.forEach(educationResult => {
+                    pool.query(
+                        educationEntryQueries.deleteEducationEntryByIdQuery,
+                        [educationResult.id],
+                        (error) => {
+                            if (error) {
+                                throw error;
+                            }
+                        }
+                    );
+                });
+            }
         }
     );
-    res.send(`CV with ID ${idToDelete} successfully deleted!`);
+
+    // Delete related achievementsAwards entries
+    pool.query(
+        achievementAwardEntryQueries.getAchievementAwardEntrysQuery,
+        [idToDelete],
+        (error, achievementsAwardsResults) => {
+            if (error) {
+                throw error;
+            } else {
+                achievementsAwardsResults.rows.forEach(achievementsAwardsResult => {
+                    pool.query(
+                        achievementAwardEntryQueries.deleteAchievementAwardEntryByIdQuery,
+                        [achievementsAwardsResult.id],
+                        (error) => {
+                            if (error) {
+                                throw error;
+                            }
+                        }
+                    );
+                });
+            }
+        }
+    );
+
+    // Delete related workExperience entries
+    pool.query(
+        workExperienceEntryQueries.getWorkExperienceEntrysQuery,
+        [idToDelete],
+        (error, workExperienceResults) => {
+            if (error) {
+                throw error;
+            } else {
+                workExperienceResults.rows.forEach(workExperienceResult => {
+                    pool.query(
+                        workExperienceEntryQueries.deleteWorkExperienceEntryByIdQuery,
+                        [workExperienceResult.id],
+                        (error) => {
+                            if (error) {
+                                throw error;
+                            }
+                        }
+                    );
+                });
+            }
+        }
+    );
+
+    // Delete related skill entries
+    pool.query(
+        skillEntryQueries.getSkillEntrysQuery,
+        [idToDelete],
+        (error, skillResults) => {
+            if (error) {
+                throw error;
+            } else {
+                skillResults.rows.forEach(skillResult => {
+                    pool.query(
+                        skillEntryQueries.deleteSkillEntryByIdQuery,
+                        [skillResult.id],
+                        (error) => {
+                            if (error) {
+                                throw error;
+                            }
+                        }
+                    );
+                });
+            }
+        }
+    );
+
+    return true;
+}
+
+export const deleteCVById = (req, res) => {
+    const idToDelete = parseInt(req.params.id);
+
+    // Delete related CV entries
+    const preDeleteIsSuccessful = deleteRelatedCVEntries(idToDelete);
+
+    if (preDeleteIsSuccessful) {
+        // Delete CV if it has no related section entries
+        pool.query(
+            cvQueries.deleteCVByIdQuery,
+            [idToDelete],
+            (error) => {
+                if (error) {
+                    throw error;
+                } else {
+                    res.status(204).send(`CV with ID ${idToDelete} successfully deleted!`);
+                }
+            }
+        );
+    }
 }
