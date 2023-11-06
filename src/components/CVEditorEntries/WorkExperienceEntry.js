@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { countryNames } from "../../data/countryNames.js";
 
 function WorkExperienceEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { majors } from '../../data/majors.js';
 import { educationLevels } from '../../data/educationLevels.js';
 import { countryNames } from '../../data/countryNames.js';

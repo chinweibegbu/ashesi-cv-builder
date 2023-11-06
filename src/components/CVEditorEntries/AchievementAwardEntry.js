@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 function AchievementAwardEntry({ id, sectionTag, databaseId, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
     const handleClick = () => {
