@@ -49,7 +49,7 @@ function PersonalDetailsEntry({ sectionTag, cvDetails, setCvDetails }) {
                 <div className="form-group col-md-6 d-flex flex-column">
                     <label htmlFor={sectionTag + "-country"}>Country</label>
                     {/* <input type="text" id={sectionTag + "-country"} placeholder="e.g. Nigeria"></input> */}
-                    <select className="form-select" id={sectionTag + "-country"} aria-label={countryNames[0]} value={country} onChange={(e) => handleCountrySelect(e)}>
+                    <select className="form-select" id={sectionTag + "-country"} aria-label={countryNames[0]} value={cvDetails.header.country} onChange={(e) => handleCountrySelect(e)}>
                         {
                             countryNames.map((countryName, key) => {
                                 return <option key={key} value={countryName}>{countryName}</option>;

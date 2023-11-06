@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { countryNames } from "../../data/countryNames.js";
 
 function WorkExperienceEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
-    const [ongoing, setOngoing] = useState(false);
     const handleClick = () => {
-        setOngoing(prevState => !prevState);
         setCvDetails({
             ...cvDetails,
             workExperience: [
@@ -75,10 +73,10 @@ function WorkExperienceEntry({ id, sectionTag, handleEntryClear, handleEntryDele
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-end-date"}>End Date</label>
-                    <input type="date" id={sectionTag + "-end-date"} disabled={ongoing} value={cvDetails.workExperience[Number(id)].end_date} onChange={(e) => handleChange(e, "end_date")}></input>
+                    <input type="date" id={sectionTag + "-end-date"} disabled={cvDetails.workExperience[Number(id)].ongoing} value={cvDetails.workExperience[Number(id)].end_date} onChange={(e) => handleChange(e, "end_date")}></input>
                 </div>
                 <div className="form-group col-6 offset-6 d-flex mb-2">
-                    <input type="checkbox" id="work-ongoing" name="work-ongoing" value="work-ongoing" checked={ongoing} onChange={handleClick}></input>
+                    <input type="checkbox" id="work-ongoing" name="work-ongoing" value="work-ongoing" checked={cvDetails.workExperience[Number(id)].ongoing} onChange={handleClick}></input>
                     <label htmlFor="work-ongoing" className='ms-1'>Still working at this company</label>
                 </div>
                 <div className="form-group col-12 d-flex justify-content-end align-items-end mb-2">

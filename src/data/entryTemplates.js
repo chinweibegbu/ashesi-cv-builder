@@ -14,7 +14,7 @@ export const educationEntryTemplate = {
 export const achievementAwardEntryTemplate = {
     name: "",
     awarder: "",
-    durationType: "One-time",
+    duration_type: "One-time",
     date_awarded: null,
     ongoing: false,
     date_expired: null,

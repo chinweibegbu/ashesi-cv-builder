@@ -40,7 +40,7 @@ function CVpdf({ cvPreviewDetails, targetRef }) {
                                         <p>{entry.cgpa ? "Cumulative GPA: " + entry.cgpa + "/4.00" : ""}</p>
                                     </div>
                                     <div className="align-right">
-                                        <p><b>{(!(entry.city) || !(entry.country)) ? "" : entry.city + "," + entry.country}</b></p>
+                                        <p><b>{(!(entry.city) || !(entry.country)) ? "" : entry.city + ", " + entry.country}</b></p>
                                         <p>{educationEntryDateGenerator(entry)}</p>
                                     </div>
                                 </div>

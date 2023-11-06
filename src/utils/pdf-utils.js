@@ -25,11 +25,11 @@ const achievementsAwardsEntryDateGenerator = (entry) => {
     if (!(entry.date_awarded)) {
         return "";
     } else {
-        if (entry.durationType === "One-time") {
+        if (entry.duration_type === "One-time") {
             return months[start.getMonth()] + " " + start.getFullYear();
-        } else if ((entry.durationType === "Continuous") && (entry.ongoing === true)) {
+        } else if ((entry.duration_type === "Continuous") && (entry.ongoing === true)) {
             return months[start.getMonth()] + " " + start.getFullYear() + " - Present";
-        } else if ((entry.durationType === "Continuous") && (entry.ongoing === false)) {
+        } else if ((entry.duration_type === "Continuous") && (entry.ongoing === false)) {
             if (entry.date_expired) {
                 const end = new Date(entry.date_expired);
                 return months[start.getMonth()] + " " + start.getFullYear() + " - " + months[end.getMonth()] + " " + end.getFullYear();

@@ -4,9 +4,7 @@ import { educationLevels } from '../../data/educationLevels.js';
 import { countryNames } from '../../data/countryNames.js';
 
 function EducationEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
-    const [ongoing, setOngoing] = useState(false);
     const handleClick = () => {
-        setOngoing(prevState => !prevState);
         setCvDetails({
             ...cvDetails,
             education: [
@@ -97,10 +95,10 @@ function EducationEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion,
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-end-date"}>End Date</label>
-                    <input type="date" id={sectionTag + "-end-date"} disabled={ongoing} value={cvDetails.education[Number(id)].end_date} onChange={(e) => handleChange(e, "end_date")}></input>
+                    <input type="date" id={sectionTag + "-end-date"} disabled={cvDetails.education[Number(id)].ongoing} value={cvDetails.education[Number(id)].end_date} onChange={(e) => handleChange(e, "end_date")}></input>
                 </div>
                 <div className="form-group col-6 offset-6 d-flex mb-2">
-                    <input type="checkbox" id="education-ongoing" name="education-ongoing" value="education-ongoing" checked={ongoing} onChange={handleClick}></input>
+                    <input type="checkbox" id="education-ongoing" name="education-ongoing" value="education-ongoing" checked={cvDetails.education[Number(id)].ongoing} onChange={handleClick}></input>
                     <label htmlFor="education-ongoing" className='ms-1'>Still attending this institution</label>
                 </div>
                 

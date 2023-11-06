@@ -42,6 +42,7 @@ const createAchievementAwardEntryTableQuery = `CREATE TABLE IF NOT EXISTS Achiev
  cv_id INTEGER NOT NULL,
  name TEXT NOT NULL,
  awarder TEXT NOT NULL,
+ duration_type TEXT NOT NULL,
  date_awarded DATE,
  date_expired DATE,
  ongoing BOOLEAN NOT NULL,

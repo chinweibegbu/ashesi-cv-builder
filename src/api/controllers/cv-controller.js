@@ -121,7 +121,7 @@ export const createCV = (req, res) => {
                     if (entry.active) {
                         pool.query(
                             achievementAwardEntryQueries.createAchievementAwardEntryQuery,
-                            [newCVId, entry.name, entry.awarder, entry.date_awarded, entry.date_expired, entry.ongoing],
+                            [newCVId, entry.name, entry.awarder, entry.duration_type, entry.date_awarded, entry.date_expired, entry.ongoing],
                             (error, results) => {
                                 if (error) {
                                     throw error;
@@ -245,7 +245,7 @@ export const updateCVById = (req, res) => {
                 // --> Use the INSERT query
                 pool.query(
                     achievementAwardEntryQueries.createAchievementAwardEntryQuery,
-                    [idToUpdate, achievementAwardEntry.name, achievementAwardEntry.awarder, achievementAwardEntry.date_awarded, achievementAwardEntry.date_expired, achievementAwardEntry.ongoing],
+                    [idToUpdate, achievementAwardEntry.name, achievementAwardEntry.awarder, achievementAwardEntry.duration_type, achievementAwardEntry.date_awarded, achievementAwardEntry.date_expired, achievementAwardEntry.ongoing],
                     (error, results) => {
                         if (error) {
                             throw error;

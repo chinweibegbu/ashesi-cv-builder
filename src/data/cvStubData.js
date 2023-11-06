@@ -32,20 +32,20 @@ export const cvStubData = {
         {
             name: "Best Sophomore Statistics Presentation",
             awarder: "Ashesi University",
-            durationType: "One-time",
+            duration_type: "One-time",
             date_awarded: "August 2020"
         },
         {
             name: "OGOF Fellow",
             awarder: "Yielding Accomplished African Women",
-            durationType: "Continuous",
+            duration_type: "Continuous",
             ongoing: true,
             date_awarded: "March 2022"
         },
         {
             name: "Fellow",
             awarder: "Major league Hacking",
-            durationType: "Continuous",
+            duration_type: "Continuous",
             ongoing: false,
             date_awarded: "January 2023",
             date_expired: "April 2023"

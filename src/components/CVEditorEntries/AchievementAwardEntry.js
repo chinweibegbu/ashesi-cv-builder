@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function AchievementAwardEntry({ id, sectionTag, databaseId, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
-    const [ongoing, setOngoing] = useState(false);
     const handleClick = () => {
-        setOngoing(prevState => !prevState);
         setCvDetails({
             ...cvDetails,
             achievementsAwards: [
@@ -56,7 +54,7 @@ function AchievementAwardEntry({ id, sectionTag, databaseId, handleEntryClear, h
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-duration-type"}>Duration Type</label>
-                    <select className="form-select" id={sectionTag + "-duration-type"} aria-label="One-time" value={cvDetails.achievementsAwards[Number(id)].durationType} onChange={(e) => handleSelect(e, "durationType")}>
+                    <select className="form-select" id={sectionTag + "-duration-type"} aria-label="One-time" value={cvDetails.achievementsAwards[Number(id)].duration_type} onChange={(e) => handleSelect(e, "duration_type")}>
                         <option value="One-time">One-time</option>
                         <option value="Continuous">Continuous</option>
                     </select>
@@ -67,10 +65,10 @@ function AchievementAwardEntry({ id, sectionTag, databaseId, handleEntryClear, h
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column mb-2">
                     <label htmlFor={sectionTag + "-date-expired"}>Date Expired</label>
-                    <input type="date" id={sectionTag + "-date-expired"} disabled={ongoing || (cvDetails.achievementsAwards[Number(id)].durationType==="One-time")} value={cvDetails.achievementsAwards[Number(id)].date_expired} onChange={(e) => handleChange(e, "date_expired")}></input>
+                    <input type="date" id={sectionTag + "-date-expired"} disabled={cvDetails.achievementsAwards[Number(id)].ongoing || (cvDetails.achievementsAwards[Number(id)].duration_type==="One-time")} value={cvDetails.achievementsAwards[Number(id)].date_expired} onChange={(e) => handleChange(e, "date_expired")}></input>
                 </div>
                 <div className="form-group col-12 d-flex mb-2">
-                    <input type="checkbox" id="achievement-ongoing" name="achievement-ongoing" value="achievement-ongoing" checked={ongoing} onChange={handleClick}></input>
+                    <input type="checkbox" id="achievement-ongoing" name="achievement-ongoing" value="achievement-ongoing" checked={cvDetails.achievementsAwards[Number(id)].ongoing} onChange={handleClick}></input>
                     <label htmlFor="achievement-ongoing" className='ms-1'>Accomplishment/award yet to expire</label>
                 </div>
                 <div className="form-group col-12 d-flex justify-content-end align-items-end mb-2">
