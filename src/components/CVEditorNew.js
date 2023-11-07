@@ -5,7 +5,7 @@ import '../styles/CVEditor.css';
 import TitleBar from './TitleBar.js';
 import CVEditorSection from "./CVEditorSection.js";
 import CVPreview from "./CVPreview.js";
-import { educationEntryTemplate, achievementAwardEntryTemplate, workExperienceEntryTemplate, skillEntryTemplate } from "../data/entryTemplates.js";
+import { educationEntryTemplate, achievementAwardEntryTemplate, workExperienceEntryTemplate, skillEntryTemplate } from "../utils/entryTemplates.js";
 
 function CVEditorNew({ backHandler }) {
     const navigate = useNavigate();
