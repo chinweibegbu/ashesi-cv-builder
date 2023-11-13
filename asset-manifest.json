@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/chinweibegbu/ashesi-cv-builder/static/css/main.876537dd.css",
+    "main.js": "/chinweibegbu/ashesi-cv-builder/static/js/main.2538ca24.js",
+    "static/js/703.fc092e5e.chunk.js": "/chinweibegbu/ashesi-cv-builder/static/js/703.fc092e5e.chunk.js",
+    "static/js/598.cb662473.chunk.js": "/chinweibegbu/ashesi-cv-builder/static/js/598.cb662473.chunk.js",
+    "static/js/787.79618b02.chunk.js": "/chinweibegbu/ashesi-cv-builder/static/js/787.79618b02.chunk.js",
+    "index.html": "/chinweibegbu/ashesi-cv-builder/index.html",
+    "main.876537dd.css.map": "/chinweibegbu/ashesi-cv-builder/static/css/main.876537dd.css.map",
+    "main.2538ca24.js.map": "/chinweibegbu/ashesi-cv-builder/static/js/main.2538ca24.js.map",
+    "703.fc092e5e.chunk.js.map": "/chinweibegbu/ashesi-cv-builder/static/js/703.fc092e5e.chunk.js.map",
+    "598.cb662473.chunk.js.map": "/chinweibegbu/ashesi-cv-builder/static/js/598.cb662473.chunk.js.map",
+    "787.79618b02.chunk.js.map": "/chinweibegbu/ashesi-cv-builder/static/js/787.79618b02.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.876537dd.css",
+    "static/js/main.2538ca24.js"
+  ]
+}
