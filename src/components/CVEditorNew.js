@@ -42,7 +42,7 @@ function CVEditorNew({ backHandler }) {
     })
 
     const handleSave = async () => {
-        await axios.post(`http://localhost:3005/api/${user_id}/cv`, {
+        await axios.post(`https://ashesi-cv-builder.onrender.com/api/${user_id}/cv`, {
             name: cvDetails.cvName,
             last_edited: new Date(),
             link_to_cv: "https://www.google.com",

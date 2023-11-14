@@ -42,52 +42,52 @@ Font Family: `Inter` <br>
 ## Functional Requirements
 
 #### Landing Page
-- [ ] Sign in
+- [x] Sign in
+- [ ] Sign up
 
 #### Homepage
-- [ ] View all created CVs
-- [ ] Create new CV
-- [ ] Edit existing CV
-- [ ] Create/Edit new CV
+- [x] View all created CVs
+- [x] Create new CV
+- [x] Edit existing CV
 
 #### Create New CV Page
-- [ ] Live CV preview 
-- [ ] Add details to profile:
-  - [ ] Full name
-  - [ ] Current city and country
-  - [ ] Phone number
-  - [ ] Email address
-  - [ ] Nationality
-  - [ ] LinkedIn
+- [x] Live CV preview 
+- [x] Add details to profile:
+  - [x] Full name
+  - [x] Current city and country
+  - [x] Phone number
+  - [x] Email address
+  - [x] Nationality
+  - [x] LinkedIn
   - [ ] Any other websites (e.g. GitHub, WordPress, personal website, etc.)
 - [ ] Add details to sections:
-  - [ ] Education
-    - [ ] Name of institution
-    - [ ] Degree
-    - [ ] Name of degree
-    - [ ] Location (City, Country)
-    - [ ] Start and end dates
-    - [ ] Cumulative GPA*
-  - [ ] Achievements/Awards
-    - [ ] Achievement/Award name
-    - [ ] Associated institution
-    - [ ] Date acquired (one-time)/Start and end dates (continuous)
-  - [ ] Work Experience
-    - [ ] Name of institution
-    - [ ] Location of company
-    - [ ] Position
-    - [ ] Start and end dates
-    - [ ] Description
-  - [ ] Skills
-    - [ ] Soft skills
-    - [ ] Technical skills
+  - [x] Education
+    - [x] Name of institution
+    - [x] Degree
+    - [x] Name of degree
+    - [x] Location (City, Country)
+    - [x] Start and end dates
+    - [x] Cumulative GPA*
+  - [x] Achievements/Awards
+    - [x] Achievement/Award name
+    - [x] Associated institution
+    - [x] Date acquired (one-time)/Start and end dates (continuous)
+  - [x] Work Experience
+    - [x] Name of institution
+    - [x] Location of company
+    - [x] Position
+    - [x] Start and end dates
+    - [x] Description
+  - [x] Skills
+    - [x] Soft skills
+    - [x] Hard skills
   - [ ] References
   - [ ] Projects/Research*
   - [ ] Co-curricular*
   - [ ] Interests*
   - [ ] Publications*
 - [ ] Definitions of terms
-- [ ] Download CV
+- [x] Download CV
 - [ ] Get link to CV
 - [ ] Email CV to user
 * optional fields
@@ -120,7 +120,7 @@ Font Family: `Inter` <br>
    * Uses the Ashesi University colours
 
 ## Technical Stack
-Frontend: [React.js](https://react.dev/), [Bootstrap](https://getbootstrap.com/) <br>
+Frontend: [React.js](https://react.dev/) + [Bootstrap](https://getbootstrap.com/) <br>
 Backend: [Node.js](https://nodejs.org/en) + [Express.js](https://expressjs.com/) <br>
 Database: [PostgreSQL](https://www.postgresql.org/) <br>
 Code IDE: [VSCode](https://code.visualstudio.com/) <br>

@@ -13,7 +13,7 @@ function SignIn() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        await axios.post(`http://localhost:3005/api/users/validate`, {
+        await axios.post(`https://ashesi-cv-builder.onrender.com/api/users/validate`, {
             email: emailAddress,
             password: password
         }).then((response) => {

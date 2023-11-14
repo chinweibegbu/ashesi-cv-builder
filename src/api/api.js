@@ -12,7 +12,7 @@ import cvRouter from './routers/cv-router.js';
 
 // Create Express app
 const app = express();
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 10000;
 
 // Setup middleware
 app.use(bodyParser.json());
@@ -25,5 +25,5 @@ app.use('/api/users', userRouter);
 app.use('/api/:user_id/cv', cvRouter);
 
 // Running the Express server
-const appLink = PORT === 10000 ? "https://zuri-chinwe-stage2.onrender.com" : "http://localhost" ;
+const appLink = PORT === 10000 ? "https://ashesi-cv-builder.onrender.com" : "http://localhost" ;
 app.listen(PORT, () => console.log(`Server running at: ${appLink} on port ${PORT}`));
