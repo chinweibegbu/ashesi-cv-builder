@@ -34,7 +34,7 @@ function CVEditorExisting({ backHandler }) {
     })
 
     const handleUpdate = async () => {
-        await axios.patch(`http://localhost:3005/api/${user_id}/cv/${cv_id}`, {
+        await axios.patch(`https://ashesi-cv-builder.onrender.com/api/${user_id}/cv/${cv_id}`, {
             name: cvDetails.cvName,
             last_edited: new Date(),
             ...cvDetails.header,
@@ -57,7 +57,7 @@ function CVEditorExisting({ backHandler }) {
     useEffect(() => {
         // Get the data of the existing CV
         const getCVData = async () => {
-            await axios.get(`http://localhost:3005/api/${user_id}/cv/${cv_id}`)
+            await axios.get(`https://ashesi-cv-builder.onrender.com/api/${user_id}/cv/${cv_id}`)
                 .then((response) => {
                     const educationEntries = response.data.education.map(
                         educationEntry => {
