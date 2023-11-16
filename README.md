@@ -124,9 +124,7 @@ Frontend: [React.js](https://react.dev/) + [Bootstrap](https://getbootstrap.com/
 Backend: [Node.js](https://nodejs.org/en) + [Express.js](https://expressjs.com/) <br>
 Database: [PostgreSQL](https://www.postgresql.org/) <br>
 Code IDE: [VSCode](https://code.visualstudio.com/) <br>
-Deployment: [Vercel](https://vercel.com/) <br>
-
-**NOTE**: VEIT Now is now Vercel.
+Deployment: [Render](https://render.com/) <br>
 
 ## Acknowledegments
 ### Create React App
