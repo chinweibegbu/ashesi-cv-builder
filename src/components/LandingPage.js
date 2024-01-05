@@ -18,6 +18,9 @@ function LandingPage() {
                     <Link to="./signin" className="landing-page-button button btn btn-lg">
                         Log In
                     </Link>
+                    <p className="mt-1">
+                        New user? Sign up <Link to="./signup" className="landing-page-link">here</Link>
+                    </p>
                 </div>
                 <div className="col-4 d-flex justify-content-center bordered">
                     <img src="images/landing-page-avatar-darker-tone.png" alt="the company logo" />

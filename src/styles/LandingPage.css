@@ -12,3 +12,12 @@
     width: 250px;
     font-weight: 600;
 }
+
+.landing-page-link {
+    color: #000000;
+    text-decoration: underline;
+}
+
+.landing-page-link:hover {
+    color: #8A3D40
+}

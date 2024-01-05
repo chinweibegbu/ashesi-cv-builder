@@ -28,4 +28,6 @@ a {
 
 .error-message {
     color: #ff0000;
+    height: 24px;
+    margin-bottom: 0;
 }

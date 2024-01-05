@@ -1,0 +1,32 @@
+.sign-up-form {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    max-width: 100%;
+}
+
+.sign-up-form>.form-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.sign-up-form label {
+    font-size: 20px;
+}
+
+.sign-up-form input {
+    max-width: 95%;
+}
+
+.sign-up-form input[type=text],
+.sign-up-form input[type=password] {
+    width: 650px;
+    height: 60px;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 5px 10px;
+
+    font-size: 20px;
+}
