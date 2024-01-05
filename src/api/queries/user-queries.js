@@ -6,9 +6,12 @@ const createUserQuery = `INSERT INTO "User"(full_name, email, password) VALUES (
 
 const checkIfUserExistsQuery = `SELECT * FROM "User" WHERE email = $1 AND password = $2`;
 
+const checkIfEmailExistsQuery = `SELECT * FROM "User" WHERE email = $1 AND password = $2`;
+
 export const userQueries = {
     getUsersQuery,
     getUserByIdQuery,
     createUserQuery,
-    checkIfUserExistsQuery
+    checkIfUserExistsQuery,
+    checkIfEmailExistsQuery
 };

@@ -26,11 +26,22 @@ export const getUserById = (req, res) => {
 export const createUser = (req, res) => {
     const newUser = req.body;
     pool.query(
-        userQueries.createUserQuery,
-        [newUser.full_name, newUser.email, newUser.password],
+        userQueries.checkIfEmailExistsQuery,
+        [newUser.email],
         (error, results) => {
             if (error) throw error;
-            res.status(201).send(`User named '${newUser.full_name}' successfully created!`);
+            if (results.rows.length === 1) {
+                res.status(409).send("ERROR: User with this email address already exists");
+            } else {
+                pool.query(
+                    userQueries.createUserQuery,
+                    [newUser.full_name, newUser.email, newUser.password],
+                    (error, results) => {
+                        if (error) throw error;
+                        res.status(201).send(`User named '${newUser.full_name}' successfully created!`);
+                    }
+                );
+            }
         }
     );
 }
@@ -49,4 +60,9 @@ export const checkIfUserExists = (req, res) => {
             }
         }
     );
+}
+
+export const checkIfEmailExists = (req, res) => {
+    const { email } = req.body;
+    
 }
