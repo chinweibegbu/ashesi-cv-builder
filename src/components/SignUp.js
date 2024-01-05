@@ -28,6 +28,9 @@ function SignUp() {
             if (response.status === 201) {
                 navigate("/signin");
             }
+            if ((response.status === 409)) {
+                setError(err.response.data);
+            }
         }).catch((err) => {
             if (err.response.status === 401) {
                 setError(err.response.data);
