@@ -29,14 +29,10 @@ function SignUp() {
                 navigate("/signin");
             }
             if ((response.status === 409)) {
-                setError(err.response.data);
+                setError(response.data);
             }
         }).catch((err) => {
-            if (err.response.status === 401) {
-                setError(err.response.data);
-            } else {
-                console.log(err);
-            }
+            console.log(err);
         });
     }
 
