@@ -33,7 +33,7 @@ function SignUp() {
                     navigate(-1);
                 }
             }).catch((err) => {
-                if (response.status === 409) {
+                if (err.response.status === 409) {
                     console.log(failure);
                     setError(err.response.data);
                 } else {
