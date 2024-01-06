@@ -34,10 +34,11 @@ function SignUp() {
                 }
             }).catch((err) => {
                 if (err.response.status === 409) {
-                    console.log(failure);
+                    console.log("failure");
                     setError(err.response.data);
                 } else {
-                    console.log(error);
+                    console.log(typeof err.response.status);
+                    console.log(err.response.status);
                 }
             });
         }
