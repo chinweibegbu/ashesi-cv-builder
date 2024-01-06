@@ -26,7 +26,8 @@ function SignUp() {
             password: password
         }).then((response) => {
             if (response.status === 201) {
-                navigate("/");
+                // Go back to landing page
+                navigate(-1);
             }
             if ((response.status === 409)) {
                 setError(response.data);
