@@ -10,17 +10,19 @@ function CVDisplay({ user_id, full_name, cvDetails }) {
         const dateText = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
 
         let hour = "";
+        let period = "";
         if (date.getHours() === 0) {
             hour = "12";
+            period = "AM";
         } else if (date.getHours() <= 12) {
             hour = date.getHours();
+            period = (hour < 12) ? "AM" : "PM";
         } else {
             hour = (date.getHours() - 12);
+            period = "PM";
         }
-        const minutes = (date.getMinutes() / 10 < 1) ? "0" + (date.getMinutes()+1) : date.getMinutes()+1;
-        const period = (hour <= 11) ? "AM" : "PM";
+        const minutes = (date.getMinutes() / 10 < 1) ? "0" + (date.getMinutes()) : date.getMinutes();
         const timeText = hour + ":" + minutes + " " + period;
-
 
         return dateText + " @ " + timeText;
     }
