@@ -16,7 +16,10 @@ function SignUp() {
         event.preventDefault();
 
         // Check that inputs are all filled
-        if (emailAddress && fullName && password && password === false) {
+        if ((emailAddress === "")
+            || (fullName === "")
+            || (password === "")
+            || (confirmPassword === "")) {
             setError("ERROR: All fields are not filled");
         } else {
             await axios.post(`https://ashesi-cv-builder.onrender.com/api/users`, {
