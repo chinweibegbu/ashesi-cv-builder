@@ -39,18 +39,22 @@ export const createUser = (req, res) => {
                     userQueries.createUserQuery,
                     [newUser.full_name, newUser.email, newUser.password],
                     (error, results) => {
-                        if (error) throw error;
-                        // Get and return created user 
-                        pool.query(
-                            userQueries.checkIfEmailExistsQuery,
-                            [newUser.email],
-                            (error, results) => {
-                                if (error) throw error
-                                if (results.length === 1) {
-                                    res.status(201).send(results.rows[0]);
+                        if (error) {
+                            throw error;
+                        } else {
+                            console.log(results);
+                            // Get and return created user 
+                            pool.query(
+                                userQueries.checkIfEmailExistsQuery,
+                                [newUser.email],
+                                (error, results) => {
+                                    if (error) throw error
+                                    if (results.length === 1) {
+                                        res.status(201).send(results.rows[0]);
+                                    }
                                 }
-                            }
-                        );
+                            );
+                        }
                     }
                 );
             }
