@@ -9,7 +9,7 @@ function SignUp() {
     const [fullName, setFullName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [error, setError] = useState("Hey");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -18,24 +18,24 @@ function SignUp() {
         // Check that inputs are all filled
         if (emailAddress && fullName && password && password === false) {
             setError("ERROR: All fields are not filled");
+        } else {
+            await axios.post(`https://ashesi-cv-builder.onrender.com/api/users`, {
+                full_name: fullName,
+                email: emailAddress,
+                password: password
+            }).then((response) => {
+                if (response.status === 201) {
+                    // Go back to landing page
+                    console.log("success");
+                    navigate(-1);
+                }
+                if ((response.status === 409)) {
+                    setError(response.data);
+                }
+            }).catch((err) => {
+                console.log(err);
+            });
         }
-
-        await axios.post(`https://ashesi-cv-builder.onrender.com/api/users`, {
-            full_name: fullName,
-            email: emailAddress,
-            password: password
-        }).then((response) => {
-            if (response.status === 201) {
-                // Go back to landing page
-                console.log("success");
-                navigate(-1);
-            }
-            if ((response.status === 409)) {
-                setError(response.data);
-            }
-        }).catch((err) => {
-            console.log(err);
-        });
     }
 
     return (
