@@ -31,8 +31,9 @@ function SignUp() {
                     // Go back to landing page
                     console.log("success");
                     navigate(-1);
-                }
-                if ((response.status === 409)) {
+                } else if (response.status === 409) {
+                    console.log(failure);
+                    console.log(response.data)
                     setError(response.data);
                 }
             }).catch((err) => {
