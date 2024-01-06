@@ -13,9 +13,9 @@ function CVDisplay({ user_id, full_name, cvDetails }) {
         if (date.getHours() === 0) {
             hour = "12";
         } else if (date.getHours() <= 12) {
-            hour = date.getHours()+1;
+            hour = date.getHours();
         } else {
-            hour = (date.getHours() - 12)+1;
+            hour = (date.getHours() - 12);
         }
         const minutes = (date.getMinutes() / 10 < 1) ? "0" + (date.getMinutes()+1) : date.getMinutes()+1;
         const period = (hour <= 11) ? "AM" : "PM";
