@@ -27,10 +27,7 @@ function SignUp() {
                 email: emailAddress,
                 password: password
             }).then((response) => {
-                console.log(response);
-                // Go back to landing page
-                // navigate("/");
-                setError("Success!");
+                navigate("/signin");
             }).catch((err) => {
                 if (err.response.status === 409) {
                     setError(err.response.data);
