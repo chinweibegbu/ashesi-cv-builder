@@ -9,7 +9,7 @@ function SignUp() {
     const [fullName, setFullName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [error, setError] = useState("");
+    const [error, setError] = useState("Hey");
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -27,6 +27,7 @@ function SignUp() {
         }).then((response) => {
             if (response.status === 201) {
                 // Go back to landing page
+                console.log("success");
                 navigate(-1);
             }
             if ((response.status === 409)) {
