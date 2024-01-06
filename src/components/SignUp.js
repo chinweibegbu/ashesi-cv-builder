@@ -27,14 +27,10 @@ function SignUp() {
                 email: emailAddress,
                 password: password
             }).then((response) => {
-                if (response.status === 201) {
-                    // Go back to landing page
-                    console.log("success");
-                    navigate(-1);
-                }
+                // Go back to landing page
+                navigate(-1);
             }).catch((err) => {
                 if (err.response.status === 409) {
-                    console.log("failure");
                     setError(err.response.data);
                 } else {
                     console.log(typeof err.response.status);
