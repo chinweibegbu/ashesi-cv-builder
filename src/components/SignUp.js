@@ -27,7 +27,7 @@ function SignUp() {
                 email: emailAddress,
                 password: password
             }).then((response) => {
-                navigate("/signin");
+                navigate("../");
             }).catch((err) => {
                 if (err.response.status === 409) {
                     setError(err.response.data);
