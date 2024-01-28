@@ -43,7 +43,7 @@ Font Family: `Inter` <br>
 
 #### Landing Page
 - [x] Sign in
-- [ ] Sign up
+- [x] Sign up
 
 #### Homepage
 - [x] View all created CVs
@@ -90,7 +90,8 @@ Font Family: `Inter` <br>
 - [x] Download CV
 - [ ] Get link to CV
 - [ ] Email CV to user
-* optional fields
+      
+\* - optional fields
 
 ### Non-Functional Requirements
 1. Performance and scalability
@@ -111,7 +112,7 @@ Font Family: `Inter` <br>
 5. Usability
    * Highly intuitive
    * Smooth learning curve
-   * Easily visible errors and error-handling flows
+   * Easily-visible errors and error-handling flows
    * Easily-visible location markers
    * Easily-visible loading indictors
 6. Localization
