@@ -26,7 +26,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start-api": "node src/api/db-setup.js && node src/api/api.js",
+    "restart-db": "node src/api/db-setup.js",
+    "start-api": "node src/api/api.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
