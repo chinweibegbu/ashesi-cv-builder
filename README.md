@@ -230,7 +230,7 @@ Project Link: [https://github.com/chinweibegbu/ashesi-cv-builder/](https://githu
 [issues-url]: https://github.com/chinweibegbu/ashesi-cv-builder/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/chinwe-ibegbu
-[product-screenshot]: images/v0.9.0-screenshot.png
+[product-screenshot]: images/screenshot.png
 
 [HTML]: https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white
 [HTML-url]: https://developer.mozilla.org/en-US/docs/Web/HTML
