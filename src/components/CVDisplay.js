@@ -43,7 +43,7 @@ function CVDisplay({ user_id, full_name, cvDetails }) {
 
     const handleCVDelete = async () => {
         const cv_id = cvDetails.id;
-        await axios.delete(`https://ashesi-cv-builder.onrender.com/api/${user_id}/cv/${cv_id}`)
+        await axios.delete(`${process.env.REACT_APP_API_LINK}/${user_id}/cv/${cv_id}`)
             .then((response) => {
                 console.log(response);
                 navigate(0);

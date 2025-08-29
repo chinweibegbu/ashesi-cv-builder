@@ -22,7 +22,7 @@ function SignUp() {
             || (confirmPassword === "")) {
             setError("ERROR: All fields are not filled");
         } else {
-            await axios.post(`https://ashesi-cv-builder.onrender.com/api/users`, {
+            await axios.post(`${process.env.REACT_APP_API_LINK}/users`, {
                 full_name: fullName,
                 email: emailAddress,
                 password: password
