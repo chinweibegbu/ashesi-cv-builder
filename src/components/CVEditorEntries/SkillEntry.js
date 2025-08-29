@@ -1,5 +1,5 @@
 import React from "react";
-import { skillLevels } from "../../utils/skillLevels.js";
+import { skillLevels } from "../../utils/constants.js";
 
 function SkillEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
     const handleChange = (event, field) => {

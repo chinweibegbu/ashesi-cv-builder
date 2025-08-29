@@ -1,5 +1,5 @@
 import React from "react";
-import { months } from "./months.js";
+import { months } from "./constants.js";
 
 const educationEntryDateGenerator = (entry) => {
     const start = new Date(entry.start_date);

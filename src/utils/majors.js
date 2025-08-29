@@ -1,1 +1,0 @@
-export const majors = ["Business Administration", "Management Information Systems", "Computer Science", "Computer Engineering", "Electrical and Electronic Engineeering", "Mechanical Engineering"];
