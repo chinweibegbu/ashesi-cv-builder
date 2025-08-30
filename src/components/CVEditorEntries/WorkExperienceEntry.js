@@ -1,6 +1,6 @@
-import React, { useRef} from "react";
+import React from "react";
 // import WorkEntryDescription from "./WorkEntryDescription.js";
-import { countryNames } from "../../utils/countryNames.js";
+import { countryNames } from "../../utils/constants.js";
 
 function WorkExperienceEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
     const handleClick = () => {
@@ -52,7 +52,7 @@ function WorkExperienceEntry({ id, sectionTag, handleEntryClear, handleEntryDele
     const handleKeyUp = (event) => {
         // If "Enter" key is pressed, add bullet point
         let keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == "13") {
+        if (keycode === "13") {
             event.target.value += " • ";
         }
 

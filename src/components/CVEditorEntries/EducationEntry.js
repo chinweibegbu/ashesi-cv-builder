@@ -1,7 +1,5 @@
 import React from 'react';
-import { majors } from '../../utils/majors.js';
-import { educationLevels } from '../../utils/educationLevels.js';
-import { countryNames } from '../../utils/countryNames.js';
+import { educationLevels, countryNames, majors } from '../../utils/constants.js';
 
 function EducationEntry({ id, sectionTag, handleEntryClear, handleEntryDeletion, cvDetails, setCvDetails }) {
     const handleClick = () => {

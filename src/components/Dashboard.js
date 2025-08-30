@@ -17,7 +17,7 @@ function Dashboard() {
     useEffect(() => {
 
         const getUsersCVs = async () => {
-            await axios.get(`https://ashesi-cv-builder.onrender.com/api/${user_id}/cv`)
+            await axios.get(`${process.env.REACT_APP_API_LINK}/${user_id}/cv`)
                 .then((response) => {
                     setCVs(response.data);
                     setIsLoading(false);
