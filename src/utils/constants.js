@@ -7,3 +7,5 @@ export const majors = ["Business Administration", "Management Information System
 export const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 export const skillLevels = ["Novice", "Intermediate", "Advanced", "Proficient", "Expert"];
+
+export const saltRounds = 10;

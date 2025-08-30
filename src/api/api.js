@@ -1,4 +1,5 @@
 import express from 'express';
+import dotenv from "dotenv";
 
 // Import middleware libraries
 import bodyParser from 'body-parser';
@@ -9,6 +10,9 @@ import morgan from 'morgan';
 // Import app routers
 import userRouter from './routers/user-router.js';
 import cvRouter from './routers/cv-router.js';
+
+// Import environment variables from .env
+dotenv.config();
 
 // Create Express app
 const app = express();
