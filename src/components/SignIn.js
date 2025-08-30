@@ -52,6 +52,10 @@ function SignIn() {
                         <input type="password" id="login-password" value={password} onChange={e => setPassword(e.target.value)}></input>
                     </div>
                     <input className="button btn btn-lg mt-3" type="submit" value="Log In" />
+                    <p className="text-center">
+                        New user? Sign up
+                        <span className="link-text" onClick={() => navigate("/signup")}>here</span>
+                    </p>
                 </form>
             </div>
         </>

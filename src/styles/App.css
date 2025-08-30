@@ -31,3 +31,13 @@ a {
     height: 24px;
     margin-bottom: 0;
 }
+
+.link-text {
+    margin-left: 5px;
+    color: #8A3D40;
+    cursor: pointer
+}
+
+.link-text:hover {
+    color: #aa4d50;
+}

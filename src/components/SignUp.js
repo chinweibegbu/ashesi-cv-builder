@@ -66,6 +66,10 @@ function SignUp() {
                         {(password !== confirmPassword) ? "Passwords entered do not match" : ""}
                     </p>
                     <input className="button btn btn-lg mt-3" type="submit" value="Sign Up" />
+                    <p className="text-center">
+                        Already have an account? Sign in
+                        <span className="link-text" onClick={() => navigate("/signin")}>here</span>
+                    </p>
                 </form>
             </div>
         </>
